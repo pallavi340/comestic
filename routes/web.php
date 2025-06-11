@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
+Route::get('/', [HomeController::class, 'home'])->name('base.home');
+// This code defines a route for the home page of a Laravel application.
