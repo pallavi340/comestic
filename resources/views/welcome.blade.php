@@ -4,3 +4,5 @@
 <h2>Hi Jagriti...</h2>
 
 <h6>Hii Jagriti </h6>
+
+<h3>Welcome to the Laravel Application</h3>
