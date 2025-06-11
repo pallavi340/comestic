@@ -1,4 +1,4 @@
-@extends('header')
+@extends('base.header')
 @section('content')
 <div class="container my-5">
     <h2 class="promo-title">✨ Mid-Year Beauty Lineup ✨</h2>
@@ -12,6 +12,7 @@
 
     </div>
   </div>
+  <h4>SDFGHJ</h4>
   @endsection
 
   
