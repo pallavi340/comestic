@@ -2,5 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+
 Route::get('/', [HomeController::class, 'home'])->name('base.home');
-// This code defines a route for the home page of a Laravel application.
+Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
