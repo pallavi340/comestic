@@ -12,7 +12,7 @@
       <div class="row g-4">
         <div class="col-md-3">
           <div class="card-box gradient-1">
-            <h6>Products Sold</h6>
+            <h6>Products Solds</h6>
             <h3>4565</h3>
             <small>Jan - Mar 2019</small>
           </div>
