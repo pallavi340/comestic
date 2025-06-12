@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container my-5">
-    <h2 class="promo-title">✨ Mid-Year Beauty Lineup ✨</h2>
+    <h2 class="promo-title">✨ Mid-Year Beauty Lineups ✨</h2>
     <div class="row g-4">
 
       <div class="col-md-4">
