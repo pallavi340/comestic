@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard</title>
+  <title>@yield('title') | Admin Panel</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
   <style>
@@ -79,12 +79,12 @@
     <a href="#"><i class="bi bi-layout-text-window-reverse me-2"></i> Layouts</a>
     <a href="#"><i class="bi bi-envelope me-2"></i> Email</a>
     <a href="#"><i class="bi bi-table me-2"></i> Tables</a>
-    <a href=""><i class="bi bi-tags me-2"></i> Manage Category</a>
+    <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Category</a>
     <a href=""><i class="bi bi-box-seam me-2"></i> Manage Products</a>
-    <a href="#"><i class="bi bi-basket me-2"></i> Manage Orders</a>
-    <a href="#"><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
-    <a href="#"><i class="bi bi-people me-2"></i> Manage Users</a>
-    <a href="#"><i class="bi bi-graph-up me-2"></i> Manage Sales</a>
+    <a href=""><i class="bi bi-basket me-2"></i> Manage Orders</a>
+    <a href=""><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
+    <a href=""><i class="bi bi-people me-2"></i> Manage Users</a>
+    <a href=""><i class="bi bi-graph-up me-2"></i> Manage Sales</a>
   </div>
 
   <!-- Main Content -->
