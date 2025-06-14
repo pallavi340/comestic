@@ -14,3 +14,4 @@
 <h5>We believe development must be an enjoyable and creative experience to be truly fulfilling.</h5>
 <h1>dsfrgth</h1>
 <p>hloo</p>
+<p>Laravel strives to be a framework that you will love using.</p>
