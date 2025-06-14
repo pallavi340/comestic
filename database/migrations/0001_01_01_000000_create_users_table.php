@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('contact')->nullable(); // Changed to nullable
+            $table->string('google_id')->nullable(); // Added for Google login
+            $table->string('avatar')->nullable(); // Optional for profile picture
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable(); // Made nullable for social login
             $table->rememberToken();
             $table->timestamps();
         });

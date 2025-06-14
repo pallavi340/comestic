@@ -81,6 +81,44 @@
       margin-bottom: 30px;
     }
   </style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+    }
+    .launch-section {
+      text-align: center;
+      padding: 40px 20px 10px;
+      background: linear-gradient(to bottom, #edf6ff, #ffffff);
+    }
+    .launch-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1b1b1b;
+      margin-bottom: 10px;
+    }
+    .launch-section p {
+      color: #666;
+      font-size: 16px;
+    }
+    .launch-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+    .launch-images img {
+      max-width: 100%;
+      border-radius: 12px;
+      height: auto;
+      object-fit: cover;
+      flex: 1 1 300px;
+    }
+  </style>
+
+   
 </head>
 <body>
 
@@ -103,7 +141,7 @@
         <form class="d-flex me-3">
           <input class="form-control" type="search" placeholder="Search on Nykaa" aria-label="Search">
         </form>
-        <button class="btn btn-primary me-2">Sign in</button>
+        <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
         <a href="#" class="btn"><i class="bi bi-bag"></i></a>
       </div>
     </div>
