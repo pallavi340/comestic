@@ -8,7 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Login as LoginMail; // Renamed to avoid conflict with login method
+use App\Mail\Login as LoginMail; 
 
 class GoogleController extends Controller
 {
