@@ -75,7 +75,7 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <h5>Admin Dashboard</h5>
-    <a href=""><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
+    <a href="{{route('admin.dashboard')}}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
     <a href="#"><i class="bi bi-layout-text-window-reverse me-2"></i> Layouts</a>
     <a href="#"><i class="bi bi-envelope me-2"></i> Email</a>
     <a href="#"><i class="bi bi-table me-2"></i> Tables</a>
