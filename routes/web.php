@@ -12,5 +12,5 @@ Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboa
 Route::get('/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::get('/login', [GoogleController::class, 'login'])->name('base.login');
-Route::resource('/category', CategoryController::class);
+Route::resource('/category', CategoryController::class);--
 
