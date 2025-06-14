@@ -26,7 +26,17 @@
         </div>
       </div>
 
+<section class="launch-section">
+    <h2>New Launch Alert!</h2>
+    <p>Discover the latest drops now</p>
+
+    <div class="launch-images">
+      <img src="https://th.bing.com/th/id/OIP.649MFsje3cwwfEacYMoBVwHaEK?o=7rm=3&rs=1&pid=ImgDetMain" alt="Product Image 1">
+      <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3ZkZHR0a2N2MjVnZTl2cnh0ajh6ajI3NGVhZjdxNnBzMXZpYWNncyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gF7rF4HEJ7W33jMsfc/giphy.gif" alt="Product Image 2">
     </div>
-  </div>
+  </section>
+
+
+
 
   @endsection
