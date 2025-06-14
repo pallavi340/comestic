@@ -8,3 +8,4 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, 'home'])->name('base.home');
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
