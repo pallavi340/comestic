@@ -241,55 +241,17 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <a href="#" class="sidebar-brand">
-      <img src="https://via.placeholder.com/40x40" alt="Logo">
-      <h4>AdminPro</h4>
-    </a>
-
-    <div class="sidebar-menu">
-      <a href="{{route('admin.dashboard')}}" class="active">
-        <i class="bi bi-speedometer2"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="#">
-        <i class="bi bi-layout-text-window-reverse"></i>
-        <span>Layouts</span>
-      </a>
-      <a href="#">
-        <i class="bi bi-envelope"></i>
-        <span>Email</span>
-        <span class="badge rounded-pill bg-danger">5</span>
-      </a>
-      <a href="#">
-        <i class="bi bi-table"></i>
-        <span>Tables</span>
-      </a>
-      <a href="{{route('category.index')}}">
-        <i class="bi bi-tags"></i>
-        <span>Categories</span>
-      </a>
-      <a href="">
-        <i class="bi bi-box-seam"></i>
-        <span>Products</span>
-      </a>
-      <a href="">
-        <i class="bi bi-basket"></i>
-        <span>Orders</span>
-        <span class="badge rounded-pill bg-success">12</span>
-      </a>
-      <a href="">
-        <i class="bi bi-credit-card"></i>
-        <span>Payments</span>
-      </a>
-      <a href="">
-        <i class="bi bi-people"></i>
-        <span>Users</span>
-      </a>
-      <a href="">
-        <i class="bi bi-graph-up"></i>
-        <span>Analytics</span>
-      </a>
-    </div>
+    <h5>Admin Dashboard</h5>
+    <a href="{{route('admin.dashboard')}}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
+    <a href="#"><i class="bi bi-layout-text-window-reverse me-2"></i> Layouts</a>
+    <a href="#"><i class="bi bi-envelope me-2"></i> Email</a>
+    <a href="#"><i class="bi bi-table me-2"></i> Tables</a>
+    <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Category</a>
+    <a href=""><i class="bi bi-box-seam me-2"></i> Manage Products</a>
+    <a href=""><i class="bi bi-basket me-2"></i> Manage Orders</a>
+    <a href=""><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
+    <a href=""><i class="bi bi-people me-2"></i> Manage Users</a>
+    <a href=""><i class="bi bi-graph-up me-2"></i> Manage Sales</a>
   </div>
 
   <!-- Main Content -->
