@@ -1,5 +1,8 @@
 @extends('base.header')
 
+@Section('title')
+  Homepage |
+@endsection
 @section('content')
 
 <div class="container my-5">
@@ -27,7 +30,7 @@
       </div>
 
 <section class="launch-section">
-    <h2>New Launch Alert!</h2>
+    <h2>💖 New Launch Alert!</h2>
     <p>Discover the latest drops now</p>
 
     <div class="launch-images">
@@ -35,6 +38,8 @@
       <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3ZkZHR0a2N2MjVnZTl2cnh0ajh6ajI3NGVhZjdxNnBzMXZpYWNncyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gF7rF4HEJ7W33jMsfc/giphy.gif" alt="Product Image 2">
     </div>
   </section>
+  
+
 
 
 
