@@ -1,9 +1,5 @@
 @extends('base.header')
 
-@section('title')
-  Homepage
- @endsection
-
 @section('content')
 
 <div class="container my-5">
@@ -31,7 +27,7 @@
       </div>
 
 <section class="launch-section">
-    <h2>New Launch Alert!</h2>
+    <h2>💖 New Launch Alert!</h2>
     <p>Discover the latest drops now</p>
 
     <div class="launch-images">
@@ -41,4 +37,8 @@
 
   
   </section>
+
+
+
+
   @endsection
