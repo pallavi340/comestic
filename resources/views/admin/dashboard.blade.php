@@ -2,7 +2,7 @@
 
 @section('title') 
   Dashboard
-@endsection
+@endsection 
 
 @section('content')
 
@@ -87,4 +87,4 @@
       options: { responsive: true }
     });
   </script>
-@endsection
+@endsection Hiii234
