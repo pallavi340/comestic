@@ -48,6 +48,9 @@ class AuthController extends Controller
         }
         return view("base.register");
     }
-
+ public function logout(){
+        Auth::logout();
+        return redirect()->route("base.home")->with("msg", "Logout successful");
+    }   
    
 }

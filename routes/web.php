@@ -16,6 +16,7 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::match(['get', 'post'],'/base/register',[AuthController::class, 'register'])->name('base.register');
     Route::match(['get', 'post'], '/base/login', [AuthController::class, 'login'])->name('base.login');
+    Route::get('/base/logout', [AuthController::class, 'logout'])->name('base.logout');
 });
 
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
