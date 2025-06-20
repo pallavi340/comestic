@@ -120,11 +120,14 @@
     }
   </style>
 
+ 
    
 </head>
 <body>
 
-<x-banner/->
+<div class="top-banner">
+    BEAUTY BONANZA Get Your Amazing Deals!
+  </div>
 
   <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container-fluid px-4">
@@ -144,7 +147,26 @@
         @guest
         <a href="{{ route('auth.register') }}" class="btn btn-outline-secondary me-2">Sign up</a>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
+        @endguest
+        @auth
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">My Profile</a></li>
+              <li><a class="dropdown-item" href="#">Orders</a></li>
+              <li><a class="dropdown-item" href="#">Wishlist</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      
+       
         <a href="#" class="btn"><i class="bi bi-bag"></i></a>
+        @endauth
       </div>
     </div>
   </nav>
@@ -165,14 +187,9 @@
     <a href="#" class="text-danger fw-bold">SALE</a>
   </div>
 
-
-  <div class="offer-banner">
-    <h2>GET 15% OFF on orders above ₹1800</h2>
-    <div class="offer-code">USE CODE WEEKENDVIBE15</div>
-    <div class="max-discount">*Up to ₹300</div>
-  </div>
+<x-banner/>
+ 
  @section('content')
-
     @show
 
 

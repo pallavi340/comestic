@@ -13,6 +13,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('base.home');
     Route::get('/filter/{cat_id}', 'filter')->name('base.filter');
     Route::get('/search', 'search')->name('search');
+    Route::get('/categories', 'categories')->name('base.categories');
+    Route::get('/product/{pro_slug}','productView')->name('base.productView');
 
     Route::match(['get', 'post'],'/base/register',[AuthController::class, 'register'])->name('base.register');
     Route::match(['get', 'post'], '/base/login', [AuthController::class, 'login'])->name('base.login');
