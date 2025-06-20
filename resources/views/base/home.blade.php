@@ -1,5 +1,8 @@
 @extends('base.header')
 
+@section('title')
+ Homepage
+@endsection
 @section('content')
 
 <div class="container my-5">
@@ -37,8 +40,4 @@
 
   
   </section>
-
-
-
-
-  @endsection
+@endsection

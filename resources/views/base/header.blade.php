@@ -140,11 +140,12 @@
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Beauty Advice</a></li>
         </ul>
-        <form class="d-flex me-3">
+        <form action="{{route('search')}}"  method="post" class="d-flex me-3">
+          @csrf
           <input class="form-control" type="search" placeholder="Search on Nykaa" aria-label="Search">
         </form>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
-        <a href="#" class="btn"><i class="bi bi-bag"></i></a>
+        <a href="{{route('base.bag')}}" class="btn"><i class="bi bi-bag"></i></a>
       </div>
     </div>
   </nav>

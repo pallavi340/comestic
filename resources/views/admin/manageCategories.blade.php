@@ -7,7 +7,6 @@
 @section('content')
 
 <div class="container py-5">
-    {{-- Page Heading --}}
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
             <h2 class="fw-bold mb-1 text-gradient" style="background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">
@@ -23,7 +22,7 @@
         </button>
     </div>
 
-    {{-- Alert Messages --}}
+ 
     @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
             <i class="bi bi-exclamation-triangle-fill me-2"></i>
@@ -40,7 +39,6 @@
         </div>
     @endif
 
-    {{-- Categories Table --}}
     <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
@@ -57,12 +55,9 @@
                 <tbody>
                     @foreach ($categories as $cat)
                     <tr class="border-top">
-                        <td class="ps-4 fw-semibold text-muted">#{{ $cat->id }}</td>
+                        <td class="ps-4 fw-semibold text-muted">{{ $cat->id }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <div class="bg-light rounded-circle p-2 me-2">
-                                    <i class="bi bi-tag-fill text-primary"></i>
-                                </div>
                                 <span class="fw-semibold">{{ $cat->cat_title }}</span>
                             </div>
                         </td>
@@ -100,7 +95,6 @@
                         </td>
                     </tr>
 
-                    {{-- Edit Modal --}}
                     <div class="modal fade" id="editModal{{ $cat->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $cat->id }}" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content border-0 shadow">
@@ -114,7 +108,6 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
-                                        {{-- Parent --}}
                                         <div class="mb-4">
                                             <label class="form-label fw-semibold">Parent Category</label>
                                             <select name="parent_id" class="form-select border-2 py-2">
@@ -128,14 +121,13 @@
                                             @error('parent_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                                         </div>
 
-                                        {{-- Title --}}
+                                 
                                         <div class="mb-4">
                                             <label class="form-label fw-semibold">Category Title</label>
                                             <input type="text" name="cat_title" value="{{ $cat->cat_title }}" class="form-control border-2 py-2">
                                             @error('cat_title') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                                         </div>
 
-                                        {{-- Description --}}
                                         <div class="mb-3">
                                             <label class="form-label fw-semibold">Description</label>
                                             <textarea name="cat_description" rows="4" class="form-control border-2">{{ $cat->cat_description }}</textarea>
@@ -159,7 +151,7 @@
     </div>
 </div>
 
-{{-- Create Modal --}}
+
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content border-0 shadow">
@@ -172,7 +164,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- Parent --}}
+          
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Parent Category</label>
                         <select name="parent_id" class="form-select border-2 py-2">
@@ -184,14 +176,14 @@
                         @error('parent_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                     </div>
 
-                    {{-- Title --}}
+           
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Category Title</label>
                         <input type="text" name="cat_title" class="form-control border-2 py-2">
                         @error('cat_title') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                     </div>
 
-                    {{-- Description --}}
+             
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Description</label>
                         <textarea name="cat_description" rows="4" class="form-control border-2"></textarea>

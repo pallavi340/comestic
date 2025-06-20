@@ -54,7 +54,7 @@
                             </td>
                              
                                 <td>{{ $pro->brand }}</td>
-                                <td>{{$pro->slug}}</td>
+                                <td>{{ $pro->slug }}</td>
                                 <td>{{ $pro->category->cat_title ?? 'N/A' }}</td>
                                 <td>
                                     <span class="fw-bold text-success">₹{{ $pro->discount_price }}</span><br>
