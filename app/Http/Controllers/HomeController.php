@@ -13,7 +13,7 @@ class HomeController extends Controller
      return view("base.home");
     } 
 
-     public function viewProduct($id){
+     public function prodouctView($id){
        $pro = Product::find($id);
      return view("base.productView", compact("pro"));
     }
@@ -31,5 +31,8 @@ class HomeController extends Controller
        return view("home", compact('products', 'categories'));
     }
     
+    public function categories(){
+      return view("base.categories");
+    }
 }
 
