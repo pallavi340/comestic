@@ -1,6 +1,8 @@
 @extends('admin.layout')
 
-@section('title', 'Insert Product |')
+@section('title')
+    Insert Product |
+@endsection
 
 @section('content')
 <div class="container py-5">

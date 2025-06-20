@@ -137,30 +137,14 @@
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Beauty Advice</a></li>
         </ul>
-        <form class="d-flex me-3">
+        <form action="{{route('search')}}"  method="post" class="d-flex me-3">
+          @csrf
           <input class="form-control" type="search" placeholder="Search on Nykaa" aria-label="Search">
         </form>
         @guest
         <a href="{{ route('auth.register') }}" class="btn btn-outline-secondary me-2">Sign up</a>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
-        @endguest
-
-        @auth
-        <div class="dropdown me-2">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle"></i> {{ auth()->user()->name }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Orders</a></li>
-            <li><a class="dropdown-item" href="#">Wishlist</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
-          </ul>
-           <a href="#" class="btn"><i class="bi bi-bag"></i></a>
-        @endauth
-
-       
+        <a href="#" class="btn"><i class="bi bi-bag"></i></a>
       </div>
     </div>
   </nav>

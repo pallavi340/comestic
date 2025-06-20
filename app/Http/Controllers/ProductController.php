@@ -39,12 +39,12 @@ class ProductController extends Controller
             'discount_price' => 'required|numeric',
             'brand' => 'required',
             'category_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'discount_price' => 'nullable|numeric',
          ]);
 
           $data["image"] = $request->file("image")->store("product_image", "public");
-    
+
 
           Product::create($data);
           return redirect()->route('products.index')->with('success', "Product created successfully.");
