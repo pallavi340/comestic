@@ -13,7 +13,7 @@
         
         <!-- Logo Area -->
         <div style="text-align: center; padding: 30px 20px 20px;">
-            <img src="{{ config('app.url') }}/images/LearnSyntax.png" alt="Learn Syntax Logo" style="max-width: 150px; height: auto;" />
+            <img src="{{ config('app.url') }}/storage/logo.jpg" alt="Learn Syntax Logo" style="max-width: 150px; height: auto;" />
         </div>
         
         <!-- Main Content -->

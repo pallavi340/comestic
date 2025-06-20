@@ -39,7 +39,7 @@ class ProductController extends Controller
             'discount_price' => 'required|numeric',
             'brand' => 'required',
             'category_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
             'discount_price' => 'nullable|numeric',
          ]);
 
