@@ -134,7 +134,7 @@
       <a class="navbar-brand logo" href="#">NYKAA</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Luxe</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
@@ -145,16 +145,17 @@
           <input class="form-control" type="search" placeholder="Search on Nykaa" aria-label="Search">
         </form>
         @guest
-        <a href="{{ route('auth.register') }}" class="btn btn-outline-secondary me-2">Sign up</a>
+        <a href="{{ route('base.register') }}" class="btn btn-outline-secondary me-2">Sign up</a>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
         @endguest
         @auth
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i> Account
+              <i class="bi bi-person-circle"></i>{{auth()->user()->name}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">{{auth()->user()->email}}</a></li>
               <li><a class="dropdown-item" href="#">My Profile</a></li>
               <li><a class="dropdown-item" href="#">Orders</a></li>
               <li><a class="dropdown-item" href="#">Wishlist</a></li>
@@ -165,7 +166,7 @@
         </ul>
       
        
-        <a href="#" class="btn"><i class="bi bi-bag"></i></a>
+        <a href="" class="btn"><i class="bi bi-bag"></i></a>
         @endauth
       </div>
     </div>

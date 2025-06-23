@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart | Nykaa Clone</title>
+    <title>My Cart | Nykaa</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
@@ -137,22 +137,21 @@
             </ol>
         </nav>
 
-        <h2 class="mb-4">My Cart (3 Items)</h2>
+        <h2 class="mb-4">My Cart (3)</h2>
 
         <div class="row">
-            <!-- Cart Items -->
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <!-- Cart Item 1 -->
                         <div class="row cart-item">
                             <div class="col-3 col-md-2">
-                                <img src="https://via.placeholder.com/200x200?text=Lipstick" alt="Product" class="product-image">
+                                @foreach($order->items as $item)
+                                <img src="" alt="Product" class="product-image">
                             </div>
                             <div class="col-9 col-md-10">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h5>Lakme Absolute Matte Lipstick - Red</h5>
+                                        <h5>{{$item->product->title}}</h5>
                                         <p class="text-muted">Shade: Crimson Silk</p>
                                         <div class="mb-2">
                                             <small class="text-warning">
@@ -169,17 +168,18 @@
                                     <div class="col-md-3">
                                         <div class="input-group quantity-selector">
                                             <button class="btn btn-outline-secondary" type="button">-</button>
-                                            <input type="text" class="form-control text-center" value="1">
+                                            <input type="text" class="form-control text-center text-black" value="{{$item->qty}}">
                                             <button class="btn btn-outline-secondary" type="button">+</button>
                                         </div>
                                     </div>
                                     <div class="col-md-3 text-end">
-                                        <h5>₹299</h5>
-                                        <small class="text-muted text-decoration-line-through">₹399</small>
+                                        <h5>₹{{$item->product->price}}</h5>
+                                        <small class="text-muted text-decoration-line-through">₹{{$item->product->discount_price}}</small>
                                         <div class="mt-2">
                                             <button class="btn btn-sm btn-outline-danger">Remove</button>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

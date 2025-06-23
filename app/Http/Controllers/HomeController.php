@@ -4,18 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
 use App\Models\Category;  
+use Auth;  
 
 class HomeController extends Controller
 {
-    public function home()
+    public function index()
     {
-     return view("base.home");
+        $products = Product::latest()->take(12)->get();
+        return view('base.home', compact('products'));
+    } 
+    public function cart()
+    {
+      $order = Order::where("user_id", Auth::id())->first();
+        return view('base.cart', compact("order"));
     } 
 
-     public function prodouctView($id){
-       $pro = Product::find($id);
-     return view("base.productView", compact("pro"));
+    public function productView(Request $req, $slug){
+      $pro = Product::where('slug', $slug)->first();
+      return view('base.productView', compact('pro'));
     }
     
  public function filter($cat_id){
@@ -34,5 +42,6 @@ class HomeController extends Controller
     public function categories(){
       return view("base.categories");
     }
+
 }
 

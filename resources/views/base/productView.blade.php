@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Name - Nykaa Clone</title>
+    <title>ProductView | Nykaa</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
@@ -207,108 +207,77 @@
             <!-- Product Images -->
             <div class="col-md-5">
                 <div class="mb-3 text-center">
-                    <img src="https://media6.ppl-media.com/tr:h-750,w-750,c-at_max/static/img/product/104933/lakme-absolute-illuminating-foundation-natural-flare-15-g_2_display_1470215072_cec7c436.jpg" alt="Product" class="product-image-main img-fluid" id="mainProductImage">
-                </div>
-                <div class="d-flex flex-wrap">
-                    <img src="https://th.bing.com/th/id/OIP.LmLqbkqXpwjZO25CVuX1sQHaFE?w=270&h=184&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Thumbnail 1" class="product-thumbnail" onclick="changeImage(this)">
-                    <img src="https://th.bing.com/th/id/OIP.xWHHepfT8pR56bBbfstUWQHaIb?w=162&h=184&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Thumbnail 2" class="product-thumbnail" onclick="changeImage(this)">
-                    <img src="https://th.bing.com/th/id/OIP.7mAeE9csIkFIHYazbucrfwHaFY?rs=1&pid=ImgDetMain&cb=idpwebpc2" alt="Thumbnail 3" class="product-thumbnail" onclick="changeImage(this)">
-                    <img src="https://th.bing.com/th/id/OIP.xhfENqCvjjZ-xud_Nqip8QHaKU?pid=ImgDet&w=474&h=660&rs=1&cb=idpwebpc2" alt="Thumbnail 4" class="product-thumbnail" onclick="changeImage(this)">
+                    <img src="{{asset("storage/". $pro->image)}}" alt="Product" class="product_image-main img-fluid">
                 </div>
             </div>
             
             <!-- Product Details -->
-            <div class="col-md-7">
-                <h2>Lakmé Absolute Skin Glow Illuminating Serum Foundation</h2>
-                <p class="text-muted">Product code: NYK123456</p>
-                
-                <div class="d-flex align-items-center mb-3">
-                    <span class="rating-badge me-2">4.2 <i class="fas fa-star"></i></span>
-                    <span class="text-muted">(1,234 reviews)</span>
-                </div>
-                
-                <p class="brand-name">by Lakmé</p>
-                
-                <div class="mb-3">
-                    <span class="original-price">₹1,299</span>
-                    <span class="price">₹999</span>
-                    <span class="discount">(23% OFF)</span>
-                </div>
-                
-                <p class="text-success mb-4"><i class="fas fa-check-circle"></i> In Stock</p>
-                
-                <div class="mb-4">
-                    <h6>Shade</h6>
-                    <div class="d-flex flex-wrap">
-                        <div class="form-check me-3 mb-2">
-                            <input class="form-check-input" type="radio" name="shade" id="shade1" checked>
-                            <label class="form-check-label" for="shade1">
-                                <span class="d-inline-block rounded-circle" style="width: 20px; height: 20px; background-color: #f3cfb3;"></span> Ivory
-                            </label>
-                        </div>
-                        <div class="form-check me-3 mb-2">
-                            <input class="form-check-input" type="radio" name="shade" id="shade2">
-                            <label class="form-check-label" for="shade2">
-                                <span class="d-inline-block rounded-circle" style="width: 20px; height: 20px; background-color: #e6b999;"></span> Beige
-                            </label>
-                        </div>
-                        <div class="form-check me-3 mb-2">
-                            <input class="form-check-input" type="radio" name="shade" id="shade3">
-                            <label class="form-check-label" for="shade3">
-                                <span class="d-inline-block rounded-circle" style="width: 20px; height: 20px; background-color: #d9a47d;"></span> Honey
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-4">
-                    <h6>Size</h6>
-                    <div class="btn-group" role="group">
-                        <input type="radio" class="btn-check" name="size" id="size1" autocomplete="off" checked>
-                        <label class="btn btn-outline-secondary" for="size1">30ml</label>
-                        
-                        <input type="radio" class="btn-check" name="size" id="size2" autocomplete="off">
-                        <label class="btn btn-outline-secondary" for="size2">50ml</label>
-                    </div>
-                </div>
-                
-                <div class="row mb-4">
-                    <div class="col-md-6 mb-2">
-                        <button class="add-to-bag-btn rounded"><i class="fas fa-shopping-bag me-2"></i>ADD TO BAG</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="wishlist-btn rounded"><i class="far fa-heart me-2"></i>WISHLIST</button>
-                    </div>
-                </div>
-                
-                <div class="delivery-option mb-4">
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <i class="fas fa-truck text-muted"></i>
-                        </div>
-                        <div>
-                            <h6>Delivery Options</h6>
-                            <p class="mb-1">Get it by <strong>Tomorrow, 3 PM</strong></p>
-                            <p class="mb-0"><a href="#" class="text-decoration-none">Enter pincode for delivery details</a></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="delivery-option">
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <i class="fas fa-undo-alt text-muted"></i>
-                        </div>
-                        <div>
-                            <h6>Easy Returns</h6>
-                            <p class="mb-0">This item is eligible for return within 14 days of delivery</p>
-                        </div>
-                    </div>
-                </div>
+          <div class="col-md-7">
+    <h2>{{$pro->title}}</h2>
+    <div class="d-flex align-items-center mb-2">
+        <span class="rating-badge me-2">4.2 <i class="fas fa-star"></i></span>
+        <span class="text-muted">(1,234 reviews)</span>
+    </div>
+    <p class="brand-name mb-1">by: {{$pro->brand}}</p>
+    <div class="mb-2">
+        <span class="original-price">₹{{$pro->price}}</span>
+        <span class="price">₹{{$pro->discount_price}}</span>
+        <span class="discount">(23% OFF)</span>
+    </div>
+
+    <p class="text-success mb-2"><i class="fas fa-check-circle"></i> In Stock</p>
+
+    <div class="mb-2">
+        <h6>Shade</h6>
+        <div class="d-flex flex-wrap gap-2">
+            <!-- Shade options -->
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <h6>Size</h6>
+        <div class="btn-group gap-2" role="group">
+            <!-- Size options -->
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-6 mb-2">
+            <form action="{{ route('base.addtocart', ['slug' => $pro->slug]) }}" method="POST">
+                @csrf
+               <input type="hidden" name="product_id" value="{{ $pro->id }}">
+            <button class="add-to-bag-btn rounded"><i class="fas fa-shopping-bag me-2"></i>ADD TO BAG</button>
+       </form>
+            </div>
+        <div class="col-md-6">
+            <button class="wishlist-btn rounded"><i class="far fa-heart me-2"></i>WISHLIST</button>
+        </div>
+    </div>
+
+    <div class="delivery-option mb-2">
+        <div class="d-flex">
+            <div class="me-3"><i class="fas fa-truck text-muted"></i></div>
+            <div>
+                <h6>Delivery Options</h6>
+                <p class="mb-0">Get it by <strong>Tomorrow, 3 PM</strong></p>
+                <a href="#" class="text-decoration-none">Enter pincode for delivery details</a>
             </div>
         </div>
-        
-        <!-- Product Description Tabs -->
+    </div>
+
+    <div class="delivery-option">
+        <div class="d-flex">
+            <div class="me-3"><i class="fas fa-undo-alt text-muted"></i></div>
+            <div>
+                <h6>Easy Returns</h6>
+                <p class="mb-0">Eligible for return within 14 days of delivery</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+   
         <div class="row mt-5">
             <div class="col-12">
                 <ul class="nav nav-tabs" id="productTabs" role="tablist">
@@ -494,13 +463,13 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card similar-product-card">
-                            <img src="https://images-static.nykaa.com/media/catalog/product/tr:h-800,w-800,cm-pad_resize/2/8/2807eca24033_H_8901030654916.jpg" class="card-img-top similar-product-img" alt="...">
+                            <img src="{{asset('storage/'.$pro->image)}}" class="card-img-top similar-product-img" alt="...">
                             <div class="card-body">
-                                <h6 class="card-title">Lakmé 9 to 5 Primer + Matte Powder Foundation</h6>
+                                <h6 class="card-title">{{$pro->title}}</h6>
                                 <p class="card-text text-muted">25g</p>
                                 <div class="d-flex align-items-center">
-                                    <span class="price me-2">₹599</span>
-                                    <span class="original-price">₹799</span>
+                                    <span class="price me-2">₹{{$pro->discount_price }}</span>
+                                    <span class="original-price">₹{{$pro->price }}</span>
                                     <span class="discount ms-2">(25% OFF)</span>
                                 </div>
                             </div>

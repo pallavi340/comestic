@@ -9,33 +9,34 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-           
-    public function login(Request $req){
-        if($req->isMethod("post")){
-            $data =  $req->validate([
-               'email' => ["required", "email"],
-                'password' => ["required"],
-            ]);
-            if(Auth::attempt($data)){
-                return redirect()->route("base.home")->with("msg", "Login successful");
-            }
-            else{
-                return redirect()->back()->with("msg", "Incorrect email or password");
-            }
+    public function login(Request $req)
+{
+    if ($req->isMethod("post")) {
+       
+        $data = $req->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($data)) {
+            return redirect()->route('base.home')->with('msg', 'Login successful!');
         }
-        return view("base.login");
+         else { 
+            return redirect()->back()->withInput()->with('msg', 'Incorrect email or password');
+        }
     }
 
-    public function register(Request $req){
+    return view('base.login');
+}
+
+
+  public function register(Request $req){
         if($req->isMethod("post")){
          $data = $req->validate([
             'name' => ["required", "string"],
             'email' => ["required", "email"],
             'password' => ["required"],
          ]);
-
-         
-      
 
         $user = User::create([
         'name' => $data['name'],
@@ -44,13 +45,12 @@ class AuthController extends Controller
 ]);
 
          return redirect()->route("base.login");
-
-        }
+    }
         return view("base.register");
     }
  public function logout(){
         Auth::logout();
-        return redirect()->route("base.home")->with("msg", "Logout successful");
-    }   
-   
+        return redirect()->route("base.login");
+    }
+
 }
