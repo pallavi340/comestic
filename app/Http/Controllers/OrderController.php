@@ -9,60 +9,54 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function addTobag(Request $req, $pro_slug){
-      $product = Product::where('slug', $pro_slug)->first();
+  public function addToCart(Request $request, $product_slug)
+{
+    $product = Product::where('slug', $product_slug)->firstOrFail();
+    $userId = Auth::id();
 
-      if (!$product) {
-          abort(404);
-      }
-      else{
-         $exist_order = Order::where(
-          [
-            ['user_id', Auth::id()],
-            ['isOrdered', false],
-          ])->first();
+    $order = Order::firstOrCreate(
+        ['user_id' => $userId, 'isOrdered' => false]
+    );
 
-           if($exist_order){
-                $exist_order_item = OrderItems::where(
-                  [
-                    ['order_id', $exist_order->id],
-                    ['product_id', $product->id],
-                    ['isOrdered', false],
-                    ['user_id ', Auth::id()],
-                  ])->first();
+    $existingOrderItem = OrderItems::where('order_id', $order->id)
+        ->where('product_id', $product->id)
+        ->where('user_id', $userId)
+        ->where('isOrdered', false)
+        ->first();
 
-                if ($exist_order_item) {
-                  $exist_order_item->qty += 1;
-                  $exist_order_item->save();
-                } 
-                
-                else {
-                  $order_item = new OrderItems();
-                  $order_item->user_id = Auth::id();
-                  $order_item->order_id = $exist_order->id;
-                  $order_item->product_id = $product->id;
-                  $order_item->save();
-                }
-           }
-
-        else{
-           $order = new Order();
-           $order->user_id = Auth::id();
-           $order->save();
-
-           $order_item = new OrderItems();
-            $order_item->order_id = $order->id;
-            $order_item->user_id = Auth::id();
-            $order_item->product_id = $product->id;
-            $order_item->save();
-         }
-      }
-
-      return redirect()->route('bag');
+    if ($existingOrderItem) {
+        $existingOrderItem->qty += 1;
+        $existingOrderItem->save();
+    } else {
+        OrderItems::create([
+            'order_id' => $order->id,
+            'product_id' => $product->id,
+            'user_id' => $userId,
+            'qty' => 1,
+            'isOrdered' => false
+        ]);
     }
 
-    public function showBag(){
-      $data['Order'] = Order::where('user_id', Auth::id()) ->where('isOrdered', false)->first();
-       return view('base.bag', compact("data"));
-    }
+    return redirect()->back()->with('success', 'Product added to cart!');
+}
+
+
+
+
+  //public function showCart()
+//{
+  //  $order = Order::where('user_id', Auth::id())
+    //              ->where('isOrdered', false)
+      //            ->first();
+
+    //$orderItems = [];
+
+    //if ($order) {
+      //  $orderItems = OrderItems::where('order_id', $order->id) ->where('isOrdered', false) ->with('product_id')->get();
+    //}
+
+    //return view('base.cart', compact('order', 'orderItems')); 
+//}
+
+
 }

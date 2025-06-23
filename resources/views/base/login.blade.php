@@ -238,10 +238,13 @@
           </div>
           <a href="#" class="text-decoration-none text-danger">Forgot password?</a>
         </div>
-
-        <button type="submit" class="btn btn-login w-100 mb-3">
-          <i class="bi bi-box-arrow-in-right me-2"></i>Login
-        </button>
+         
+        <form method="POST" action="{{ route('base.login') }}">
+           @csrf
+           <button type="submit" class="btn btn-login w-100 mb-3">
+             <i class="bi bi-box-arrow-in-right me-2"></i>Login
+           </button>
+        </form>
 
         <div class="divider"><span>or</span></div>
 
