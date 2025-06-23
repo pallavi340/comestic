@@ -10,20 +10,23 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/', 'home')->name('base.home');
+    Route::get('/', 'index')->name('base.home');
     Route::get('/filter/{cat_id}', 'filter')->name('base.filter');
     Route::get('/search', 'search')->name('search');
+    Route::get('/cart', 'cart')->name('cart');
     Route::get('/categories', 'categories')->name('base.categories');
-    Route::get('/product/{pro_slug}','productView')->name('base.productView');
+    Route::get('/product/{slug}', 'productView')->name('base.productView');
+
+    Route::post('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
+
 
     Route::match(['get', 'post'],'/base/register',[AuthController::class, 'register'])->name('base.register');
     Route::match(['get', 'post'], '/base/login', [AuthController::class, 'login'])->name('base.login');
+    Route::get('/base/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-Route::get('/base-add-To-bag/{pro_slug}', [OrderController::class, 'addTobag'])->name('base.addTobag');
-Route::get('/bag', [OrderController::class, 'showBag'])->name('base.bag');
 
 
 Route::get('/base/google',[GoogleController::class, 'redirectToGoogle'])->name('google.login');

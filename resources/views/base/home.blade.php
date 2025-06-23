@@ -38,6 +38,37 @@
       <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3ZkZHR0a2N2MjVnZTl2cnh0ajh6ajI3NGVhZjdxNnBzMXZpYWNncyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gF7rF4HEJ7W33jMsfc/giphy.gif" alt="Product Image 2">
     </div>
 
+    <!-- Products Grid -->
+  <div>
+        <h4 class="fw-bold mb-4">🛍 All Products</h4>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            @forelse ($products as $item)
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="{{ asset('storage/' . $item->image) }}"
+                             class="card-img-top rounded-top"
+                             alt="{{ $item->title }}"
+                             style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">{{ Str::limit($item->title, 45) }}</h5>
+                            <p class="text-muted mb-1"><i class="bi bi-clipboard-fill"></i> 40ml</p>
+                            <div class="d-flex align-items-center">
+                                <span class="text-primary fw-bold me-2">₹{{ $item->discount_price }}</span>
+                                <del class="text-muted small">₹{{ $item->price }}</del>
+                                <a href="{{route('base.productView', $item->slug)}}" class="badge bg-success ms-2">50% OFF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col-12 text-center">
+                    <h2 class="fw-bold text-muted">No Products Found</h2>
+                    <p class="text-secondary">Please try a different category or keyword.</p>
+                </div>
+            @endforelse
+        </div>
+      </div>
+</div>
   
   </section>
 @endsection
