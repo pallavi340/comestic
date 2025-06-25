@@ -131,7 +131,9 @@
 
   <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container-fluid px-4">
-      <a class="navbar-brand logo" href="#">NYKAA</a>
+      <a class="navbar-brand" href="#">
+                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
+            </a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
@@ -156,9 +158,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">{{auth()->user()->email}}</a></li>
-              <li><a class="dropdown-item" href="#">My Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('base.profile') }}">My Profile</a></li>
               <li><a class="dropdown-item" href="#">Orders</a></li>
-              <li><a class="dropdown-item" href="#">Wishlist</a></li>
+              <li><a class="dropdown-item" href="{{ route('base.wishlist') }}">Wishlist</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>
@@ -185,7 +187,7 @@
     <a href="#">Men</a>
     <a href="#">Fragrance</a>
     <a href="#">Lingerie & Accessories</a>
-    <a href="#" class="text-danger fw-bold">SALE</a>
+    <a href="{{ route('base.offer') }}" class="text-danger fw-bold">SALE</a>
   </div>
 
 <x-banner/>

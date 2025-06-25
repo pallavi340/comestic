@@ -144,22 +144,38 @@
         <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" class="logo" alt="Cosmetic Logo">
         <h2>Create Your Account</h2>
       </div>
-     <form action="{{ route('base.register') }}" method="POST">
+     <form action="{{ route('storeUser') }}" method="POST">
   @csrf
-
   <div class="mb-3">
     <label for="name" class="form-label"><i class="bi bi-person-fill me-1"></i>Full Name</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+    <input type="text" id="name" name="name" value="{{old('name')}}" class="form-control" >
+    @error('name')
+        <p class="text-danger small">{{$message}}</p>
+    @enderror
   </div>
 
   <div class="mb-3">
     <label for="email" class="form-label"><i class="bi bi-envelope-fill me-1"></i>Email address</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+    <input type="email" id="email" name="email" value="{{old('email')}}" class="form-control">
+    @error('email')
+         <p class="text-danger small">{{$message}}</p>
+    @enderror
   </div>
 
   <div class="mb-3">
     <label for="password" class="form-label"><i class="bi bi-lock-fill me-1"></i>Password</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Create a password">
+    <input type="password" id="password" name="password" value="{{old('password')}}" class="form-control">
+   @error('password')
+        <p class="text-danger small">{{$message}}</p>
+    @enderror
+  </div>
+
+   <div class="mb-3">
+    <label for="Contact" class="form-label"><i class="bi bi-telephone-fill me-1"></i>Contact</label>
+    <input type="contact" id="contact" name="contact" value="{{old('contact')}}" class="form-control">
+    @error('contact')
+        <p class="text-danger small">{{$message}}</p>
+    @enderror
   </div>
 
   <button type="submit" class="btn btn-register w-100 mb-3">

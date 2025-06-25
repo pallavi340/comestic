@@ -143,7 +143,7 @@
             font-size: 12px;
             display: flex;
             align-items: center;
-            justify-content: center;
+             justify-content: center;
         }
     </style>
 </head>
@@ -151,8 +151,8 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-4">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <h3 class="fw-bold" style="color: #ff3e6c;">NYKAA</h3>
+          <a class="navbar-brand" href="#">
+                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -250,7 +250,7 @@
        </form>
             </div>
         <div class="col-md-6">
-            <button class="wishlist-btn rounded"><i class="far fa-heart me-2"></i>WISHLIST</button>
+            <button class="wishlist-btn rounded"><i cla`ss="far fa-heart me-2"></i>WISHLIST</button>
         </div>
     </div>
 

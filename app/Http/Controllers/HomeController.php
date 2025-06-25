@@ -42,10 +42,15 @@ class HomeController extends Controller
     public function categories(){
       return view("base.categories");
     }
-<<<<<<< HEAD
-=======
+    public function offer(){
+      return view("base.offer");
+    }
 
-}
->>>>>>> 2bcb8fa89a84578b5d0cef06fbf5e7e39f42f1cf
+   public function profile(){
+    return view("base.profile");  
+   }
+   public function wishlist(){
+    return view("base.wishlist");  
+   }  
 
 }
