@@ -8,8 +8,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\UserController;
-
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('base.home');
@@ -17,14 +15,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/search', 'search')->name('search');
     Route::get('/categories', 'categories')->name('base.categories');
     Route::get('/product/{slug}', 'productView')->name('base.productView');
-    Route::get('/offer', 'offer')->name('base.offer');
-    Route::get('/profile', 'profile')->name('base.profile');
-    Route::get('/wishlist', 'wishlist')->name('base.wishlist');
-});
 
-
-    Route::match(['get', 'post'],'/cart', [OrderController::class, 'Cart'])->name('base.cart');
-    Route::post('/add-to-cart/{slug}',[OrderController::class, 'addtocart'])->name('base.addtocart');
+    Route::post('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
 
 
     Route::get('/user', [UserController::class, 'dashboard'])->name('user.dashboard');

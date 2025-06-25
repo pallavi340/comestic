@@ -279,10 +279,10 @@
       <div class="profile-card mb-4 d-flex align-items-center">
         <img src="https://img.freepik.com/premium-photo/cute-little-girls-picture-ai-generated_1003721-472.jpg" alt="Profile" class="profile-image me-4">
         <div>
-          <h5 class="fw-bold mb-2">Pallavi <a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
-          <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> pallavi01@gmail.com</p>
-          <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i> 6200850680</p>
-          <p class="mb-0"><i class="far fa-calendar-alt me-2" style="color: var(--nykaa-pink);"></i> Date of Birth: 08/06/2004</p>
+          <h5 class="fw-bold mb-2">Jagriti Prakash <a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
+          <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> jagritiprakash17@gmail.com</p>
+          <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i> 8709566070</p>
+          <p class="mb-0"><i class="far fa-calendar-alt me-2" style="color: var(--nykaa-pink);"></i> Date of Birth: 17/05/1995</p>
         </div>
       </div>
 

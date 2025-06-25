@@ -80,7 +80,7 @@
     <a href="#"><i class="bi bi-envelope me-2"></i> Email</a>
     <a href="#"><i class="bi bi-table me-2"></i> Tables</a>
     <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Category</a>
-    <a href="{{route('products.index')}}"><i class="bi bi-box-seam me-2"></i> Manage Products</a>
+    <a href="{{ route('products.index') }}"><i class="bi bi-box-seam me-2"></i> Manage Products</a>
     <a href=""><i class="bi bi-basket me-2"></i> Manage Orders</a>
     <a href=""><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
     <a href=""><i class="bi bi-people me-2"></i> Manage Users</a>
