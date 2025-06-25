@@ -127,9 +127,9 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+
     <div class="container my-5">
-        <!-- Breadcrumb -->
+   
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -137,142 +137,59 @@
             </ol>
         </nav>
 
-        <h2 class="mb-4">My Cart (3)</h2>
+        <h2 class="mb-4">My Cart (4)</h2>
 
         <div class="row">
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div class="row cart-item">
-                            <div class="col-3 col-md-2">
-                                @foreach($order->items as $item)
-                                <img src="" alt="Product" class="product-image">
-                            </div>
-                            <div class="col-9 col-md-10">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>{{$item->product->title}}</h5>
-                                        <p class="text-muted">Shade: Crimson Silk</p>
-                                        <div class="mb-2">
-                                            <small class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </small>
-                                            <small class="text-muted"> (124)</small>
-                                        </div>
-                                        <span class="discount-badge">20% OFF</span>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="input-group quantity-selector">
-                                            <button class="btn btn-outline-secondary" type="button">-</button>
-                                            <input type="text" class="form-control text-center text-black" value="{{$item->qty}}">
-                                            <button class="btn btn-outline-secondary" type="button">+</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-end">
-                                        <h5>₹{{$item->product->price}}</h5>
-                                        <small class="text-muted text-decoration-line-through">₹{{$item->product->discount_price}}</small>
-                                        <div class="mt-2">
-                                            <button class="btn btn-sm btn-outline-danger">Remove</button>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
+                  
+                       @foreach($order->items as $item)
+<div class="row cart-item py-3 border-bottom align-items-center">
+    <div class="col-4 col-md-2 text-center">
+        <img src="{{ asset('storage/' . optional($item->product)->image ?? 'images/default.png') }}" alt="Product" class="img-fluid rounded">
+    </div>
+    <div class="col-8 col-md-10">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="mb-1">{{ optional($item->product)->title ?? 'Product not found' }}</h5>
+                <p class="text-muted mb-2">Shade: Crimson Silk</p>
+                <div class="mb-2">
+                    <small class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </small>
+                    <small class="text-muted"> (124)</small>
+                </div>
+                <span class="badge bg-danger">20% OFF</span>
+            </div>
+            <div class="col-md-3 d-flex align-items-center">
+                <div class="input-group quantity-selector w-75">
+                    <button class="btn btn-outline-secondary" type="button">-</button>
+                    <input type="text" class="form-control text-center" value="{{ $item->qty }}">
+                    <button class="btn btn-outline-secondary" type="button">+</button>
+                </div>
+            </div>
+            <div class="col-md-3 text-end">
+                <h5 class="mb-0 text-success">₹{{ optional($item->product)->discount_price ?? '0.00' }}</h5>
+                <small class="text-muted text-decoration-line-through d-block">₹{{ optional($item->product)->price ?? '0.00' }}</small>
+                  <button type="submit" class="btn btn-sm btn-outline-danger mt-2">Remove</button>
 
-                        <!-- Cart Item 2 -->
-                        <div class="row cart-item">
-                            <div class="col-3 col-md-2">
-                                <img src="https://via.placeholder.com/200x200?text=Foundation" alt="Product" class="product-image">
-                            </div>
-                            <div class="col-9 col-md-10">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>Maybelline Fit Me Matte Foundation</h5>
-                                        <p class="text-muted">Shade: 220 Natural Beige</p>
-                                        <div class="mb-2">
-                                            <small class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <i class="far fa-star"></i>
-                                            </small>
-                                            <small class="text-muted"> (342)</small>
-                                        </div>
-                                        <span class="discount-badge">15% OFF</span>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="input-group quantity-selector">
-                                            <button class="btn btn-outline-secondary" type="button">-</button>
-                                            <input type="text" class="form-control text-center" value="1">
-                                            <button class="btn btn-outline-secondary" type="button">+</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-end">
-                                        <h5>₹499</h5>
-                                        <small class="text-muted text-decoration-line-through">₹599</small>
-                                        <div class="mt-2">
-                                            <button class="btn btn-sm btn-outline-danger">Remove</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+         </div>
+    </div>
+@endforeach
+</div>    
 
-                        <!-- Cart Item 3 -->
-                        <div class="row cart-item">
-                            <div class="col-3 col-md-2">
-                                <img src="https://via.placeholder.com/200x200?text=Eyeshadow" alt="Product" class="product-image">
-                            </div>
-                            <div class="col-9 col-md-10">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>Huda Beauty Obsessions Eyeshadow Palette</h5>
-                                        <p class="text-muted">Shade: Warm Brown</p>
-                                        <div class="mb-2">
-                                            <small class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </small>
-                                            <small class="text-muted"> (89)</small>
-                                        </div>
-                                        <span class="discount-badge">30% OFF</span>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="input-group quantity-selector">
-                                            <button class="btn btn-outline-secondary" type="button">-</button>
-                                            <input type="text" class="form-control text-center" value="1">
-                                            <button class="btn btn-outline-secondary" type="button">+</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-end">
-                                        <h5>₹2,499</h5>
-                                        <small class="text-muted text-decoration-line-through">₹3,499</small>
-                                        <div class="mt-2">
-                                            <button class="btn btn-sm btn-outline-danger">Remove</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Empty Cart Message (Hidden) -->
-                        <!-- <div class="empty-cart">
-                            <div class="empty-cart-icon">
-                                <i class="fas fa-shopping-bag"></i>
-                            </div>
-                            <h4>Your Cart is Empty</h4>
-                            <p>Looks like you haven't added anything to your cart yet</p>
-                            <a href="#" class="btn btn-danger">Continue Shopping</a>
-                        </div> -->
+                           
+                
+                        <div class="empty-cart">
+                            <a href="{{route('base.home')}}" class="btn btn-danger">Continue Shopping</a>
+                        </div>
                     </div>
                 </div>
 
@@ -321,10 +238,6 @@
                         </div>
                         
                         <button class="btn btn-checkout btn-lg w-100 mb-3">Proceed to Checkout</button>
-                        
-                        <div class="text-center">
-                            <small class="text-muted">By placing your order, you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></small>
-                        </div>
                     </div>
                 </div>
 
@@ -348,110 +261,6 @@
             </div>
         </div>
 
-        <!-- Recently Viewed -->
-        <div class="mt-5">
-            <h4 class="mb-4">Recently Viewed</h4>
-            <div class="row">
-                <div class="col-6 col-md-3">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x300?text=Product+1" class="card-img-top" alt="Product">
-                        <div class="card-body">
-                            <h6 class="card-title">Lakme Eyeconic Kajal</h6>
-                            <p class="card-text">₹199</p>
-                            <button class="btn btn-outline-danger btn-sm w-100">Add to Bag</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x300?text=Product+2" class="card-img-top" alt="Product">
-                        <div class="card-body">
-                            <h6 class="card-title">Maybelline Fit Me Concealer</h6>
-                            <p class="card-text">₹449</p>
-                            <button class="btn btn-outline-danger btn-sm w-100">Add to Bag</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x300?text=Product+3" class="card-img-top" alt="Product">
-                        <div class="card-body">
-                            <h6 class="card-title">NYX Professional Blush</h6>
-                            <p class="card-text">₹629</p>
-                            <button class="btn btn-outline-danger btn-sm w-100">Add to Bag</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x300?text=Product+4" class="card-img-top" alt="Product">
-                        <div class="card-body">
-                            <h6 class="card-title">The Ordinary Serum</h6>
-                            <p class="card-text">₹1,050</p>
-                            <button class="btn btn-outline-danger btn-sm w-100">Add to Bag</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-light py-5 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <h5>Shop</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-dark">Makeup</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Skincare</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Haircare</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Fragrance</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Bath & Body</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5>Help</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-dark">Contact Us</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">FAQs</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Shipping & Returns</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Terms & Conditions</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5>About Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-dark">Our Story</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Careers</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Press</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5>Connect With Us</h5>
-                    <div class="mb-3">
-                        <a href="#" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-dark me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-dark me-2"><i class="fab fa-youtube"></i></a>
-                    </div>
-                    <h5>Download App</h5>
-                    <div>
-                        <a href="#" class="d-block mb-2"><img src="https://via.placeholder.com/120x40?text=App+Store" alt="App Store" style="height: 40px;"></a>
-                        <a href="#" class="d-block"><img src="https://via.placeholder.com/120x40?text=Play+Store" alt="Play Store" style="height: 40px;"></a>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="text-center">
-                <p class="mb-0">© 2023 Nykaa Clone. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,21 +1,10 @@
 <?php
-
 namespace App\Models;
-use App\Models\Product;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+
 use Illuminate\Database\Eloquent\Model;
 
 class OrderItems extends Model
 {
-    public function product(): HasOne
-    {
-        return $this->hasOne(Product::class, 'id', 'product_id');
-    }
-
-    public function orderItems()
-{
-    return $this->hasMany(OrderItems::class);
-}
     protected $fillable = [
         'order_id',
         'product_id',
@@ -23,6 +12,11 @@ class OrderItems extends Model
         'qty',
         'isOrdered',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 
     public function order()
     {
@@ -33,6 +27,4 @@ class OrderItems extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
-
 }

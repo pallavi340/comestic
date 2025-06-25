@@ -152,21 +152,20 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i>{{auth()->user()->name}}
+              <i class="bi bi-person-fill"></i>{{auth()->user()->name}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">{{auth()->user()->email}}</a></li>
-              <li><a class="dropdown-item" href="#">My Profile</a></li>
+              <li><a class="dropdown-item" href="{{route('base.profile')}}">My Profile</a></li>
               <li><a class="dropdown-item" href="#">Orders</a></li>
-              <li><a class="dropdown-item" href="#">Wishlist</a></li>
+              <li><a class="dropdown-item" href="{{route('base.wishlist')}}">Wishlist</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
             </ul>
           </li>
         </ul>
       
        
-        <a href="" class="btn"><i class="bi bi-bag"></i></a>
+        <a href="{{route('base.cart')}}" class="btn"><i class="bi bi-bag"></i></a>
         @endauth
       </div>
     </div>

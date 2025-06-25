@@ -15,11 +15,7 @@ class HomeController extends Controller
         $products = Product::latest()->take(12)->get();
         return view('base.home', compact('products'));
     } 
-    public function cart()
-    {
-      $order = Order::where("user_id", Auth::id())->first();
-        return view('base.cart', compact("order"));
-    } 
+   
 
     public function productView(Request $req, $slug){
       $pro = Product::where('slug', $slug)->first();
@@ -42,6 +38,17 @@ class HomeController extends Controller
     public function categories(){
       return view("base.categories");
     }
+
+public function offer(){
+      return view("base.offer");
+    }
+
+   public function profile(){
+    return view("base.profile");  
+   }
+   public function wishlist(){
+    return view("base.wishlist");  
+   }    
 
 }
 

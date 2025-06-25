@@ -217,16 +217,26 @@
         <h2>Welcome To Nykaa!</h2>
         <p class="text-muted mb-4">Login to your NYKAA account</p>
       </div>
+        @section('msg')
+            <div class="alert alert-danger">{{session('msg')}}</div>
+        @endsection
 
-      <form>
+      <form action="{{route('loginUser')}}" method="post">
+        @csrf
         <div class="mb-3">
           <label for="email" class="form-label"><i class="bi bi-envelope-fill me-1"></i>Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+          <input type="email" id="email" name="email" value="{{old('email')}}"  class="form-control">
+          @error('email')
+              <p class="text-danger small">{{$message}}</p>
+          @enderror
         </div>
 
         <div class="mb-3">
           <label for="password" class="form-label"><i class="bi bi-lock-fill me-1"></i>Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter your password">
+          <input type="password" id="password" name="password" value="{{old('password')}}" class="form-control">
+          @error('password')
+              <p class="text-danger small">{{$message}}</p>
+          @enderror
         </div>
 
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -239,7 +249,7 @@
           <a href="#" class="text-decoration-none text-danger">Forgot password?</a>
         </div>
          
-        <form method="POST" action="{{ route('base.login') }}">
+        <form method="POST" action="">
            @csrf
            <button type="submit" class="btn btn-login w-100 mb-3">
              <i class="bi bi-box-arrow-in-right me-2"></i>Login

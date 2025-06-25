@@ -9,54 +9,62 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-  public function addToCart(Request $request, $product_slug)
+    public function cart()
+   {
+       $order = Order::with('items')->where("user_id", Auth::id())->where("isOrdered", false)->first();
+
+    if (!$order) {
+       $order = new Order();
+        $order->items = collect(); 
+    }
+
+    return view('base.cart', compact("order"));
+  }
+
+
+
+
+  public function addtoCart(Request $request, $slug)
 {
-    $product = Product::where('slug', $product_slug)->firstOrFail();
-    $userId = Auth::id();
+  $userId = Auth::id();
+    $product = Product::where('slug', $slug)->firstOrFail();
 
     $order = Order::firstOrCreate(
-        ['user_id' => $userId, 'isOrdered' => false]
+      ['user_id' => $userId, 'isOrdered' => false]
     );
 
-    $existingOrderItem = OrderItems::where('order_id', $order->id)
-        ->where('product_id', $product->id)
-        ->where('user_id', $userId)
-        ->where('isOrdered', false)
-        ->first();
+    $existingOrderItem = OrderItems::where('order_id', $order->id) ->where('product_id', $product->id)->where('user_id', $userId)->where('isOrdered', false)->first();
 
-    if ($existingOrderItem) {
-        $existingOrderItem->qty += 1;
+  if($existingOrderItem) {
+       $existingOrderItem->qty += 1;
         $existingOrderItem->save();
-    } else {
+      } 
+    else
+     {
         OrderItems::create([
-            'order_id' => $order->id,
-            'product_id' => $product->id,
-            'user_id' => $userId,
+           'order_id' => $order->id,
+           'product_id' => $product->id,
+           'user_id' => $userId,
             'qty' => 1,
             'isOrdered' => false
         ]);
     }
 
-    return redirect()->back()->with('success', 'Product added to cart!');
+   return redirect()->back()->with('success', 'Product added to cart!');
 }
 
+  public function showCart()
+{
+    $order = Order::where('user_id', Auth::id()) ->where('isOrdered', false)->first();
 
+    $orderItems = [];
 
+    if ($order) {
+        $orderItems = OrderItems::where('order_id', $order->id) ->where('isOrdered', false) ->with('product_id')->get();
+    }
 
-  //public function showCart()
-//{
-  //  $order = Order::where('user_id', Auth::id())
-    //              ->where('isOrdered', false)
-      //            ->first();
-
-    //$orderItems = [];
-
-    //if ($order) {
-      //  $orderItems = OrderItems::where('order_id', $order->id) ->where('isOrdered', false) ->with('product_id')->get();
-    //}
-
-    //return view('base.cart', compact('order', 'orderItems')); 
-//}
+    return view('base.cart', compact('order', 'orderItems')); 
+}
 
 
 }
