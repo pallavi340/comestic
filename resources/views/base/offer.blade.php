@@ -316,7 +316,11 @@
  <section class="offer-grid">
             <div class="offer-card">
                 <div class="offer-image">
+<<<<<<< HEAD
                     <img src="https://via.placeholder.com/600x400/fdf2f5/e80071?text=Flat+30%25+Off" alt="30% Off Offer">
+=======
+                    <img src="https://images-static.nykaa.com/media/catalog/product/f/5/f5463bfMINIM00000079_1.jpg" alt="30% Off Offer">
+>>>>>>> f2d60769810e6d686503bc79323a2343028fa548
                 </div>
                 <div class="offer-details">
                     <h3 class="offer-title">Flat 30% Off on Minimalist</h3>
@@ -328,7 +332,11 @@
             
             <div class="offer-card">
                 <div class="offer-image">
+<<<<<<< HEAD
                     <img src="https://via.placeholder.com/600x400/fdf2f5/e80071?text=Buy+1+Get+1" alt="B1G1 Offer">
+=======
+                    <img src="https://emmiesbeautylife.com/wp-content/uploads/2018/10/maybellinemain.jpg" alt="B1G1 Offer">
+>>>>>>> f2d60769810e6d686503bc79323a2343028fa548
                 </div>
                 <div class="offer-details">
                     <h3 class="offer-title">Buy 1 Get 1 Free on Maybelline</h3>
@@ -340,7 +348,11 @@
             
             <div class="offer-card">
                 <div class="offer-image">
+<<<<<<< HEAD
                     <img src="https://via.placeholder.com/600x400/fdf2f5/e80071?text=10%25+Off+First+Order" alt="First Order Offer">
+=======
+                    <img src="" alt="First Order Offer">
+>>>>>>> f2d60769810e6d686503bc79323a2343028fa548
                 </div>
                 <div class="offer-details">
                     <h3 class="offer-title">10% Off on First Order</h3>

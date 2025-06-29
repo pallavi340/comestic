@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
+<<<<<<< HEAD
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentController;
@@ -44,6 +45,26 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/payment', 'Payment')->name('base.payment');
     Route::post('/razorpay/order','createRazorpayOrder')->name('razorpay.order')->middleware('auth');
   });
+=======
+use App\Http\Controllers\UserController;
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('base.home');
+    Route::get('/filter/{cat_id}', 'filter')->name('base.filter');
+    Route::get('/search', 'search')->name('search');
+    Route::get('/categories', 'categories')->name('base.categories');
+    Route::get('/product/{slug}', 'productView')->name('base.productView');
+    Route::get('/offer', 'offer')->name('base.offer');
+    Route::get('/profile', 'profile')->name('base.profile');
+    Route::get('/wishlist', 'wishlist')->name('base.wishlist');
+    Route::get('/brand', 'brand')->name('base.brand');
+    route::get('/order', 'order')->name('base.order');
+    route::get('/blog', 'blog')->name('base.blog');
+  
+});
+    Route::post('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
+   Route::get('/cart', [OrderController::class, 'Cart'])->name('base.cart')->middleware("auth");
+>>>>>>> f2d60769810e6d686503bc79323a2343028fa548
 
   // Auth Routes
 Route::controller(AuthController::class)->group(function() {
