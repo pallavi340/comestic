@@ -187,10 +187,10 @@
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="far fa-user"></i> Account</a>
+                        <a class="nav-link" href="#"><i class="far fa-user">{{auth()->user()->name}}</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="far fa-heart"></i> Wishlist</a>
+                        <a class="nav-link" href="{{route('wishlist.add', $pro->id)}}"><i class="far fa-heart"></i> Wishlist</a>
                     </li>
                     <li class="nav-item cart-icon">
                         <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i> Bag</a>
@@ -250,7 +250,10 @@
        </form>
             </div>
         <div class="col-md-6">
-            <button class="wishlist-btn rounded"><i cla`ss="far fa-heart me-2"></i>WISHLIST</button>
+            <form action="{{ route('wishlist.add', $pro->id) }}" method="POST">
+              @csrf
+              <button class="wishlist-btn rounded"><i class="far fa-heart me-2"></i>WISHLIST</button>
+           </form>
         </div>
     </div>
 

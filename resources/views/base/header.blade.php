@@ -37,7 +37,7 @@
       display: inline-block;
     }
     .offer-banner {
-      background: linear-gradient(to right, #fff3c4, #ffe4b3);
+      background: linear-gradient(to right, white);
       padding: 25px 15px;
       text-align: center;
     }
@@ -104,6 +104,22 @@
       color: #666;
       font-size: 16px;
     }
+
+    .search-box {
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            width: 400px;
+        }
+        .search-btn {
+            border-radius: 20px;
+            background-color: #ff3e6c;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            margin-left: -40px;
+        }
+
     .launch-images {
       display: flex;
       justify-content: center;
@@ -117,11 +133,8 @@
       height: auto;
       object-fit: cover;
       flex: 1 1 300px;
-    }
+    }   
   </style>
-
- 
-   
 </head>
 <body>
 
@@ -142,12 +155,12 @@
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Beauty Advice</a></li>
         </ul>
-        <form action="{{route('search')}}"  method="post" class="d-flex me-3">
-          @csrf
-          <input class="form-control" type="search" placeholder="Search on Nykaa" aria-label="Search">
-        </form>
+        <form class="d-flex me-3">
+                    <input class="search-box" type="search" placeholder="Search for products...">
+                    <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
+                </form>
         @guest
-        <a href="{{ route('base.register') }}" class="btn btn-outline-secondary me-2">Sign up</a>
+        <a href="{{ route('base.register') }}" class="btn btn-secondary me-2">Sign up</a>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
         @endguest
         @auth

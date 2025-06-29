@@ -50,11 +50,14 @@
       border-bottom: 1px solid #dee2e6;
     }
 
+ { background: linear-gradient(to right, #667eea, #764ba2); }
+  
+
     .card-box {
       border-radius: 10px;
       padding: 1.5rem;
-      color: white;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      color: rgb(8, 83, 62);
+      box-shadow: 0 3px 10px rgba(121, 7, 7, 0.1);
     }
 
     .gradient-1 { background: linear-gradient(to right, #667eea, #764ba2); }
@@ -68,6 +71,54 @@
       padding: 2rem;
       box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
+    .card-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+    .social-box {
+      border-radius: 10px;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .social-footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      padding: 10px;
+      color: #333;
+    }
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: #6c757d;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 3px;
+    }
+  
+    .team-card {
+      background: #fff;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .team-card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .status-bar {
+      width: 50px;
+      height: 5px;
+      border-radius: 10px;
+    }
+  
   </style>
 </head>
 <body>
@@ -76,12 +127,9 @@
   <div class="sidebar">
     <h5>Admin Dashboard</h5>
     <a href="{{route('admin.dashboard')}}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
-    <a href="#"><i class="bi bi-layout-text-window-reverse me-2"></i> Layouts</a>
-    <a href="#"><i class="bi bi-envelope me-2"></i> Email</a>
-    <a href="#"><i class="bi bi-table me-2"></i> Tables</a>
     <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Category</a>
     <a href="{{ route('products.index') }}"><i class="bi bi-box-seam me-2"></i> Manage Products</a>
-    <a href=""><i class="bi bi-basket me-2"></i> Manage Orders</a>
+    <a href="{{route('admin.manageOrder')}}"><i class="bi bi-basket me-2"></i> Manage Orders</a>
     <a href=""><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
     <a href=""><i class="bi bi-people me-2"></i> Manage Users</a>
     <a href=""><i class="bi bi-graph-up me-2"></i> Manage Sales</a>

@@ -17,4 +17,15 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function coupon (){
+        return $this->hasOne(Coupon::class, 'id', 'coupon_id');
+    }
+
+    public function orderItems()
+{
+    return $this->hasMany(OrderItems::class);
+}
+
+
+
 }

@@ -8,8 +8,8 @@
     {{-- Header --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="border-start border-4 border-warning ps-3 text-secondary fw-bold">Manage Products ({{ count($products) }})</h2>
-        <a href="{{ route('products.create') }}" class="btn btn-success shadow-sm">
-            <i class="bi bi-plus-circle me-1"></i> Add Product
+        <a href="{{ route('products.create') }}" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle me-2"></i> Add New Product
         </a>
     </div>
 
@@ -41,6 +41,7 @@
                             <th>Slug</th>
                             <th>Category</th>
                             <th>Price</th>
+                            <th>Status</th>
                             <th style="width: 150px;">Actions</th>
                         </tr>
                     </thead>
@@ -61,14 +62,24 @@
                                     <del class="text-muted small">₹{{ $pro->price }}</del>
                                 </td>
                                 <td>
+                                    <span class="badge bg-success bg-opacity-10 text-success">
+                                        <i class="bi bi-check-circle-fill me-1"></i> Active
+                                    </span>
+                                </td>
+                                <td>
                                     <div class="d-flex justify-content-center gap-2">
-                                        <a href="{{ route('products.edit', $pro) }}" class="btn btn-sm btn-outline-primary" title="Edit">
-                                            <i class="bi bi-pencil-square"></i>
+                                        <a href="{{ route('products.edit', $pro) }}"  class="btn btn-sm btn-outline-secondary rounded-circle p-2" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('products.destroy', $pro) }}" method="POST" onsubmit="return confirm('Are you sure to delete this product?')">
+
+                                          <form action="{{ route('products.destroy', $pro) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                                            <button type="submit" 
+                                                    class="btn btn-sm btn-outline-danger rounded-circle p-2"
+                                                    data-bs-toggle="tooltip" 
+                                                    title="Delete"
+                                                    onclick="return confirm('Are you sure you want to delete this product?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>

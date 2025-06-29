@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nykaa - My Wishlist</title>
+  <title>Wishlist | Nykaa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -223,7 +223,7 @@
     <!-- Top Header -->
     <div class="row py-2 align-items-center d-none d-md-flex">
       <div class="col-md-2">
-        <img src="https://adn-static2.nykaa.com/media/wysiwyg/2019/nykaa-logo.png" alt="Nykaa" class="nykaa-logo">
+        <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" alt="Nykaa" class="nykaa-logo">
       </div>
       <div class="col-md-6">
         <div class="search-bar d-flex">
@@ -328,32 +328,43 @@
       </div>
     </div>
 
-    <!-- Right Wishlist Content -->
     <div class="col-md-9">
       <div class="wishlist-container">
-        <h4 class="section-title">My Wishlist <span class="wishlist-count">(5 items)</span></h4>
+        <h4 class="section-title">My Wishlist <span class="wishlist-count">(2 items)</span></h4>
         
-        <div class="row">
-          <!-- Product 1 -->
-          <div class="col-md-4">
-            <div class="product-card">
-              <div class="position-relative">
-                <img src="https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/9/7/9784f1c8904302112296_1.jpg" alt="Product" class="product-image">
-                <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 p-1 rounded-circle">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <p class="brand-name mt-2">Lakmé</p>
-              <h6 class="product-name">Lakmé Absolute Perfect Radiance Skin Brightening Day Creme</h6>
-              <div class="d-flex align-items-center">
-                <span class="product-price">₹399</span>
-                <span class="original-price">₹450</span>
-                <span class="discount-percent">(11% off)</span>
-              </div>
-              <button class="btn btn-sm move-to-bag action-btn">MOVE TO BAG</button>
-              <button class="btn btn-sm remove-btn action-btn">REMOVE</button>
+    <div class="row">
+    @if($wishlist->isEmpty())
+        <div class="col-12">
+            <div class="alert alert-info">Your wishlist is empty.</div>
+        </div>
+    @else
+        @foreach($wishlist as $item)
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    @if($item->product->image)
+                        <img src="{{ asset('storage/' . $item->product->image) }}" class="card-img-top" alt="{{ $item->product->name }}">
+                    @else
+                        <img src="{{ asset('images/default.png') }}" class="card-img-top" alt="No Image">
+                    @endif
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $item->product->name }}</h5>
+                        <p class="card-text">₹{{ number_format($item->product->price, 2) }}</p>
+                        <p class="text-muted">{{ Str::limit($item->product->description, 60) }}</p>
+                        
+                        <div class="mt-auto">
+                            <form action="{{ route('wishlist.remove', $item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        @endforeach
+    @endif
+</div>
           
           <!-- Product 2 -->
           <div class="col-md-4">
@@ -376,70 +387,8 @@
             </div>
           </div>
           
-          <!-- Product 3 -->
-          <div class="col-md-4">
-            <div class="product-card">
-              <div class="position-relative">
-                <img src="https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/8/9/8904275530142_1.jpg" alt="Product" class="product-image">
-                <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 p-1 rounded-circle">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <p class="brand-name mt-2">M.A.C</p>
-              <h6 class="product-name">M.A.C Matte Lipstick - Ruby Woo</h6>
-              <div class="d-flex align-items-center">
-                <span class="product-price">₹1,750</span>
-                <span class="original-price">₹1,950</span>
-                <span class="discount-percent">(10% off)</span>
-              </div>
-              <button class="btn btn-sm move-to-bag action-btn">MOVE TO BAG</button>
-              <button class="btn btn-sm remove-btn action-btn">REMOVE</button>
-            </div>
-          </div>
-          
-          <!-- Product 4 -->
-          <div class="col-md-4">
-            <div class="product-card">
-              <div class="position-relative">
-                <img src="https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/8/9/8906030827081_1.jpg" alt="Product" class="product-image">
-                <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 p-1 rounded-circle">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <p class="brand-name mt-2">The Ordinary</p>
-              <h6 class="product-name">The Ordinary Niacinamide 10% + Zinc 1%</h6>
-              <div class="d-flex align-items-center">
-                <span class="product-price">₹695</span>
-                <span class="original-price">₹795</span>
-                <span class="discount-percent">(12% off)</span>
-              </div>
-              <button class="btn btn-sm move-to-bag action-btn">MOVE TO BAG</button>
-              <button class="btn btn-sm remove-btn action-btn">REMOVE</button>
-            </div>
-          </div>
-          
-          <!-- Product 5 -->
-          <div class="col-md-4">
-            <div class="product-card">
-              <div class="position-relative">
-                <img src="https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/8/9/8904275530142_1.jpg" alt="Product" class="product-image">
-                <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 p-1 rounded-circle">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <p class="brand-name mt-2">Huda Beauty</p>
-              <h6 class="product-name">Huda Beauty Power Bullet Matte Lipstick - Third Date</h6>
-              <div class="d-flex align-items-center">
-                <span class="product-price">₹1,850</span>
-                <span class="original-price">₹2,100</span>
-                <span class="discount-percent">(11% off)</span>
-              </div>
-              <button class="btn btn-sm move-to-bag action-btn">MOVE TO BAG</button>
-              <button class="btn btn-sm remove-btn action-btn">REMOVE</button>
-            </div>
-          </div>
-        </div>
         
+
         <!-- Empty Wishlist State (Hidden by default) -->
         <!-- <div class="empty-wishlist d-none">
           <img src="https://images-static.nykaa.com/nykdesignsys-images/emptyWishlist.svg" alt="Empty Wishlist">

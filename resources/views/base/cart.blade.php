@@ -3,17 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart | Nykaa</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Cart | Nykaa</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom styles */
-        .navbar-brand img {
-            height: 40px;
+        .product-image-main {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            height: 400px;
+            object-fit: contain;
         }
-        .cart-item {
+        .product-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .product-thumbnail:hover {
+            border-color: #ff3e6c;
+        }
+        .brand-name {
+            color: #ff3e6c;
+            font-weight: 600;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-right: 10px;
+        }
+        .discount {
+            color: #ff3e6c;
+            font-weight: bold;
+        }
+        .add-to-bag-btn {
+            background-color: #ff3e6c;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            font-weight: bold;
+            width: 100%;
+        }
+        .add-to-bag-btn:hover {
+            background-color: #e6395c;
+            color: white;
+        }
+        .wishlist-btn {
+            border: 1px solid #ff3e6c;
+            color: #ff3e6c;
+            background: white;
+            padding: 12px 0;
+            font-weight: bold;
+            width: 100%;
+        }
+        .wishlist-btn:hover {
+            background-color: #fff0f3;
+        }
+        .delivery-option {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .nav-tabs .nav-link.active {
+            color: #ff3e6c;
+            border-bottom: 2px solid #ff3e6c;
+        }
+        .nav-tabs .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+        .rating-badge {
+            background-color: #26a541;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .similar-product-card {
+            border: none;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .similar-product-card:hover {
+            transform: translateY(-5px);
+        }
+        .similar-product-img {
+            height: 200px;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-box {
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            width: 400px;
+        }
+        .search-btn {
+            border-radius: 20px;
+            background-color: #ff3e6c;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            margin-left: -40px;
+        }
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #ff3e6c;
+        }
+        .cart-icon {
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff3e6c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+             justify-content: center;
+        }
+
+                .cart-item {
             border-bottom: 1px solid #eee;
             padding: 20px 0;
         }
@@ -61,18 +194,14 @@
             color: #ddd;
             margin-bottom: 20px;
         }
+
     </style>
 </head>
 <body>
-    <!-- Top Announcement Bar -->
-    <div class="bg-dark text-white py-2 text-center">
-        <small>Free delivery on orders above ₹499 | 10% off on your first order</small>
-    </div>
-
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-4">
         <div class="container">
-             <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#">
                 <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -81,7 +210,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                             Categories
                         </a>
                         <ul class="dropdown-menu">
@@ -96,170 +225,186 @@
                         <a class="nav-link" href="#">Brands</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Luxe</a>
+                        <a class="nav-link" href="#">Offers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nykaa Fashion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Beauty Advice</a>
+                        <a class="nav-link" href="#">New</a>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <div class="input-group me-3">
-                        <input type="text" class="form-control" placeholder="Search for products...">
-                        <button class="btn btn-outline-secondary" type="button">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="mx-2 text-dark"><i class="fas fa-user"></i></a>
-                        <a href="#" class="mx-2 text-dark"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="mx-2 text-dark position-relative">
-                            <i class="fas fa-shopping-bag"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                3
-                            </span>
-                        </a>
-                    </div>
-                </div>
+                <form class="d-flex me-3">
+                    <input class="search-box" type="search" placeholder="Search for products...">
+                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="far fa-user">{{auth()->user()->name}}</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href=""><i class="far fa-heart"></i> Wishlist</a>
+                    </li>
+                    <li class="nav-item cart-icon">
+                        <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i> Bag</a>
+                        <span class="cart-count">3</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-
-
+    @php
+        $total_amount = 0;
+        $total_discount = 0;
+        $total_discount_amount = 0;
+        $total_tax = 0;
+        $total_payment = 0;
+    @endphp
     <div class="container my-5">
+       
+<div class="container my-5">
+  <div class="row align-items-start">
+   <h2 class="mb-4">My Cart (1)</h2>
    
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Cart</li>
-            </ol>
-        </nav>
+    <div class="col-lg-8">
+      <div class="card mb-4">
+        <div class="card-body">
+          @forelse($order->items as $item)
+            @php
+              $total_amount += $item->qty * $item->product->price;
+              $total_discount_amount += $item->qty * $item->product->discount_price;
+              $total_discount = $total_amount - $total_discount_amount;
+              $total_tax = $total_discount_amount * 0.18;
+              $total_payment = $total_discount_amount + $total_tax;
+              if($order->coupon_id != null):
+                $total_payment -= $order->coupon->amount;
+              endif;
+            @endphp
 
-        <h2 class="mb-4">My Cart (4)</h2>
+            <div class="row border-bottom py-4 align-items-center">
+              <div class="col-4 col-md-2 text-center">
+                <img src="{{ asset('storage/' . optional($item->product)->image ?? 'images/default.png') }}" alt="Product Image" class="img-fluid rounded shadow-sm">
+              </div>
+              <div class="col-8 col-md-10">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h6 class="mb-1 fw-bold">{{ optional($item->product)->title ?? 'Product not found' }}</h6>
+                    <p class="mb-1 small text-muted">Shade: Crimson Silk</p>
 
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                  
-                       @foreach($order->items as $item)
-<div class="row cart-item py-3 border-bottom align-items-center">
-    <div class="col-4 col-md-2 text-center">
-        <img src="{{ asset('storage/' . optional($item->product)->image ?? 'images/default.png') }}" alt="Product" class="img-fluid rounded">
-    </div>
-    <div class="col-8 col-md-10">
-        <div class="row">
-            <div class="col-md-6">
-                <h5 class="mb-1">{{ optional($item->product)->title ?? 'Product not found' }}</h5>
-                <p class="text-muted mb-2">Shade: Crimson Silk</p>
-                <div class="mb-2">
-                    <small class="text-warning">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </small>
-                    <small class="text-muted"> (124)</small>
-                </div>
-                <span class="badge bg-danger">20% OFF</span>
-            </div>
-            <div class="col-md-3 d-flex align-items-center">
-                <div class="input-group quantity-selector w-75">
-                    <button class="btn btn-outline-secondary" type="button">-</button>
-                    <input type="text" class="form-control text-center" value="{{ $item->qty }}">
-                    <button class="btn btn-outline-secondary" type="button">+</button>
-                </div>
-            </div>
-            <div class="col-md-3 text-end">
-                <h5 class="mb-0 text-success">₹{{ optional($item->product)->discount_price ?? '0.00' }}</h5>
-                <small class="text-muted text-decoration-line-through d-block">₹{{ optional($item->product)->price ?? '0.00' }}</small>
-                  <button type="submit" class="btn btn-sm btn-outline-danger mt-2">Remove</button>
+                   <div class="mb-1">
+                      <small class="text-muted"><del>₹{{ $item->product->price }}</del></small>
+                      <small class="fw-bold text-danger">₹{{ $item->product->discount_price }}</small>
+                   </div>
 
-            </div>
-         </div>
-    </div>
-@endforeach
-</div>    
+                    <span class="badge bg-danger small">20% OFF</span>
+                  </div>
 
+                  <div class="col-md-3 d-flex align-items-center justify-content-center gap-2 p-2">
+                    <form action="{{ route('cart.update', $item->id) }}" method="POST" class="d-inline">
+                      @csrf
+                      @method('PUT')
+                      <input type="hidden" name="action" value="decrease">
+                      <button type="submit" class="btn btn-outline-danger px-3">−</button>
+                    </form>
 
-                           
-                
-                        <div class="empty-cart">
-                            <a href="{{route('base.home')}}" class="btn btn-danger">Continue Shopping</a>
-                        </div>
+                    <span class="px-3 fw-bold text-dark">{{ $item->qty }}</span>
+
+                    <form action="{{ route('cart.update', $item->id) }}" method="POST" class="d-inline">
+                      @csrf
+                      @method('PUT')
+                      <input type="hidden" name="action" value="increase">
+                      <button type="submit" class="btn btn-outline-success px-3">+</button>
+                    </form>
+                  </div>
+
+                  <div class="col-md-3 text-md-end mt-3 mt-md-0">
+                    <h6 class="text-success mb-1">₹{{ optional($item->product)->discount_price ?? '0.00' }}</h6>
+                    <small class="text-muted text-decoration-line-through">₹{{ optional($item->product)->price ?? '0.00' }}</small>
+                    <div>
+                      <form action="{{ route('coupon.remove') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-outline-danger mt-2">
+                          <i class="fas fa-trash-alt me-1"></i> Remove
+                        </button>
+                      </form>
                     </div>
+                  </div>
                 </div>
-
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Apply Coupon</h5>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter coupon code">
-                            <button class="btn btn-danger" type="button">Apply</button>
-                        </div>
-                        <div class="alert alert-success d-none" role="alert">
-                            Coupon applied successfully! ₹100 discount added.
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-
-            <!-- Order Summary -->
-            <div class="col-lg-4">
-                <div class="card summary-card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Order Summary</h5>
-                        
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Subtotal (3 Items)</span>
-                            <span>₹3,297</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Discount</span>
-                            <span class="text-success">-₹1,100</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Shipping</span>
-                            <span class="text-success">FREE</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-3">
-                            <span>Taxes</span>
-                            <span>₹198</span>
-                        </div>
-                        
-                        <hr>
-                        
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5>Total Amount</h5>
-                            <h5>₹2,395</h5>
-                        </div>
-                        
-                        <button class="btn btn-checkout btn-lg w-100 mb-3">Proceed to Checkout</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Delivery Options</h5>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="deliveryOption" id="standardDelivery" checked>
-                            <label class="form-check-label" for="standardDelivery">
-                                Standard Delivery (3-5 business days) - FREE
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="deliveryOption" id="expressDelivery">
-                            <label class="form-check-label" for="expressDelivery">
-                                Express Delivery (1-2 business days) - ₹99
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          @empty
+            <p class="text-center text-muted">Your cart is empty.</p>
+          @endforelse
         </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+  <div class="card summary-card mb-3"> 
+    <div class="card-body">
+      <h5 class="card-title mb-3">Price Summary</h5> 
+
+      <div class="d-flex justify-content-between mb-2">
+        <span>Total Price</span>
+        <span>Rs.{{ number_format($total_amount, 2) }}</span>
+      </div>
+
+      <div class="d-flex justify-content-between mb-2">
+        <span>Total Discount</span>
+        <span class="text-success">Rs.{{ number_format($total_discount_amount, 2) }}</span>
+      </div>
+
+      <div class="d-flex justify-content-between mb-2">
+        <span>Total Tax (18% GST)</span>
+        <span>Rs.{{ number_format($total_tax, 2) }}</span>
+      </div>
+
+      @if($order->coupon_id)
+      <div class="d-flex justify-content-between mb-2">
+        <span>Coupon ({{ $order->coupon->code }})</span>
+        <span class="text-danger">− Rs.{{ number_format($order->coupon->amount, 2) }}</span>
+      </div>
+      @endif
+
+      <hr class="my-2">
+      <div class="d-flex justify-content-between mb-3"> 
+        <strong>Total Payment</strong>
+        <strong>Rs.{{ number_format($total_payment, 2) }}</strong>
+      </div>
+
+      <div class="mb-2"> 
+        @if(!$order->coupon_id)
+          <form action="{{route('coupon.add')}}" method="post" class="d-flex gap-1 align-items-center">
+            @csrf
+            <input type="text" name="coupon_code" class="form-control form-control-sm" placeholder="Enter Coupon Code">
+            <button class="btn btn-danger btn-sm" type="submit">Apply</button>
+          </form>
+      
+          @else
+           <p class="text-success small mb-1 d-flex align-items-center gap-1">
+                Applied Coupon:
+                <strong>{{ $order->coupon->code }}</strong> 
+         
+            <form action="{{ route('coupon.remove') }}" method="post" style="display:inline;">
+                 @csrf
+                 <button type="submit" class="btn btn-link text-danger p-0 m-0 align-baseline small" title="Remove Coupon">×</button>
+            </form>
+           </p>
+       @endif
+
+
+        @if(session('coupon_error'))
+          <div class="text-danger small">{{ session('coupon_error') }}</div>
+        @endif
+      </div>
+      <div class="empty-cart d-flex justify-content-between gap-1">
+        <a href="{{ route('base.home') }}" class="btn btn-danger btn-sm w-50 py-1 px-2" style="font-size: 0.8rem;">More Shopping</a>
+        <a href="{{ route('base.checkout') }}" class="btn btn-success btn-sm w-50 py-1 px-2" style="font-size: 0.8rem;">Checkout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -10,7 +10,7 @@
       <h5 class="mb-0">My Account</h5>
     </div>
     <div class="card-body">
-      <p><strong>Name:</strong> {{ $user->name }}</p>
+      <p><strong>Name:</strong>Pallavi</p>
       <p><strong>Email:</strong> {{ $user->email }}</p>
       @if($user->phone)
       <p><strong>Phone:</strong> {{ $user->phone }}</p>

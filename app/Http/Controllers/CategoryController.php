@@ -15,9 +15,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         $mainCategories = Category::where('parent_id',null)->get();
 
-        return view('admin.manageCategories')
-        ->with('categories',$categories)
-        ->with('mainCategories',$mainCategories);
+        return view('admin.manageCategories')->with('categories',$categories)->with('mainCategories',$mainCategories);
     }
 
     /**
