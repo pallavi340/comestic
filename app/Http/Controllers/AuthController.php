@@ -37,7 +37,7 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($data)){
-            return redirect()->route('user.dashboard');
+            return redirect()->route('base.home')->with("msg", "Login successful");
         }
         else{
             return redirect()->back()->with("msg", "Invalid email & password");

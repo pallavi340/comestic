@@ -19,10 +19,13 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/offer', 'offer')->name('base.offer');
     Route::get('/profile', 'profile')->name('base.profile');
     Route::get('/wishlist', 'wishlist')->name('base.wishlist');
+    Route::get('/brand', 'brand')->name('base.brand');
+    route::get('/order', 'order')->name('base.order');
+    route::get('/blog', 'blog')->name('base.blog');
   
 });
     Route::post('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
-
+   Route::get('/cart', [OrderController::class, 'Cart'])->name('base.cart')->middleware("auth");
 
     Route::get('/user', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/myaccount', [UserController::class, 'manageAccount'])->name('user.manageAccount');

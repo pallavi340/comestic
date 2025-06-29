@@ -158,9 +158,9 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">{{auth()->user()->email}}</a></li>
-              <li><a class="dropdown-item" href="#">My Profile</a></li>
+              <li><a class="dropdown-item" href="{{route('base.profile')}}">My Profile</a></li>
               <li><a class="dropdown-item" href="#">Orders</a></li>
-              <li><a class="dropdown-item" href="#">Wishlist</a></li>
+              <li><a class="dropdown-item" href="{{route('base.wishlist')}}">Wishlist</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
             </ul>

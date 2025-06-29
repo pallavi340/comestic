@@ -49,5 +49,16 @@ class HomeController extends Controller
     return view("base.wishlist");  
    }
 
+   public function brand(){
+    return view("base.brand");  
+   }
+   public function order(){
+    return view("base.order");
+   }
+   public function blog(){
+    return view("base.blog");
+   }
+
+
 }
 

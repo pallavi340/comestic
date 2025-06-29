@@ -223,7 +223,7 @@
     <!-- Top Header -->
     <div class="row py-2 align-items-center d-none d-md-flex">
       <div class="col-md-2">
-        <img src="https://adn-static2.nykaa.com/media/wysiwyg/2019/nykaa-logo.png" alt="Nykaa" class="nykaa-logo">
+        <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" alt="Nykaa" class="nykaa-logo">
       </div>
       <div class="col-md-6">
         <div class="search-bar d-flex">
@@ -451,6 +451,64 @@
     </div>
   </div>
 </div>
+<footer class="bg-light text-dark pt-5 pb-4">
+  <div class="container text-md-left">
+    <div class="row text-md-left">
+      
+      <!-- Company Info -->
+      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+       <a class="navbar-brand" href="#">
+                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
+            </a>
+        <p>Shop beauty products online from top brands in makeup, skincare, haircare, and more. 100% authentic. COD available.</p>
+      </div>
+
+      <!-- Products -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold">Products</h5>
+        <p><a href="#" class="text-dark text-decoration-none">Makeup</a></p>
+        <p><a href="#" class="text-dark text-decoration-none">Skincare</a></p>
+        <p><a href="#" class="text-dark text-decoration-none">Haircare</a></p>
+        <p><a href="#" class="text-dark text-decoration-none">Fragrances</a></p>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold">Useful Links</h5>
+        <p><a href="#" class="text-dark text-decoration-none">Your Account</a></p>
+        <p><a href="#" class="text-dark text-decoration-none">Track Order</a></p>
+        <p><a href="#" class="text-dark text-decoration-none">Shipping</a></p>
+        <p><a href="#" class="text-dark text-decoration-none">Help</a></p>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
+        <p><i class="bi bi-house-door-fill me-2"></i> Mumbai, India</p>
+        <p><i class="bi bi-envelope-fill me-2"></i> support@nykaa.com</p>
+        <p><i class="bi bi-phone-fill me-2"></i> +91 9876543210</p>
+      </div>
+
+    </div>
+
+    <!-- Social Media & Copyright -->
+    <hr class="mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-7 col-lg-8">
+        <p class="text-md-start">© 2025 Nykaa . All Rights Reserved.</p>
+      </div>
+      <div class="col-md-5 col-lg-4">
+        <div class="text-md-end">
+          <a href="#" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-dark me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-dark me-3"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-dark"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
