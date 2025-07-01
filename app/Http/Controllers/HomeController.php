@@ -21,12 +21,7 @@ class HomeController extends Controller
       $pro = Product::where('slug', $slug)->first();
       return view('base.productView', compact('pro'));
     }
-    
- public function filter($cat_id){
-        $products = Product::where('category_id', "$cat_id")->paginate(50);
-        $categories = Category::where('category_id')->get();
-       return view("base.home", compact('products', 'categories'));
-    }
+  
 
      public function search(Request $req){
         $search = $req->search;
@@ -36,18 +31,59 @@ class HomeController extends Controller
     }
     
     public function categories(){
-      return view("base.categories");
+        $categories = Category::whereNull('parent_id')->get();
+        $products = Product::latest()->take(12)->get();
+        return view("base.categories", compact('categories', 'products'));
     }
-    public function offer(){
-      return view("base.offer");
+    public function filter(Request $request)
+{
+    $query = Product::query();
+
+    // ✅ Category Filter
+    if ($request->has('category')) {
+        $query->whereIn('category', $request->category);
     }
 
-   public function profile(){
-    return view("base.profile");  
-   }
-   public function wishlist(){
-    return view("base.wishlist");  
-   }
+     if ($request->has('brand')) {
+        $query->whereIn('brand', $request->brand);
+    }
+
+    // ✅ Price Filter
+    if ($request->has('price')) {
+        $query->where(function ($q) use ($request) {
+            foreach ($request->price as $price) {
+                if ($price == 'under500') {
+                    $q->orWhere('price', '<', 500);
+                }
+                if ($price == '500to1000') {
+                    $q->orWhereBetween('price', [500, 1000]);
+                }
+                if ($price == '1000to2000') {
+                    $q->orWhereBetween('price', [1000, 2000]);
+                }
+                if ($price == 'above2000') {
+                    $q->orWhere('price', '>', 2000);
+                }
+            }
+        });
+    }
+
+    // ✅ Discount Filter
+    if ($request->has('discount')) {
+        $query->where(function ($q) use ($request) {
+            foreach ($request->discount as $discount) {
+                $q->orWhere('discount', '>=', (int)$discount);
+            }
+        });
+    }
+
+    // You can add brand/category filters similarly here if needed
+
+    // ✅ Paginate
+    $products = $query->paginate(9);
+
+    return view('base.categories', compact('products'));
+}
 
    public function brand(){
     return view("base.brand");  

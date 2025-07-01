@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -8,11 +7,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
-<<<<<<< HEAD
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentController;
-
+use App\Http\Controllers\UserController;
 
 Route::controller(HomeController::class)->group(function () {
   Route::get('/', 'index')->name('base.home');
@@ -45,8 +43,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/payment', 'Payment')->name('base.payment');
     Route::post('/razorpay/order','createRazorpayOrder')->name('razorpay.order')->middleware('auth');
   });
-=======
-use App\Http\Controllers\UserController;
+
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('base.home');
@@ -60,11 +57,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/brand', 'brand')->name('base.brand');
     route::get('/order', 'order')->name('base.order');
     route::get('/blog', 'blog')->name('base.blog');
-  
+   Route::get('/filter',  'filter')->name('base.categories');
+
 });
-    Route::post('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
+    Route::get('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
    Route::get('/cart', [OrderController::class, 'Cart'])->name('base.cart')->middleware("auth");
->>>>>>> f2d60769810e6d686503bc79323a2343028fa548
 
   // Auth Routes
 Route::controller(AuthController::class)->group(function() {
