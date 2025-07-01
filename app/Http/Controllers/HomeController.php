@@ -38,7 +38,7 @@ class HomeController extends Controller
 
     public function offer(){
       return view('base.offer');
-      
+
     public function filter(Request $request)
 {
     $query = Product::query();
@@ -101,3 +101,4 @@ class HomeController extends Controller
 
 }
 
+}
