@@ -1,6 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
 
 namespace App\Http\Controllers;
 
@@ -17,5 +15,6 @@ class UserController extends Controller
         $user = Auth::user();
         return view('user.manageAccount');
     }
+
+   
 }
->>>>>>> f2d60769810e6d686503bc79323a2343028fa548

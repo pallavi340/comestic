@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container py-5">
-    {{-- Header --}}
+   
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="border-start border-4 border-warning ps-3 fw-bold text-secondary">Insert New Product</h2>
         <a href="{{ route('products.index') }}" class="btn btn-outline-primary">
@@ -14,7 +14,6 @@
         </a>
     </div>
 
-    {{-- Form --}}
     <div class="bg-white p-4 rounded shadow-sm">
         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

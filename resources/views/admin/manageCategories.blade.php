@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
             <h2 class="fw-bold mb-1 text-gradient" style="background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">
-                Manage Categories
+               <i class="bi bi-tags-fill"></i> Manage Categories
             </h2>
             <p class="text-muted mb-0">
                 <i class="bi bi-grid-3x3-gap-fill text-primary me-1"></i>
@@ -78,6 +78,7 @@
                                 <span class="badge bg-light text-dark">Main Category</span>
                             @endif
                         </td>
+                       
                         <td class="pe-4 text-end">
                             <div class="d-flex justify-content-end">
                                 <button class="btn btn-sm btn-outline-primary rounded-circle me-2" data-bs-toggle="modal" data-bs-target="#editModal{{ $cat->id }}" title="Edit">

@@ -24,7 +24,7 @@ class AddressController extends Controller
 
        $validateData['user_id'] = Auth::id();
       Address::create($validateData);
-      return view("base.checkout");
+      return redirect()->route('base.checkout')->back();
    }
 
    
@@ -33,7 +33,8 @@ class AddressController extends Controller
     if($order){
         $order->address_id = $req->selected_address;
         $order->save();
-        return redirect()->route('base.payment');
+        return view('base.payment');
+
     }
 }
 }

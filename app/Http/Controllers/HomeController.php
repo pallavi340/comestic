@@ -38,8 +38,9 @@ class HomeController extends Controller
     public function categories(){
       return view("base.categories");
     }
+
     public function offer(){
-      return view("base.offer");
+      return view('base.offer');
     }
 
    public function profile(){
@@ -55,20 +56,8 @@ class HomeController extends Controller
    public function order(){
     return view("base.order");
    }
-   public function blog(){
+  public function blog(){
     return view("base.blog");
-   }
-
-
-    public function offer(){
-      return view("base.offer");
-    }
-
-   public function profile(){
-     return view("base.profile");  
-   }
-   public function wishlist(){
-      return view("base.wishlist");  
    }
 
 }

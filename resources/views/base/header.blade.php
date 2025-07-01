@@ -150,10 +150,10 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Luxe</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.brand')}}">Brands</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Luxe</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Beauty Advice</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.blog')}}">Beauty Advice</a></li>
         </ul>
         <form class="d-flex me-3">
                     <input class="search-box" type="search" placeholder="Search for products...">
@@ -182,6 +182,7 @@
       
        
         <a href="{{route('base.cart')}}" class="btn"><i class="bi bi-bag"></i></a>
+         <a href="{{route('base.wishlist')}}" class="btn"><i class="bi bi-heart"></i></a>
         @endauth
       </div>
     </div>

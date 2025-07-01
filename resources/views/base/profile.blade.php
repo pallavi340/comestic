@@ -228,11 +228,9 @@
   </div>
 </header>
 
-<!-- Profile Content -->
 <div class="container my-4">
   <div class="row">
     
-    <!-- Left Sidebar -->
     <div class="col-md-3 mb-4">
       <div class="bg-white p-3 rounded shadow-sm">
         <h6 class="fw-bold mb-3" style="color: var(--nykaa-pink);">Account</h6>
@@ -279,9 +277,9 @@
       <div class="profile-card mb-4 d-flex align-items-center">
         <img src="https://img.freepik.com/premium-photo/cute-little-girls-picture-ai-generated_1003721-472.jpg" alt="Profile" class="profile-image me-4">
         <div>
-          <h5 class="fw-bold mb-2">Jagriti Prakash <a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
-          <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> jagritiprakash17@gmail.com</p>
-          <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i> 8709566070</p>
+          <h5 class="fw-bold mb-2">{{auth()->user()->name}} <a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
+          <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> {{auth()->user()->email}}</p>
+          <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i>{{auth()->user()->contact}}</p>
           <p class="mb-0"><i class="far fa-calendar-alt me-2" style="color: var(--nykaa-pink);"></i> Date of Birth: 17/05/1995</p>
         </div>
       </div>
@@ -295,10 +293,9 @@
       <div class="row">
         <div class="col-md-6">
           <div class="address-box">
-            <span class="badge badge-city mb-2">Purnia</span>
-            <h6 class="fw-bold mb-2">Jagriti Prakash</h6>
-            <p class="mb-1">Jhil tola chowk near jk public school</p>
-            <p class="mb-1">Purnia, Bihar - 854301</p>
+            <span class="badge badge-city mb-2">{{auth()->user()->city}}</span>
+            <h6 class="fw-bold mb-2">{{auth()->user()->name}}</h6>
+            <p class="mb-1">{{auth()->user()->area}}</p>
             <p class="mb-3">India</p>
             <div class="d-flex">
               <a href="#" class="edit-btn me-3"><i class="fas fa-pencil-alt me-1"></i>Edit</a>
@@ -310,10 +307,9 @@
         <div class="col-md-6">
           <div class="address-box">
             <span class="badge badge-city mb-2">Work</span>
-            <h6 class="fw-bold mb-2">Jagriti Prakash</h6>
-            <p class="mb-1">Office No. 45, Tech Park</p>
-            <p class="mb-1">Sector 5, Salt Lake</p>
-            <p class="mb-1">Kolkata, West Bengal - 700091</p>
+            <h6 class="fw-bold mb-2">{{auth()->user()->name}}</h6>
+            <p class="mb-1">{{auth()->user()->pincode}}</p>
+            <p class="mb-1">{{auth()->user()->state}}</p>
             <p class="mb-3">India</p>
             <div class="d-flex">
               <a href="#" class="edit-btn me-3"><i class="fas fa-pencil-alt me-1"></i>Edit</a>
