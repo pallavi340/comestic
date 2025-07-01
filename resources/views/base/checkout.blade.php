@@ -145,12 +145,12 @@
 <nav class="navbar">
   <div class="container d-flex align-items-center justify-content-between py-2">
     
-  
+    <!-- Logo -->
     <a class="navbar-brand" href="#">
       <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Brand Logo">
     </a>
 
-  
+    <!-- Search Bar -->
     <div class="col-md-6">
         <form class="d-flex me-3">
                     <input class="search-box" type="search" placeholder="Search for products...">

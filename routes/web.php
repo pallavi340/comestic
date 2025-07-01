@@ -59,8 +59,10 @@ Route::controller(HomeController::class)->group(function () {
     route::get('/order', 'order')->name('base.order');
     route::get('/blog', 'blog')->name('base.blog');
    
+   Route::get('/filter',  'filter')->name('base.categories');
+
 });
-    Route::post('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
+    Route::get('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
    Route::get('/cart', [OrderController::class, 'Cart'])->name('base.cart')->middleware("auth");
 
   // Auth Routes

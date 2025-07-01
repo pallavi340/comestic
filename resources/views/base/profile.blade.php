@@ -168,7 +168,9 @@
     <!-- Top Header -->
     <div class="row py-2 align-items-center d-none d-md-flex">
       <div class="col-md-2">
-        <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" alt="Nykaa" class="nykaa-logo">
+       <a class="navbar-brand" href="{{route("base.home") }}">
+                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="90" alt="Your Brand Logo" class="brand-logo">
+            </a>
       </div>
       <div class="col-md-6">
         <div class="search-bar d-flex">
