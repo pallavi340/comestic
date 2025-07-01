@@ -102,7 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/login', 'showLoginForm')->name('admin.login');
    Route::post('admin/login',  'login')->name('admin.login.submit');
    Route::post('admin/logout', 'logout')->name('admin.logout');
-
+cxdvfbc
 });
 
   Route::controller(UserController::class)->group(function(){

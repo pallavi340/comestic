@@ -2,7 +2,7 @@
 
 @section('title')
  Manage Orders
-@endsection hloo
+@endsection sdfgbn
 
 @section('content')
 <div class="container py-4">

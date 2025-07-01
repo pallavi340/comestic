@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title', 'Manage Sales')
- fhj
+ xcdfvgbn
 @section('content')
 <div class="container py-4">
     <h2 class="mb-4 fw-bold text-primary">Manage Sales ({{ count($sales) }})</h2>

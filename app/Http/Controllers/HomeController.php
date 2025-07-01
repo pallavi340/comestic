@@ -35,10 +35,6 @@ class HomeController extends Controller
         $products = Product::latest()->take(12)->get();
         return view("base.categories", compact('categories', 'products'));
     }
-
-    public function offer(){
-      return view('base.offer');
-
     public function filter(Request $request)
 {
     $query = Product::query();
@@ -95,10 +91,20 @@ class HomeController extends Controller
    public function order(){
     return view("base.order");
    }
-  public function blog(){
+   public function blog(){
     return view("base.blog");
    }
 
-}
+
+    public function offer(){
+      return view("base.offer");
+    }
+
+   public function profile(){
+     return view("base.profile");  
+   }
+   public function wishlist(){
+      return view("base.wishlist");  
+   }
 
 }

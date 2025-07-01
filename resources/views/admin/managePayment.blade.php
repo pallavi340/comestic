@@ -2,7 +2,7 @@
 
 @section('title') 
   Manage Payments
-@endsection ghytltyh
+@endsection dsfedghn
 
 @section('content')
 <div class="container py-4">

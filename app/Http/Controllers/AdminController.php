@@ -13,7 +13,7 @@ class AdminController extends Controller
    {
      return view('admin.dashboard');
    }
-
+zcxvb
   
 public function manageOrder()
 {

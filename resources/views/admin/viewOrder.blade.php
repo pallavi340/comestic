@@ -1,8 +1,7 @@
 @extends('admin.layout')
 
 @section('title', 'View Order')
- fgh
-@section('content')
+ @section('content') fdgh
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-primary m-0">Order Details</h2>

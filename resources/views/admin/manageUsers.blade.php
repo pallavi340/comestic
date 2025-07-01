@@ -2,7 +2,7 @@
 
 @section('title', 'Manage Users')
 
-@section('content') dgfhgn
+@section('content') dfg
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-primary"><i class="bi bi-people-fill"></i> Manage Users ({{ count($users) }})</h2>
