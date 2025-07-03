@@ -200,7 +200,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light sticky-top mb-4">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{{route('base.home')}}">
                 <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -230,20 +230,16 @@
                         <a class="nav-link" href="#">New</a>
                     </li>
                 </ul>
-                <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href=""><i class="far fa-user">{{auth()->user()->name}}</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('base.wishlist')}}"><i class="far fa-heart"></i> Wishlist</a>
+                        <a class="nav-link" href="{{route('base.wishlist')}}"><i class="far fa-heart"></i></a>
                     </li>
                     <li class="nav-item cart-icon">
                         <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i> Bag</a>
-                        <span class="cart-count">3</span>
+                        <span class="cart-count">1</span>
                     </li>
                 </ul>
             </div>
@@ -261,7 +257,7 @@
 <div class="container my-5">
   <div class="row align-items-start">
  <div class="col-12 mb-3">
-    <h4 class="fw-bold">My Cart (1)</h4>
+    <h4 class="fw-bold">My Cart</h4>
  </div>
 <div class="container py-4">
   <div class="row g-4">

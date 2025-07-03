@@ -71,15 +71,15 @@
   <div class="container text-md-left">
     <div class="row text-md-left">
       
-      <!-- Company Info -->
+  
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-       <a class="navbar-brand" href="#">
+       <a class="navbar-brand" href="{{route('base.home')}}">
                 <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
             </a>
         <p>Shop beauty products online from top brands in makeup, skincare, haircare, and more. 100% authentic. COD available.</p>
       </div>
 
-      <!-- Products -->
+  
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Products</h5>
         <p><a href="#" class="text-dark text-decoration-none">Makeup</a></p>
@@ -88,7 +88,7 @@
         <p><a href="#" class="text-dark text-decoration-none">Fragrances</a></p>
       </div>
 
-      <!-- Useful Links -->
+
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Useful Links</h5>
         <p><a href="#" class="text-dark text-decoration-none">Your Account</a></p>

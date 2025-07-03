@@ -102,7 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/login', 'showLoginForm')->name('admin.login');
    Route::post('admin/login',  'login')->name('admin.login.submit');
    Route::post('admin/logout', 'logout')->name('admin.logout');
-cxdvfbc
+
 });
 
   Route::controller(UserController::class)->group(function(){
@@ -118,6 +118,7 @@ cxdvfbc
   Route::controller(AddressController::class)->middleware('auth')->group(function(){
     Route::post('/address/create', 'store')->name('address.store');
     Route::post('/add-address', 'addAddress')->name('order.addAddress');
+    Route::get('/profile/update-address',  'updateAddress')->name('profile.updateAddress');
 });
 
  Route::get('/base/google',[GoogleController::class, 'redirectToGoogle'])->name('google.login');

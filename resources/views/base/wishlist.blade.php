@@ -235,14 +235,13 @@
   </style>
 </head>
 <body>
-
-<!-- Nykaa Header -->
 <header class="nykaa-header">
   <div class="container">
-    <!-- Top Header -->
     <div class="row py-2 align-items-center d-none d-md-flex">
       <div class="col-md-2">
-        <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" alt="Nykaa"class="nykaa-logo">
+       <a class="navbar-brand" href="{{route("base.home") }}">
+          <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="90" alt="Your Brand Logo" class="brand-logo">
+        </a>
       </div>
       <div class="col-md-6">
         <div class="search-bar d-flex">
@@ -266,9 +265,9 @@
        
       </div>
       <div class="col-6 text-end header-icons">
-        <a href="#" class="me-3"><i class="fas fa-search"></i></a>
-        <a href="#"><i class="far fa-heart"></i></a>
-        <a href="#" class="ms-3"><i class="fas fa-shopping-bag"></i></a>
+        <a href="" class="me-3"><i class="fas fa-search"></i></a>
+        <a href=""><i class="far fa-heart"></i></a>
+        <a href="{{route('base.cart')}}" class="ms-3"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
     
@@ -323,7 +322,7 @@
     </a>
   </li>
   <li>
-    <a href="orders.html" class="sidebar-option py-2 d-block text-decoration-none text-dark">
+    <a href="{{route('base.order')}}" class="sidebar-option py-2 d-block text-decoration-none text-dark">
       <i class="fas fa-shopping-bag me-2"></i>My Orders
     </a>
   </li>
@@ -378,7 +377,7 @@
                         <p class="text-muted small mb-3">{{ Str::limit($item->product->description, 80) }}</p>
 
                         <div class="mt-auto">
-                            <form action="" method="POST" class="d-grid">
+                            <form action="{{route('wishlist.remove', $item->id)}}" method="POST" class="d-grid">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger btn-sm w-100 rounded-pill">

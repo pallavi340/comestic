@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nykaa Offer Zone</title>
+  <title>Offerpage | Nykaa</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
     <style>
@@ -270,8 +270,8 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 border-bottom shadow-sm">
-<a class="navbar-brand" href="#">
-                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
+<a class="navbar-brand" href="{{route('base.home')}}">
+                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100" alt="Nykaa">
             </a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">

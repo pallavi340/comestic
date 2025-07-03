@@ -146,19 +146,10 @@
   <div class="container d-flex align-items-center justify-content-between py-2">
     
     <!-- Logo -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{route('base.home')}}">
       <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Brand Logo">
     </a>
 
-    <!-- Search Bar -->
-    <div class="col-md-6">
-        <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-      </div>
-
- 
     <div class="nav-links d-flex align-items-center gap-4">
       <a href="#" class="nav-item">
         <i class="far fa-user"></i>{{auth()->user()->name}}
@@ -300,7 +291,7 @@
             <p class="mb-1">{{ $add->city }}, {{ $add->state }} - {{ $add->pincode }}</p>
 
             <div class="mt-2">
-              <a href="#" class="btn btn-outline-success btn-sm me-1 rounded-sm">
+              <a href="{{route('profile.updateAddress')}}" class="btn btn-outline-success btn-sm me-1 rounded-sm">
                 <i class="bi bi-pencil-fill"></i> Edit
               </a>
               <a href="#" class="btn btn-outline-danger btn-sm rounded-sm">

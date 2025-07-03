@@ -21,14 +21,15 @@ class HomeController extends Controller
       $pro = Product::where('slug', $slug)->first();
       return view('base.productView', compact('pro'));
     }
-  
 
-     public function search(Request $req){
-        $search = $req->search;
-        $products = Product::where('title','like', "%$search%")->paginate(50);
-        $categories = Category::whereNull('category_id')->get();
-       return view("home", compact('products', 'categories'));
-    }
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+    $products = Product::where('title', 'LIKE', '%' . $query . '%')->get();
+    //$categories = Category::whereNull('category_id')->get();
+    return view('base.home', compact('products', 'query'));
+}
+
     
     public function categories(){
         $categories = Category::whereNull('parent_id')->get();
@@ -48,7 +49,7 @@ class HomeController extends Controller
         $query->whereIn('brand', $request->brand);
     }
 
-    // ✅ Price Filter
+  
     if ($request->has('price')) {
         $query->where(function ($q) use ($request) {
             foreach ($request->price as $price) {
@@ -68,7 +69,7 @@ class HomeController extends Controller
         });
     }
 
-    // ✅ Discount Filter
+  
     if ($request->has('discount')) {
         $query->where(function ($q) use ($request) {
             foreach ($request->discount as $discount) {
@@ -76,10 +77,7 @@ class HomeController extends Controller
             }
         });
     }
-
-    // You can add brand/category filters similarly here if needed
-
-    // ✅ Paginate
+  
     $products = $query->paginate(9);
 
     return view('base.categories', compact('products'));
@@ -88,8 +86,10 @@ class HomeController extends Controller
    public function brand(){
     return view("base.brand");  
    }
+
    public function order(){
-    return view("base.order");
+    $orders = Order::with('orderItems.product')->where('user_id', Auth::id())->latest()->get();
+    return view("base.order", compact('orders'));
    }
    public function blog(){
     return view("base.blog");

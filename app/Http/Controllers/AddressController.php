@@ -24,7 +24,7 @@ class AddressController extends Controller
 
        $validateData['user_id'] = Auth::id();
       Address::create($validateData);
-      return redirect()->route('base.checkout')->back();
+      return redirect()->back()->with('success', 'Address saved successfully!');
    }
 
    
@@ -37,4 +37,27 @@ class AddressController extends Controller
 
     }
 }
+
+public function updateAddress(Request $request)
+{
+    $request->validate([
+        'area' => 'required|string',
+        'street' => 'required|string',
+        'city' => 'required|string',
+        'state' => 'required|string',
+        'pincode' => 'required|string',
+    ]);
+
+    $user = auth()->user();
+
+    $user->area = $request->area;
+    $user->street = $request->street;
+    $user->city = $request->city;
+    $user->state = $request->state;
+    $user->pincode = $request->pincode;
+    $user->save();
+
+    return back()->with('success', 'Address saved successfully.');
+}
+
 }

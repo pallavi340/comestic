@@ -150,12 +150,13 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.brand')}}">Brands</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Luxe</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Beauty Advice</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.blog')}}">Beauty Advice</a></li>
         </ul>
-        <form class="d-flex me-3">
+        <form action="{{ route('search') }}"class="d-flex me-3">
+          @csrf
                     <input class="search-box" type="search" placeholder="Search for products...">
                     <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
                 </form>
@@ -204,7 +205,7 @@
     <a href="{{ route('base.offer') }}" class="text-danger fw-bold">SALE</a>
   </div>
 
-<x-banner/>
+   <x-banner/>
  
  @section('content')
     @show
