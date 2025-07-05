@@ -322,7 +322,7 @@
                       <h6 class="text-success mb-1">₹{{ $item->product->discount_price }}</h6>
                       <small class="text-muted text-decoration-line-through">₹{{ $item->product->price }}</small>
 
-                      <form action="{{ route('cart.remove', $item->id) }}" method="POST" class="mt-2">
+                      <form actio="{{ route('cart.remove', $item->id) }}" method="POST" class="mt-2">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger btn-sm">

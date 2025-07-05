@@ -143,11 +143,29 @@ public function myorder()
     return redirect()->route('base.cart');
 }
 
- public function remove($id)
-    {
-        Cart::where('user_id', auth()->id())->where('product_id', $id)->delete();
-
-        return redirect()->back()->with('success', 'Product removed from cart.');
+public function remove($id)
+{
+    $item = Cart::findOrFail($id);
+    if ($item->user_id !== Auth::id()) {
+        abort(403);
     }
+
+    $item->delete();
+
+    return redirect()->back()->with('success', 'Item removed from cart.');
+}
+
+
+    public function cancel($id)
+{
+    $item = OrderItems::findOrFail($id);
+
+    if ($item->status !== 'cancelled') {
+        $item->status = 'cancelled';
+        $item->save();
+    }
+
+    return redirect()->back()->with('success', 'Product cancelled successfully.');
+}
 
 }

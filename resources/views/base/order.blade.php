@@ -546,29 +546,46 @@
         <div><span class="fw-bold">Order ID:</span> <span>{{ $order->id }}</span></div>
         <div><span class="fw-bold">Total:</span> 
           ₹{{ $order->orderItems->sum(fn($item) => $item->product->discount_price * $item->qty) }}
-
         </div>
       </div>
       <div class="order-status  == 'Delivered') text-success status == 'Cancelled') text-danger text-warning fw-bold"></div>
     </div>
 
     {{-- Products --}}
-    <div class="order-items p-3">
-      @foreach ($order->orderItems as $item)
-        <div class="order-item d-flex mb-3">
-          <div class="item-image me-3">
-            <img src="{{ asset('storage/' . $item->product->image) }}" alt="" width="80" height="80" class="rounded border" style="object-fit: cover;">
-          </div>
-          <div class="item-details">
-            <div class="item-name fw-semibold">{{ $item->product->title }}</div>
-            <div class="item-brand text-muted">Brand: {{ $item->product->brand ?? 'N/A' }}</div>
-            <div class="item-price text-secondary">Price: ₹{{ $item->product->price }}</div>
-            <div class="item-price text-danger fw-bold">Discounted: ₹{{ $item->product->discount_price }}</div>
-            <div class="item-quantity">Qty: {{ $item->qty }}</div>
-          </div>
+   <div class="order-items p-3">
+  @foreach ($order->orderItems as $item)
+    <div class="order-item d-flex justify-content-between align-items-center mb-3 border p-3 rounded">
+      
+      {{-- Left: Image + Details --}}
+      <div class="d-flex">
+        <div class="item-image me-3">
+          <img src="{{ asset('storage/' . $item->product->image) }}" alt="" width="80" height="80" class="rounded border" style="object-fit: cover;">
         </div>
-      @endforeach
+        <div class="item-details">
+          <div class="item-name fw-semibold">{{ $item->product->title }}</div>
+          <div class="item-brand text-muted">Brand: {{ $item->product->brand ?? 'N/A' }}</div>
+          <div class="item-price text-secondary">Price: ₹{{ $item->product->price }}</div>
+          <div class="item-price text-danger fw-bold">Discounted: ₹{{ $item->product->discount_price }}</div>
+          <div class="item-quantity">Qty: {{ $item->qty }}</div>
+        </div>
+      </div>
+
+      {{-- Right: Cancel Button --}}
+      <div class="text-end">
+        @if($item->status !== 'cancelled')
+          <form action="{{ route('order.cancel', $item->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+          </form>
+        @else
+          <span class="text-muted">Cancelled</span>
+        @endif
+      </div>
+      
     </div>
+  @endforeach
+</div>
 
     <div class="order-actions d-flex justify-content-end gap-2 px-3 pb-3 border-top pt-3">
       <button class="btn btn-outline-secondary btn-sm">Track Order</button>

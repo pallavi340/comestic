@@ -11,6 +11,12 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RazorpayController;
+
+
+Route::get('/pay', [RazorpayController::class, 'showForm'])->name('razorpay.form');
+Route::post('/payment', [RazorpayController::class, 'payment'])->name('razorpay.payment');
+
 
 Route::controller(HomeController::class)->group(function () {
   Route::get('/', 'index')->name('base.home');
@@ -29,13 +35,14 @@ Route::controller(HomeController::class)->group(function () {
       Route::get('/order/myorder','myorder')->name('order.myorder')->middleware('auth');
       Route::post('/add-to-cart/{slug}', 'addToCart')->name('base.addtocart');
       Route::post('cart', 'cart')->name('base.cart')->middleware('auth');
-      Route::delete('/cart/remove/{id}', 'remove')->name('cart.remove');
-      Route::delete('/remove-coupon', 'removeCoupon')->name('coupon.remove')->middleware('auth');
-      Route::delete('/cart/remove/{id}',  'remove')->name('cart.remove')->middleware('auth');
+      Route::post('/cart/remove/{id}', 'remove')->name('cart.remove')->middleware('auth');
       Route::post('/add-coupon', 'addcoupon')->name('coupon.add')->middleware('auth');
+     Route::delete('/remove-coupon', 'removeCoupon')->name('coupon.remove')->middleware('auth');
       Route::put('/cart/update/{id}','updateCart')->name('cart.update');
       Route::match(['get', 'post'],'/cart','Cart')->name('base.cart')->middleware("auth"); 
       Route::get('/checkout',  'checkout')->name('base.checkout');
+      Route::put('/order/cancel/{id}', 'cancel')->name('order.cancel');
+
    });
 
      //Payment routes
@@ -56,9 +63,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/profile', 'profile')->name('base.profile');
     Route::get('/wishlist', 'wishlist')->name('base.wishlist');
     Route::get('/brand', 'brand')->name('base.brand');
-    route::get('/order', 'order')->name('base.order');
-    route::get('/blog', 'blog')->name('base.blog');
-   
+    Route::get('/order', 'order')->name('base.order');
+    Route::get('/blog', 'blog')->name('base.blog');
    Route::get('/filter',  'filter')->name('base.categories');
 
 });

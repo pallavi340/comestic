@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title')
-    Manage Categories |
+    Manage Categories
 @endsection
 
 @section('content')

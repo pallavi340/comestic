@@ -22,14 +22,12 @@ class HomeController extends Controller
       return view('base.productView', compact('pro'));
     }
 
-    public function search(Request $request)
-{
-    $query = $request->input('query');
-    $products = Product::where('title', 'LIKE', '%' . $query . '%')->get();
-    //$categories = Category::whereNull('category_id')->get();
-    return view('base.home', compact('products', 'query'));
-}
-
+ public function search(Request $req){
+     $search = $req->search;
+     $products = Product::where('title', 'like', "%$search%")->paginate(50);
+     // $categories = Category::whereNull('category_id')->get();
+     return view("base.home", compact('products'));
+    }
     
     public function categories(){
         $categories = Category::whereNull('parent_id')->get();

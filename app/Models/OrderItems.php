@@ -11,6 +11,7 @@ class OrderItems extends Model
         'user_id',
         'qty',
         'isOrdered',
+        'status',
     ];
 
     public function product()
@@ -27,5 +28,7 @@ class OrderItems extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+  
+
 
 }
