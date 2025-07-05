@@ -41,5 +41,16 @@ class WishlistController extends Controller
     return view('wishlist.show', compact('item'));
 }
 
+public function addToWishlist(Request $request)
+{
+    // Add to wishlist logic...
+
+    $wishlistCount = Wishlist::where('user_id', auth()->id())->count();
+    session(['wishlist_count' => $wishlistCount]);
+
+    return redirect()->back();
 }
+
+}
+
 

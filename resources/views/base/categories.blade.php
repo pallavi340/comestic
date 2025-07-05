@@ -127,9 +127,11 @@
                         </button>
                     </div>
                     <div class="d-flex align-items-center">
-                        <a href="#" class="mx-2 text-dark"><i class="fas fa-user"></i></a>
-                        <a href="#" class="mx-2 text-dark"><i class="fas fa-heart"></i></a>
-                        <a href="#" class="mx-2 text-dark"><i class="fas fa-shopping-bag"></i></a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-fill"></i>{{auth()->user()->name}}
+            </a>
+                        <a href="{{ route('base.wishlist') }}" class="mx-2 text-dark"><i class="fas fa-heart"></i></a>
+                        <a href="" class="mx-2 text-dark"><i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
             </div>

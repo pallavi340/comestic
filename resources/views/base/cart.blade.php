@@ -231,10 +231,7 @@
                         <a class="nav-link" href="#">New</a>
                     </li>
                 </ul>
-                <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+               
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="far fa-user">{{auth()->user()->name}}</i></a>
@@ -261,7 +258,7 @@
        
 <div class="container my-5">
   <div class="row align-items-start">
-   <h2 class="mb-4">My Cart (1)</h2>
+   <h2 class="mb-4">My Cart</h2>
    
     <div class="col-lg-8">
       <div class="card mb-4">

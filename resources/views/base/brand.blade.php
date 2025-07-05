@@ -207,13 +207,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Brands</a>
+                        <a class="nav-link" href="{{ route('base.brand') }}">Brands</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Offers</a>
+                        <a class="nav-link" href="{{ route('base.offer') }}">Offers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New Launches</a>
+                        <a class="nav-link" href="{{ route('base.advice') }}">New Launches</a>
                     </li>
                 </ul>
                 <div class="d-flex">
@@ -224,9 +224,9 @@
                         </button>
                     </div>
                     <div class="ms-3 d-flex align-items-center">
-                        <a href="#" class="text-secondary mx-2"><i class="fas fa-user fa-lg"></i></a>
-                        <a href="#" class="text-secondary mx-2"><i class="fas fa-heart fa-lg"></i></a>
-                        <a href="#" class="text-secondary mx-2 position-relative">
+                        <a href="#" class="text-secondary mx-2"><i class="fas fa-user fa-lg"></i>{{auth()->user()->name}}</a>
+                        <a href="{{ route('base.wishlist') }}" class="text-secondary mx-2"><i class="fas fa-heart fa-lg"></i></a>
+                        <a href="{{ route('base.cart') }}" class="text-secondary mx-2 position-relative">
                             <i class="fas fa-shopping-bag fa-lg"></i>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
                         </a>

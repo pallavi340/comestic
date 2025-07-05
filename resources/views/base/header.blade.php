@@ -135,6 +135,7 @@
       flex: 1 1 300px;
     }   
   </style>
+  
 </head>
 <body>
 
@@ -151,9 +152,9 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
           <li class="nav-item"><a class="nav-link" href="{{route('base.brand') }}">Brands</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Luxe</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('base.blog') }}">Blogs</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{route('base.blog') }}">Beauty Advice</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.advice') }}">Beauty Advice</a></li>
         </ul>
         <form class="d-flex me-3">
                     <input class="search-box" type="search" placeholder="Search for products...">
@@ -173,8 +174,26 @@
               <li><a class="dropdown-item" href="#">{{auth()->user()->email}}</a></li>
               <li><a class="dropdown-item" href="{{route('base.profile')}}">My Profile</a></li>
               <li><a class="dropdown-item" href="#">Orders</a></li>
-              <li><a class="dropdown-item" href="{{route('base.wishlist')}}">Wishlist</a></li>
-              <li><hr class="dropdown-divider"></li>
+             <!-- Cart Icon -->
+<a href="{{ route('base.cart') }}" class="position-relative me-3">
+    <i class="fas fa-shopping-cart fa-lg"></i>
+    @if(session('cart_count') > 0)
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ session('cart_count') }}
+    </span>
+    @endif
+</a>
+
+<!-- Wishlist Icon -->
+<a href="{{ route('base.cart') }}" class="position-relative">
+    <i class="fas fa-heart fa-lg"></i>
+    @if(session('wishlist_count') > 0)
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ session('wishlist_count') }}
+    </span>
+    @endif
+</a>
+
               <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
             </ul>
           </li>
@@ -182,6 +201,7 @@
       
        
         <a href="{{route('base.cart')}}" class="btn"><i class="bi bi-bag"></i></a>
+                <a href="{{route('base.wishlist')}}" class="btn"><i class="bi bi-heart"></i></a>
         @endauth
       </div>
     </div>

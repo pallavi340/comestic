@@ -9,21 +9,22 @@
     <h2 class="promo-title">✨ Mid-Year Beauty Lineups ✨</h2>
     <div class="row g-4">
       <div class="col-md-4">
-        <div class="card promo-card h-100">
-          <img src="https://i.pinimg.com/originals/63/41/2d/63412d00c2737a2b0524ffed1e1ef395.jpg"  class="card-img-top promo-img" alt="Charlotte Tilbury Offer">
-        </div>
+      <div class="card promo-card h-100">
+        <img src="https://i.pinimg.com/originals/63/41/2d/63412d00c2737a2b0524ffed1e1ef395.jpg" class="card-img-top promo-img" alt="Charlotte Tilbury Offer">
       </div>
-<div class="col-md-4">
-        <div class="card promo-card h-100">
-          <img src="https://th.bing.com/th/id/OIP.I4Ellq0EX_YbNEk6LXUCgQHaJ3?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top promo-img" alt="Nykaa Wanderlust Offer">
-        </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card promo-card h-100">
+        <img src="https://th.bing.com/th/id/OIP.I4Ellq0EX_YbNEk6LXUCgQHaJ3?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top promo-img" alt="Nykaa Wanderlust Offer">
       </div>
-   
-      <div class="col-md-4">
-        <div class="card promo-card h-100">
-          <img src="https://i.pinimg.com/736x/6e/e1/d1/6ee1d15825b12701e27d89d5f3508ed6.jpg" class="card-img-top promo-img" alt="Dot & Key Offer">
-        </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card promo-card h-100">
+        <img src="https://i.pinimg.com/736x/6e/e1/d1/6ee1d15825b12701e27d89d5f3508ed6.jpg" class="card-img-top promo-img" alt="Dot & Key Offer">
       </div>
+    </div>
 
 <section class="launch-section">
     <h2>💖 New Launch Alert!</h2>

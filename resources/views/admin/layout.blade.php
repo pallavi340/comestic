@@ -129,20 +129,29 @@
     <a href="{{route('admin.dashboard')}}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
     <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Category</a>
     <a href="{{ route('products.index') }}"><i class="bi bi-box-seam me-2"></i> Manage Products</a>
-    <a href="{{route('admin.manageOrder')}}"><i class="bi bi-basket me-2"></i> Manage Orders</a>
-    <a href=""><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
-    <a href=""><i class="bi bi-people me-2"></i> Manage Users</a>
-    <a href=""><i class="bi bi-graph-up me-2"></i> Manage Sales</a>
+    <a href="{{route('admin.manageOrders')}}"><i class="bi bi-basket me-2"></i> Manage Orders</a>
+    <a href="{{ route('admin.managePayment') }}"><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
+    <a href="{{ route('admin.manageUsers') }}"><i class="bi bi-people me-2"></i> Manage Users</a>
+    <a href="{{ route('admin.manageSales') }}"><i class="bi bi-graph-up me-2"></i> Manage Sales</a>
+    <a href="{{ route('admin.manageBlogs') }}"><i class="bi bi-circle-half"></i> Manage Blog</a>
   </div>
 
   <!-- Main Content -->
   <div class="main">
     <div class="header d-flex justify-content-between align-items-center">
       <input class="form-control w-50" type="text" placeholder="Search Dashboard">
-      <div>
-        <i class="bi bi-bell me-3 fs-5"></i>
-        <i class="bi bi-person-circle fs-5"></i>
-      </div>
+    <div class="d-flex align-items-center gap-3">
+        
+        @if(Auth::check() && Auth::user()->is_admin)
+            <span><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</span>
+            <form method="POST" action="{{ route('admin.logout') }}" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-sm btn-outline-danger">Logout</button>
+            </form>
+        @else
+            <span>Guest</span>
+        @endif
+    </div>
     </div>
 
     <!-- Blade Section Content -->

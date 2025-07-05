@@ -22,14 +22,6 @@ class HomeController extends Controller
       return view('base.productView', compact('pro'));
     }
   
-
-     public function search(Request $req){
-        $search = $req->search;
-        $products = Product::where('title','like', "%$search%")->paginate(50);
-        $categories = Category::whereNull('category_id')->get();
-       return view("home", compact('products', 'categories'));
-    }
-    
     public function categories(){
         $categories = Category::whereNull('parent_id')->get();
         $products = Product::latest()->take(12)->get();
@@ -91,20 +83,11 @@ class HomeController extends Controller
    public function order(){
     return view("base.order");
    }
-   public function blog(){
-    return view("base.blog");
+   public function advice(){
+    return view("base.advice");
    }
-
-
-    public function offer(){
-      return view("base.offer");
-    }
-
-   public function profile(){
-     return view("base.profile");  
-   }
-   public function wishlist(){
-      return view("base.wishlist");  
+   public function offer(){
+    return view('base.offer');
    }
 
 }
