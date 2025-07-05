@@ -139,25 +139,17 @@
 </head>
 <body>
     
-<!-- Font Awesome for Icons -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <nav class="navbar">
   <div class="container d-flex align-items-center justify-content-between py-2">
     
     <!-- Logo -->
-    <a class="navbar-brand" href="{{route("base.home") }}">
-                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100%" alt="Your Brand Logo" class="brand-logo">
-            </a>
-    <!-- Search Bar -->
-    <div class="col-md-6">
-        <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-      </div>
+    <a class="navbar-brand" href="{{route('base.home')}}">
+      <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Brand Logo">
+    </a>
 
-    <!-- Nav Links -->
     <div class="nav-links d-flex align-items-center gap-4">
       <a href="#" class="nav-item">
         <i class="far fa-user"></i>{{auth()->user()->name}}
@@ -172,8 +164,6 @@
         <span class="cart-count">2</span>
       </a>
     </div>
-  
-  
   </div>
 </nav>
 
@@ -257,8 +247,8 @@
   }
 
   .address-card:hover {
-    background-color: #f8f9fa; /* Light grey */
-    border-color: #198754;     /* Bootstrap success color */
+    background-color: #f8f9fa;
+    border-color: #198754;   
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -267,8 +257,8 @@
   }
 
   .address-card:hover {
-    background-color: #f8f9fa; /* Light grey */
-    border-color: #198754;     /* Bootstrap success color */
+    background-color: #f8f9fa;
+    border-color: #198754;    
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -279,7 +269,7 @@
   }
 
   .address-card:hover {
-    background-color: #fff3cd; /* Bootstrap warning-light */
+    background-color: #fff3cd;
     border-color: #ffc107;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
@@ -292,11 +282,7 @@
     @foreach($addresses as $add)
       <label class="d-block border rounded p-3 mb-3 address-card">
         <div class="d-flex align-items-start">
-          <input type="radio"
-                 name="selected_address"
-                 value="{{ $add->id }}"
-                 onchange="this.form.submit()"
-                 class="form-check-input me-3 mt-1" />
+          <input type="radio"name="selected_address" value="{{ $add->id }}" onchange="this.form.submit()"class="form-check-input me-3 mt-1" />
 
           <div>
             <p class="mb-1 fw-bold">{{ $add->full_name }}</p>
@@ -305,7 +291,7 @@
             <p class="mb-1">{{ $add->city }}, {{ $add->state }} - {{ $add->pincode }}</p>
 
             <div class="mt-2">
-              <a href="#" class="btn btn-outline-success btn-sm me-1 rounded-sm">
+              <a href="{{route('profile.updateAddress')}}" class="btn btn-outline-success btn-sm me-1 rounded-sm">
                 <i class="bi bi-pencil-fill"></i> Edit
               </a>
               <a href="#" class="btn btn-outline-danger btn-sm rounded-sm">
@@ -315,7 +301,10 @@
           </div>
         </div>
       </label>
-    @endforeach   
+    @endforeach  
+     <div class="mb-2">
+    <input type="submit" name="add_address" value="Proceed to Pay" class="btn btn-warning text-white w-50">
+ </div>
   </form>
 </div>
 </div>

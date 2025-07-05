@@ -7,22 +7,31 @@ use App\Models\OrderItems;
 use App\Models\Coupon;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function cart()
-   {
-       $order = Order::with('items')->where("user_id", Auth::id())->where("isOrdered", false)->first();
+   public function cart()
+{
+    $order = \App\Models\Order::with('items.product') // also eager load products
+        ->where('user_id', Auth::id())
+        ->where('isOrdered', false)
+        ->first();
 
+    // If no order exists, prepare a fake empty object
     if (!$order) {
-       $order = new Order();
-        $order->items = collect(); 
+        $order = (object)[
+            'items' => collect(),
+            'coupon_id' => null,
+            'coupon' => null,
+        ];
     }
 
-    return view('base.cart', compact("order"));
-  }
+    return view('base.cart', compact('order'));
+}
+
 
   public function addtoCart(Request $request, $slug)
 {
@@ -109,30 +118,12 @@ public function updateCart(Request $request, $id)
     return redirect()->route('base.cart');
 }
 
-public function removeCoupon(Request $request)
-{
-    $orderId = $request->input('order_id');
-    $order = Order::find($orderId);
-
-    if ($order && $order->coupon_id) {
-        $order->coupon_id = null;
-        $order->save();
-
-        return redirect()->back()->with('success', 'Coupon removed.');
-    }
-
-    return redirect()->back()->with('error', 'Invalid order or no coupon.');
-}
-
-
  public function checkout()
 {
     $data['addresses'] = User::find(Auth::id())->addresses;
     $data['order'] = Order::where('user_id', Auth::id())->where('isOrdered', false)->first(); 
     return view('base.checkout', $data);
 }
-
-
 
 public function success()
 {
@@ -157,5 +148,38 @@ public function countCart(Request $request)
     return redirect()->back();
 }
 
+
+ public function removeCoupon()
+{
+    $order = Order::where('user_id', Auth::id())->where('isOrdered', false)->first();
+    $order->coupon_id = null;
+    $order->save();
+    return redirect()->route('base.cart');
+}
+
+public function remove($id)
+{
+    $item = Cart::findOrFail($id);
+    if ($item->user_id !== Auth::id()) {
+        abort(403);
+    }
+
+    $item->delete();
+
+    return redirect()->back()->with('success', 'Item removed from cart.');
+}
+
+
+    public function cancel($id)
+{
+    $item = OrderItems::findOrFail($id);
+
+    if ($item->status !== 'cancelled') {
+        $item->status = 'cancelled';
+        $item->save();
+    }
+
+    return redirect()->back()->with('success', 'Product cancelled successfully.');
+}
 
 }

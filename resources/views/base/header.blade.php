@@ -139,7 +139,7 @@
 </head>
 <body>
 
-<div class="top-banner">
+<div class="top-banner text-white">
     BEAUTY BONANZA Get Your Amazing Deals!
   </div>
 
@@ -152,14 +152,17 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
           <li class="nav-item"><a class="nav-link" href="{{route('base.brand') }}">Brands</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('base.blog') }}">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Luxe</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{route('base.advice') }}">Beauty Advice</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{route('base.blog') }}">Beauty Advice</a></li>
         </ul>
-        <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
-                </form>
+     <form action="{{ route('search') }}" method="GET" class="d-flex me-3">
+        <input class="search-box form-control" type="search" name="search" placeholder="Search for products..." value="{{ request('search') }}">
+        <button class="search-btn btn btn-primary ms-2" type="submit">
+          <i class="bi bi-search"></i>
+       </button>
+     </form>
+
         @guest
         <a href="{{ route('base.register') }}" class="btn btn-secondary me-2">Sign up</a>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
@@ -201,7 +204,6 @@
       
        
         <a href="{{route('base.cart')}}" class="btn"><i class="bi bi-bag"></i></a>
-                <a href="{{route('base.wishlist')}}" class="btn"><i class="bi bi-heart"></i></a>
         @endauth
       </div>
     </div>
@@ -223,13 +225,12 @@
     <a href="{{ route('base.offer') }}" class="text-danger fw-bold">SALE</a>
   </div>
 
-<x-banner/>
+  @if(Route::currentRouteName() == "base.home")
+   <x-banner/>
+@endif
  
  @section('content')
     @show
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">

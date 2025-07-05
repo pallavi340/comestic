@@ -7,8 +7,8 @@
 
     {{-- Header --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="border-start border-4 border-warning ps-3 text-secondary fw-bold">Manage Products ({{ count($products) }})</h2>
-        <a href="{{ route('products.create') }}" class="btn btn-primary shadow-sm">
+        <h2 class="border-start ps-3 text-primary fw-bold"><i class="bi bi-box-fill"></i> Manage Products ({{ count($products) }})</h2>
+        <a href="{{ route('products.create') }}" class="btn btn-secondary shadow-sm">
             <i class="bi bi-plus-circle me-2"></i> Add New Product
         </a>
     </div>

@@ -60,11 +60,6 @@
       box-shadow: 0 3px 10px rgba(121, 7, 7, 0.1);
     }
 
-    .gradient-1 { background: linear-gradient(to right, #667eea, #764ba2); }
-    .gradient-2 { background: linear-gradient(to right, #ff6a00, #ee0979); }
-    .gradient-3 { background: linear-gradient(to right, #f7971e, #ffd200); }
-    .gradient-4 { background: linear-gradient(to right, #43cea2, #185a9d); }
-
     .chart-container {
       background: white;
       border-radius: 10px;
@@ -123,11 +118,10 @@
 </head>
 <body>
 
-  <!-- Sidebar -->
   <div class="sidebar">
     <h5>Admin Dashboard</h5>
     <a href="{{route('admin.dashboard')}}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
-    <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Category</a>
+    <a href="{{route('category.index')}}"><i class="bi bi-tags me-2"></i> Manage Categories</a>
     <a href="{{ route('products.index') }}"><i class="bi bi-box-seam me-2"></i> Manage Products</a>
     <a href="{{route('admin.manageOrders')}}"><i class="bi bi-basket me-2"></i> Manage Orders</a>
     <a href="{{ route('admin.managePayment') }}"><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
@@ -136,7 +130,7 @@
     <a href="{{ route('admin.manageBlogs') }}"><i class="bi bi-circle-half"></i> Manage Blog</a>
   </div>
 
-  <!-- Main Content -->
+ 
   <div class="main">
     <div class="header d-flex justify-content-between align-items-center">
       <input class="form-control w-50" type="text" placeholder="Search Dashboard">
@@ -154,7 +148,7 @@
     </div>
     </div>
 
-    <!-- Blade Section Content -->
+   
     <div class="container-fluid mt-4">
       @yield('content')
     </div>

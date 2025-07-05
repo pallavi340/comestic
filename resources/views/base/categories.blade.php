@@ -77,17 +77,16 @@
     </style>
 </head>
 <body>
-    <!-- Top Announcement Bar -->
+ 
     <div class="bg-dark text-white py-2 text-center">
         <small>Free delivery on orders above ₹499 | 10% off on your first order</small>
     </div>
 
-    <!-- Navigation Bar -->
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('base.home') }}">
-          <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
-        </a>
+            <a class="navbar-brand" href="#">
+                  <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -138,7 +137,7 @@
         </div>
     </nav>
 
-    <!-- Category Banner -->
+
     <section class="category-banner">
         <div class="container">
             <div class="row align-items-center">
@@ -162,7 +161,7 @@
 
                 <!-- Brands -->
                 <h6 class="mt-3">Brand</h6>
-                @foreach(['lakme', 'maybelline', 'huda', 'nyx'] as $brand)
+                @foreach(['lakme', 'maybelline', 'huda', 'nyx', 'LOreal'] as $brand)
                     <div>
                         <input type="checkbox" name="brand[]" value="{{ $brand }}"
                         {{ in_array($brand, request()->get('brand', [])) ? 'checked' : '' }}>

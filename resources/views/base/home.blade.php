@@ -5,6 +5,8 @@
 @endsection
 @section('content')
 
+@if(Route::currentRouteName() == "base.home")
+
 <div class="container my-5">
     <h2 class="promo-title">✨ Mid-Year Beauty Lineups ✨</h2>
     <div class="row g-4">
@@ -34,8 +36,7 @@
       <img src="https://png.pngtree.com/background/20230414/original/pngtree-makeup-skin-care-products-cosmetics-beauty-photography-advertising-background-picture-image_2424108.jpg" width="50" alt="Product Image 1">
       <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3ZkZHR0a2N2MjVnZTl2cnh0ajh6ajI3NGVhZjdxNnBzMXZpYWNncyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gF7rF4HEJ7W33jMsfc/giphy.gif" alt="Product Image 2">
     </div>
-
-    <!-- Products Grid -->
+@endif
   <div>
         <h4 class="fw-bold mb-4">🛍 All Products</h4>
         <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -49,6 +50,8 @@
                         <div class="card-body">
                             <h5 class="card-title mb-2">{{ Str::limit($item->title, 45) }}</h5>
                             <p class="text-muted mb-1"><i class="bi bi-clipboard-fill"></i> 40ml</p>
+                             <span class="text-danger fw-bold me-2">{{ $item->brand}}</span>
+
                             <div class="d-flex align-items-center">
                                 <span class="text-primary fw-bold me-2">₹{{ $item->discount_price }}</span>
                                 <del class="text-muted small">₹{{ $item->price }}</del>
@@ -72,15 +75,15 @@
   <div class="container text-md-left">
     <div class="row text-md-left">
       
-      <!-- Company Info -->
+  
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-       <a class="navbar-brand" href="#">
+       <a class="navbar-brand" href="{{route('base.home')}}">
                 <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
             </a>
         <p>Shop beauty products online from top brands in makeup, skincare, haircare, and more. 100% authentic. COD available.</p>
       </div>
 
-      <!-- Products -->
+  
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Products</h5>
         <p><a href="#" class="text-dark text-decoration-none">Makeup</a></p>
@@ -89,7 +92,7 @@
         <p><a href="#" class="text-dark text-decoration-none">Fragrances</a></p>
       </div>
 
-      <!-- Useful Links -->
+
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Useful Links</h5>
         <p><a href="#" class="text-dark text-decoration-none">Your Account</a></p>
@@ -125,6 +128,4 @@
     </div>
   </div>
 </footer>
-
- 
 @endsection

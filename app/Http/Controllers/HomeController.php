@@ -22,6 +22,14 @@ class HomeController extends Controller
       return view('base.productView', compact('pro'));
     }
   
+
+ public function search(Request $req){
+     $search = $req->search;
+     $products = Product::where('title', 'like', "%$search%")->paginate(50);
+     // $categories = Category::whereNull('category_id')->get();
+     return view("base.home", compact('products'));
+    }
+    
     public function categories(){
         $categories = Category::whereNull('parent_id')->get();
         $products = Product::latest()->take(12)->get();
@@ -40,7 +48,7 @@ class HomeController extends Controller
         $query->whereIn('brand', $request->brand);
     }
 
-    // ✅ Price Filter
+  
     if ($request->has('price')) {
         $query->where(function ($q) use ($request) {
             foreach ($request->price as $price) {
@@ -60,7 +68,7 @@ class HomeController extends Controller
         });
     }
 
-    // ✅ Discount Filter
+  
     if ($request->has('discount')) {
         $query->where(function ($q) use ($request) {
             foreach ($request->discount as $discount) {
@@ -68,10 +76,7 @@ class HomeController extends Controller
             }
         });
     }
-
-    // You can add brand/category filters similarly here if needed
-
-    // ✅ Paginate
+  
     $products = $query->paginate(9);
 
     return view('base.categories', compact('products'));
@@ -80,8 +85,10 @@ class HomeController extends Controller
    public function brand(){
     return view("base.brand");  
    }
+
    public function order(){
-    return view("base.order");
+    $orders = Order::with('orderItems.product')->where('user_id', Auth::id())->latest()->get();
+    return view("base.order", compact('orders'));
    }
    public function advice(){
     return view("base.advice");
@@ -91,4 +98,3 @@ class HomeController extends Controller
    }
 
 }
-

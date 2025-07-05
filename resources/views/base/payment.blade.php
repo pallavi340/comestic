@@ -138,42 +138,30 @@
      
 </head>
 <body>
-    
-<!-- Font Awesome for Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <nav class="navbar">
   <div class="container d-flex align-items-center justify-content-between py-2">
     
-    <!-- Logo -->
     <a class="navbar-brand" href="{{ route('base.home') }}">
       <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Brand Logo">
     </a>
 
-    <!-- Search Bar -->
-    <div class="col-md-6">
-        <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-      </div>
 
-    <!-- Nav Links -->
     <div class="nav-links d-flex align-items-center gap-4">
       <a href="#" class="nav-item">
         <i class="far fa-user"></i>{{auth()->user()->name}}</a>
-      <a href="#" class="nav-item">
+      <a href="{{route('base.wishlist')}}" class="nav-item">
         <i class="far fa-heart"></i>
         <span>Wishlist</span>
       </a>
-      <a href="#" class="nav-item cart-icon">
+      <a href="{{route('base.cart')}}" class="nav-item cart-icon">
         <i class="fas fa-shopping-bag"></i>
         <span>Bag</span>
         <span class="cart-count">2</span>
       </a>
     </div>
   
-    <!-- Mobile Menu -->
     <div class="mobile-menu">
       <i class="fas fa-bars"></i>
     </div>
@@ -207,8 +195,6 @@
     <div class="col-md-4">
       <form action="{{ route('order.place') }}" method="POST">
         @csrf
-
-     
         <div class="mb-3">
           <input class="form-check-input d-none" type="radio" name="mode" id="cod" value="cod" checked>
           <label class="payment-option d-block border rounded p-3 shadow-sm" for="cod">
@@ -219,23 +205,71 @@
           </label>
         </div>
 
-    
+
         <div class="mb-3">
           <input class="form-check-input d-none" type="radio" name="mode" id="razorpay" value="razorpay">
           <label class="payment-option d-block border rounded p-3 shadow-sm" for="razorpay">
             <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-credit-card fs-4"></i>
-              <h5 class="mb-0 fw-semibold">Online Payment (Razorpay)</h5>
+              <button id="payBtn" class="btn btn-seconday w-100 fw-bold">
+                <i class="bi bi-credit-card me-2"></i> Pay with Razorpay
+              </button>
             </div>
           </label>
         </div>
 
         <div class="mt-4">
-          <button type="submit" class="btn btn-success w-100 btn-lg fw-semibold">
-            <i class="bi bi-check-circle me-2"></i> Make Payment
-          </button>
+          <button type="submit" class="btn btn-success w-100 btn-lg fw-semibold"> <i class="bi bi-check-circle me-2"></i> Make Payment </button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+<script>
+document.getElementById('payBtn').onclick = function (e) {
+    e.preventDefault();
+
+    var options = {
+        "key": "{{ env('RAZORPAY_KEY') }}",
+        "amount":10000, 
+        "currency": "INR",
+        "name": "My Store",
+        "description": "Product Purchase",
+        "image": "https://yourdomain.com/logo.png",
+        "handler": function (response){
+            // Send response.razorpay_payment_id to server
+            var form = document.createElement('form');
+            form.setAttribute('method', 'post');
+            form.setAttribute('action', '{{ route('razorpay.payment') }}');
+
+            var _token = document.createElement('input');
+            _token.setAttribute('type', 'hidden');
+            _token.setAttribute('name', '_token');
+            _token.setAttribute('value', '{{ csrf_token() }}');
+            form.appendChild(_token);
+
+            var paymentInput = document.createElement('input');
+            paymentInput.setAttribute('type', 'hidden');
+            paymentInput.setAttribute('name', 'razorpay_payment_id');
+            paymentInput.setAttribute('value', response.razorpay_payment_id);
+            form.appendChild(paymentInput);
+
+            document.body.appendChild(form);
+            form.submit();
+        },
+        "prefill": {
+            "name": "{{ auth()->user()->name }}",
+            "email": "{{ auth()->user()->email }}"
+        },
+        "theme": {
+            "color": "#0d6efd"
+        }
+    };
+    
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+};
+</script>

@@ -203,46 +203,52 @@
   </h4>
 
 @forelse ($orders as $order)
-  <div class="card shadow-sm mb-3 border-0">
-    <div class="card-body py-3">
-      <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-        <div>
-          <strong>Order ID:</strong> {{ $order->id }}
-          @if($order->created_at->isToday())
-            <span class="badge bg-success ms-2">Delivery Today</span>
-          @endif
+  @foreach ($order->orderItems as $item)
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        {{-- Order Info --}}
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+          <div>
+            <h6 class="mb-1">
+              <strong>Order {{ $order->id }}</strong>
+              @if($order->created_at->isToday())
+                <span class="badge bg-success ms-2">Delivery Today</span>
+              @endif
+            </h6>
+            <small class="text-muted">
+              {{ $order->created_at->format('D, d M Y h:i A') }}
+            </small>
+          </div>
+          <div>
+            <span class="badge bg-light text-dark fw-normal">
+              Qty: {{ $item->quantity ?? 1 }}
+            </span>
+          </div>
         </div>
-        <div>
-          <small class="text-muted">
-            {{ $order->created_at->format('D, d M Y h:i A') }}
-          </small>
+
+        {{-- Product Info --}}
+        <div class="row align-items-center">
+          <div class="col-3 col-md-2">
+            <img src="{{ asset('storage/' . $item->product->image) }}" class="img-fluid rounded shadow-sm" alt="{{ $item->product->title }}">
+          </div>
+          <div class="col-9 col-md-6">
+            <h6 class="mb-1">{{ $item->product->title }}</h6>
+          </div>
+          <div class="col-12 col-md-4 text-md-end mt-2 mt-md-0">
+            @if($item->product->price != $item->product->discount_price)
+              <del class="text-muted">₹{{ $item->product->price }}</del>
+            @endif
+            <span class="fw-bold text-primary ms-2">₹{{ $item->product->discount_price }}</span>
+          </div>
         </div>
       </div>
-
-   
-      @foreach ($order->orderItems as $item)
-        <div class="row align-items-center mb-2 border-bottom pb-2">
-          <div class="col-md-2 col-4">
-            <img src="{{ asset('storage/' . $item->product->image) }}" class="img-fluid rounded" alt="{{ $item->product->title }}">
-          </div>
-          <div class="col-md-6 col-8">
-            <h6 class="mb-1">{{ $item->product->title }}</h6>
-            <small class="text-muted">Qty: {{ $item->quantity ?? 1 }}</small>
-          </div>
-          <div class="col-md-4 text-md-end mt-2 mt-md-0">
-            <div>
-              @if($item->product->price != $item->product->discount_price)
-                <del class="text-muted">₹{{ $item->product->price }}</del>
-              @endif
-              <span class="fw-semibold ms-2">₹{{ $item->product->discount_price }}</span>
-            </div>
-          </div>
-        </div>
-      @endforeach
-
     </div>
-  </div>
+  @endforeach
 @empty
-  <div class="alert alert-info">You have no orders yet.</div>
+  <div class="alert alert-info text-center py-5">
+    <i class="bi bi-bag-x-fill fs-2 text-secondary d-block mb-2"></i>
+    <strong>No Orders Yet</strong>
+    <p class="mb-0">Once you place an order, it will show up here.</p>
+  </div>
 @endforelse
-</div>
+

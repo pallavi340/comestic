@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 class AdminController extends Controller
 {
  
@@ -21,6 +21,15 @@ class AdminController extends Controller
   
 public function viewOrder($id)
 {
+  
+public function manageOrder()
+{
+  $orders = Order::with('user')->latest()->get();
+  return view('admin.manageOrders', compact('orders'));
+}
+
+public function viewOrder($id)
+{
     $order = Order::with('user', 'orderItems.product')->findOrFail($id);
     return view('admin.viewOrder', compact('order'));
 }
@@ -30,6 +39,7 @@ public function managePayment()
     $payments = Order::with('user')->orderBy('created_at', 'desc')->get();
     return view('admin.managePayment', compact('payments'));
 }
+
 
 public function manageUsers()
 {
@@ -104,7 +114,5 @@ public function showLoginForm()
 }
 
 }
-
+  }
    
-
-

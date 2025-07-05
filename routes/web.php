@@ -16,6 +16,12 @@ use App\Http\Controllers\Admin\BlogController;
 
 Route::get('/blogs', [BlogController::class, 'blog'])->name('base.blog');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('base.blogshow');
+use App\Http\Controllers\RazorpayController;
+
+
+Route::get('/pay', [RazorpayController::class, 'showForm'])->name('razorpay.form');
+Route::post('/payment', [RazorpayController::class, 'payment'])->name('razorpay.payment');
+
 
     
     //Order Routes
@@ -28,9 +34,12 @@ Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('base.blogsho
       Route::delete('/remove-coupon', 'removeCoupon')->name('coupon.remove')->middleware('auth');
       Route::delete('/cart/remove/{id}',  'remove')->name('cart.remove')->middleware('auth');
       Route::post('/add-coupon', 'addcoupon')->name('coupon.add')->middleware('auth');
+     Route::delete('/remove-coupon', 'removeCoupon')->name('coupon.remove')->middleware('auth');
       Route::put('/cart/update/{id}','updateCart')->name('cart.update');
       Route::match(['get', 'post'],'/cart','Cart')->name('base.cart')->middleware("auth"); 
       Route::get('/checkout',  'checkout')->name('base.checkout');
+      Route::put('/order/cancel/{id}', 'cancel')->name('order.cancel');
+
    });
 
      //Payment routes
@@ -54,6 +63,8 @@ Route::controller(HomeController::class)->group(function () {
     route::get('/order', 'order')->name('base.order');
     route::get('/advice', 'advice')->name('base.advice');
    
+
+    Route::get('/blog', 'blog')->name('base.blog');
    Route::get('/filter',  'filter')->name('base.categories');
 
 });
@@ -113,6 +124,7 @@ Route::middleware('auth')->group(function () {
   Route::controller(AddressController::class)->middleware('auth')->group(function(){
     Route::post('/address/create', 'store')->name('address.store');
     Route::post('/add-address', 'addAddress')->name('order.addAddress');
+    Route::get('/profile/update-address',  'updateAddress')->name('profile.updateAddress');
 });
 
  Route::get('/base/google',[GoogleController::class, 'redirectToGoogle'])->name('google.login');

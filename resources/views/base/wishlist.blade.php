@@ -213,17 +213,35 @@
       color: var(--nykaa-pink);
       font-weight: bold;
     }
+
+    .hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.wishlist-img {
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.wishlist-card:hover .wishlist-img {
+    transform: scale(1.02);
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+}
+
   </style>
 </head>
 <body>
-
-<!-- Nykaa Header -->
 <header class="nykaa-header">
   <div class="container">
-    <!-- Top Header -->
     <div class="row py-2 align-items-center d-none d-md-flex">
       <div class="col-md-2">
-        <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" alt="Nykaa" class="nykaa-logo">
+       <a class="navbar-brand" href="{{route("base.home") }}">
+          <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="90" alt="Your Brand Logo" class="brand-logo">
+        </a>
       </div>
       <div class="col-md-6">
         <div class="search-bar d-flex">
@@ -232,7 +250,7 @@
         </div>
       </div>
       <div class="col-md-4 text-end header-icons">
-        <a href="#"><i class="far fa-user"></i></a>
+        <a href="#"><i class="far fa-user"></i> {{auth()->user()->name}}</a>
         <a href="#" class="active"><i class="far fa-heart"></i></a>
         <a href="#">
           <i class="fas fa-shopping-bag"></i>
@@ -241,20 +259,19 @@
       </div>
     </div>
     
-    <!-- Mobile Header -->
     <div class="row py-2 align-items-center d-md-none">
       <div class="col-6">
         <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" alt="Nykaa" class="nykaa-logo" style="height: 30px;">
        
       </div>
       <div class="col-6 text-end header-icons">
-        <a href="#" class="me-3"><i class="fas fa-search"></i></a>
-        <a href="#"><i class="far fa-heart"></i></a>
-        <a href="#" class="ms-3"><i class="fas fa-shopping-bag"></i></a>
+        <a href="" class="me-3"><i class="fas fa-search"></i></a>
+        <a href=""><i class="far fa-heart"></i></a>
+        <a href="{{route('base.cart')}}" class="ms-3"><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
     
-    <!-- Navigation -->
+ 
     <nav class="navbar navbar-expand-md p-0">
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <i class="fas fa-bars"></i>
@@ -285,11 +302,11 @@
   </div>
 </header>
 
-<!-- Wishlist Content -->
+
 <div class="container my-4">
   <div class="row">
     
-    <!-- Left Sidebar -->
+ 
     <div class="col-md-3 mb-4">
       <div class="bg-white p-3 rounded shadow-sm">
         <h6 class="fw-bold mb-3" style="color: var(--nykaa-pink);">Account</h6>
@@ -305,7 +322,7 @@
     </a>
   </li>
   <li>
-    <a href="orders.html" class="sidebar-option py-2 d-block text-decoration-none text-dark">
+    <a href="{{route('base.order')}}" class="sidebar-option py-2 d-block text-decoration-none text-dark">
       <i class="fas fa-shopping-bag me-2"></i>My Orders
     </a>
   </li>
@@ -330,33 +347,42 @@
 
     <div class="col-md-9">
       <div class="wishlist-container">
-        <h4 class="section-title">My Wishlist <span class="wishlist-count">(2 items)</span></h4>
+        <h4 class="section-title">My Wishlist <span class="wishlist-count">({{count($wishlist)}})</span></h4>
         
-    <div class="row">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     @if($wishlist->isEmpty())
         <div class="col-12">
-            <div class="alert alert-info">Your wishlist is empty.</div>
+            <div class="alert alert-info text-center py-5 fs-5 rounded shadow-sm">
+                <i class="bi bi-heart-slash fs-3 d-block mb-3 text-danger"></i>
+                Your wishlist is empty.
+            </div>
         </div>
     @else
         @foreach($wishlist as $item)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow">
-                    @if($item->product->image)
-                        <img src="{{ asset('storage/' . $item->product->image) }}" class="card-img-top" alt="{{ $item->product->name }}">
-                    @else
-                        <img src="{{ asset('images/default.png') }}" class="card-img-top" alt="No Image">
-                    @endif
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm wishlist-card hover-shadow position-relative">
+                    <img src="{{ $item->product->image ? asset('storage/' . $item->product->image) : asset('images/default.png') }}"
+                         class="card-img-top wishlist-img rounded-top"
+                         alt="{{ $item->product->title }}">
 
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ $item->product->name }}</h5>
-                        <p class="card-text">₹{{ number_format($item->product->price, 2) }}</p>
-                        <p class="text-muted">{{ Str::limit($item->product->description, 60) }}</p>
-                        
+                    <div class="card-body d-flex flex-column p-3">
+                        <h6 class="card-title fw-bold text-truncate mb-1">{{ $item->product->title }}</h6>
+
+                        <div class="mb-2">
+                            <span class="text-muted small">MRP: </span>
+                            <span class="text-secondary small"><del>₹{{ number_format($item->product->price, 2) }}</del></span><br>
+                            <span class="text-danger fw-semibold">₹{{ number_format($item->product->discount_price, 2) }}</span>
+                        </div>
+
+                        <p class="text-muted small mb-3">{{ Str::limit($item->product->description, 80) }}</p>
+
                         <div class="mt-auto">
-                            <form action="{{ route('wishlist.remove', $item->id) }}" method="POST">
+                            <form action="{{route('wishlist.remove', $item->id)}}" method="POST" class="d-grid">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                <button type="submit" class="btn btn-outline-danger btn-sm w-100 rounded-pill">
+                                    <i class="bi bi-trash"></i> Remove
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -365,37 +391,8 @@
         @endforeach
     @endif
 </div>
-          
-          <!-- Product 2 -->
-          <div class="col-md-4">
-            <div class="product-card">
-              <div class="position-relative">
-                <img src="https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/4/0/4071270896260_1_1.jpg" alt="Product" class="product-image">
-                <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 p-1 rounded-circle">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <p class="brand-name mt-2">Maybelline</p>
-              <h6 class="product-name">Maybelline New York Fit Me Matte+Poreless Liquid Foundation</h6>
-              <div class="d-flex align-items-center">
-                <span class="product-price">₹599</span>
-                <span class="original-price">₹699</span>
-                <span class="discount-percent">(14% off)</span>
-              </div>
-              <button class="btn btn-sm move-to-bag action-btn">MOVE TO BAG</button>
-              <button class="btn btn-sm remove-btn action-btn">REMOVE</button>
-            </div>
-          </div>
-          
-        
 
-        <!-- Empty Wishlist State (Hidden by default) -->
-        <!-- <div class="empty-wishlist d-none">
-          <img src="https://images-static.nykaa.com/nykdesignsys-images/emptyWishlist.svg" alt="Empty Wishlist">
-          <h4>YOUR WISHLIST IS EMPTY</h4>
-          <p>You haven't added anything to your wishlist yet</p>
-          <a href="#" class="shop-now-btn">SHOP NOW</a>
-        </div> -->
+
       </div>
     </div>
   </div>

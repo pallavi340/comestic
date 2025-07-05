@@ -162,10 +162,9 @@
 </head>
 <body>
 
-<!-- Nykaa Header -->
 <header class="nykaa-header">
   <div class="container">
-    <!-- Top Header -->
+
     <div class="row py-2 align-items-center d-none d-md-flex">
       <div class="col-md-2">
        <a class="navbar-brand" href="{{route("base.home") }}">
@@ -180,18 +179,17 @@
       </div>
       <div class="col-md-4 text-end header-icons">
         <a href="#"><i class="far fa-user"></i> {{auth()->user()->name}}</a>
-        <a href="#"><i class="far fa-heart"></i></a>
-        <a href="#">
+        <a href="{{route('base.wishlist')}}"><i class="far fa-heart"></i></a>
+        <a href="{{route('base.cart')}}">
           <i class="fas fa-shopping-bag"></i>
-          <span class="badge">0</span>
+          <span class="badge">2</span>
         </a>
       </div>
     </div>
-    
-    <!-- Mobile Header -->
+
     <div class="row py-2 align-items-center d-md-none">
       <div class="col-6">
-        <img src="https://adn-static2.nykaa.com/media/wysiwyg/2019/nykaa-logo.png" alt="Nykaa" class="nykaa-logo" style="height: 30px;">
+        <img src="https://adn-static2.nykaa.com/media/wysiwyg/2019/nykaa-logo.png" alt="Nykaa" class="nykaa-logo" style="height: 50px;">
       </div>
       <div class="col-6 text-end header-icons">
         <a href="#" class="me-3"><i class="fas fa-search"></i></a>
@@ -199,7 +197,6 @@
       </div>
     </div>
     
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-md p-0">
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <i class="fas fa-bars"></i>
@@ -230,11 +227,8 @@
   </div>
 </header>
 
-<!-- Profile Content -->
 <div class="container my-4">
-  <div class="row">
-    
-    <!-- Left Sidebar -->
+  <div class="row">    
     <div class="col-md-3 mb-4">
       <div class="bg-white p-3 rounded shadow-sm">
         <h6 class="fw-bold mb-3" style="color: var(--nykaa-pink);">Account</h6>
@@ -250,7 +244,7 @@
     </a>
   </li>
   <li>
-    <a href="orders.html" class="sidebar-option py-2 d-block text-decoration-none text-dark">
+    <a href="{{route('base.order')}}" class="sidebar-option py-2 d-block text-decoration-none text-dark">
       <i class="fas fa-shopping-bag me-2"></i>My Orders
     </a>
   </li>
@@ -273,11 +267,9 @@
       </div>
     </div>
 
-    <!-- Right Profile Info -->
+
     <div class="col-md-9">
       <h4 class="section-title">My Profile</h4>
-      
-      <!-- Profile Card -->
       <div class="profile-card mb-4 d-flex align-items-center">
         <img src="https://img.freepik.com/premium-photo/cute-little-girls-picture-ai-generated_1003721-472.jpg" alt="Profile" class="profile-image me-4">
         <div>
@@ -285,10 +277,13 @@
           <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> {{auth()->user()->email}}</p>
           <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i>{{auth()->user()->contact}}</p>
           <p class="mb-0"><i class="far fa-calendar-alt me-2" style="color: var(--nykaa-pink);"></i> Date of Birth: 17/05/1995</p>
+          <h5 class="fw-bold mb-2">{{auth()->user()->name}} <a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
+          <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> {{auth()->user()->email}}</p>
+          <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i>{{auth()->user()->contact}}</p>
+          <p class="mb-0"><i class="far fa-calendar-alt me-2" style="color: var(--nykaa-pink);"></i> Date of Birth: 08/06/2005</p>
         </div>
       </div>
 
-      <!-- Address Section -->
       <div class="mb-3 d-flex justify-content-between align-items-center">
         <h6 class="fw-bold mb-0"><i class="fas fa-home me-2" style="color: var(--nykaa-pink);"></i>My Addresses</h6>
         <a href="#" class="add-address-btn"><i class="fas fa-plus me-1"></i>ADD NEW ADDRESS</a>
@@ -302,6 +297,9 @@
             <p class="mb-1">{{auth()->user()->area }}</p>
             <p class="mb-1">{{ auth()->user()->state}}</p>
             <p class="mb-1">{{ auth()->user()->pincode}}</p>
+            <span class="badge badge-city mb-2">{{auth()->user()->city}}</span>
+            <h6 class="fw-bold mb-2">{{auth()->user()->name}}</h6>
+            <p class="mb-1">{{auth()->user()->area}}</p>
             <p class="mb-3">India</p>
             <div class="d-flex">
               <a href="#" class="edit-btn me-3"><i class="fas fa-pencil-alt me-1"></i>Edit</a>
@@ -317,6 +315,9 @@
             <p class="mb-1"></p>
             <p class="mb-1"></p>
             <p class="mb-1">{{auth()->user()->area}}</p>
+           <p class="mb-1">{{ auth()->user()->name }}</p>
+            <p class="mb-1">{{ auth()->user()->state }}</p>
+           <p class="mb-1">{{ auth()->user()->pincode }}</p>
             <p class="mb-3">India</p>
             <div class="d-flex">
               <a href="#" class="edit-btn me-3"><i class="fas fa-pencil-alt me-1"></i>Edit</a>
