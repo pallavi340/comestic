@@ -245,7 +245,7 @@
       </div>
       <div class="col-md-6">
         <div class="search-bar d-flex">
-          <input type="text" placeholder="Search for products, brands and more...">
+          <input type="text" name="search" placeholder="Search for products, brands and more...">
           <button><i class="fas fa-search"></i></button>
         </div>
       </div>

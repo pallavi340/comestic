@@ -67,16 +67,17 @@
                                     </span>
                                 </td>
                                 <td>
+                                    
                                     <div class="d-flex justify-content-center gap-2">
-                                        <a href="{{ route('products.edit', $pro) }}"  class="btn btn-sm btn-outline-secondary rounded-circle p-2" data-bs-toggle="tooltip" title="Edit">
+                                        <a href="{{ route('products.edit', $pro->id) }}"  class="btn btn-sm btn-outline-secondary rounded-sm p-2" data-bs-toggle="tooltip" title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
 
-                                          <form action="{{ route('products.destroy', $pro) }}" method="POST">
+                                          <form action="{{ route('products.destroy', $pro->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" 
-                                                    class="btn btn-sm btn-outline-danger rounded-circle p-2"
+                                                    class="btn btn-sm btn-outline-danger rounded-sm p-2"
                                                     data-bs-toggle="tooltip" 
                                                     title="Delete"
                                                     onclick="return confirm('Are you sure you want to delete this product?')">

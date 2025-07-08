@@ -172,10 +172,6 @@
             </a>
       </div>
       <div class="col-md-6">
-        <div class="search-bar d-flex">
-          <input type="text" placeholder="Search for products, brands and more...">
-          <button><i class="fas fa-search"></i></button>
-        </div>
       </div>
       <div class="col-md-4 text-end header-icons">
         <a href="#"><i class="far fa-user"></i> {{auth()->user()->name}}</a>
@@ -288,9 +284,9 @@
       <div class="row">
         <div class="col-md-6">
           <div class="address-box">
-            <span class="badge badge-city mb-2">{{auth()->user()->city}}</span>
+            <span class="badge badge-city mb-2">Purnea</span>
             <h6 class="fw-bold mb-2">{{auth()->user()->name}}</h6>
-            <p class="mb-1">{{auth()->user()->area}}</p>
+            <p class="mb-1">Court Station Purnea</p>
             <p class="mb-3">India</p>
             <div class="d-flex">
               <a href="#" class="edit-btn me-3"><i class="fas fa-pencil-alt me-1"></i>Edit</a>
@@ -303,8 +299,8 @@
           <div class="address-box">
             <span class="badge badge-city mb-2">Work</span>
            <p class="mb-1">{{ auth()->user()->name }}</p>
-            <p class="mb-1">{{ auth()->user()->state }}</p>
-           <p class="mb-1">{{ auth()->user()->pincode }}</p>
+            <p class="mb-1">Hawai Add Road Purnea</p>
+           <p class="mb-1">Bihar,854301</p>
             <p class="mb-3">India</p>
             <div class="d-flex">
               <a href="#" class="edit-btn me-3"><i class="fas fa-pencil-alt me-1"></i>Edit</a>

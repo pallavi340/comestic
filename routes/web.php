@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -12,10 +13,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RazorpayController;
-
-
-Route::get('/pay', [RazorpayController::class, 'showForm'])->name('razorpay.form');
-Route::post('/payment', [RazorpayController::class, 'payment'])->name('razorpay.payment');
+use App\Http\Controllers\BlogController;
 
 
 Route::controller(HomeController::class)->group(function () {
@@ -42,6 +40,7 @@ Route::controller(HomeController::class)->group(function () {
       Route::match(['get', 'post'],'/cart','Cart')->name('base.cart')->middleware("auth"); 
       Route::get('/checkout',  'checkout')->name('base.checkout');
       Route::put('/order/cancel/{id}', 'cancel')->name('order.cancel');
+      Route::get('/filter/{slug}', 'filter')->name('view.filter');
 
    });
 
@@ -65,7 +64,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/brand', 'brand')->name('base.brand');
     Route::get('/order', 'order')->name('base.order');
     Route::get('/blog', 'blog')->name('base.blog');
-   Route::get('/filter',  'filter')->name('base.categories');
+   Route::get('/filter', 'filter')->name('base.categories');
 
 });
     Route::get('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
@@ -105,6 +104,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/user/{id}', 'destroy')->name('admin.user.delete');
     Route::get('/admin/view-order/{id}','viewOrder')->name('admin.viewOrder');
     Route::get('/admin/manage-sales', 'manageSales')->name('admin.manageSales');
+    Route::get('/blogs', 'manageBlogs')->name('admin.manageBlogs');
+
     Route::get('admin/login', 'showLoginForm')->name('admin.login');
    Route::post('admin/login',  'login')->name('admin.login.submit');
    Route::post('admin/logout', 'logout')->name('admin.logout');
@@ -127,9 +128,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update-address',  'updateAddress')->name('profile.updateAddress');
 });
 
+// payment routes
+Route::get('/pay', [RazorpayController::class, 'showForm'])->name('razorpay.form');
+Route::post('/payment', [RazorpayController::class, 'payment'])->name('razorpay.payment');
+
+// Google login Routes
  Route::get('/base/google',[GoogleController::class, 'redirectToGoogle'])->name('google.login');
  Route::get('/base/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
  Route::get('/base/login',[GoogleController::class,'login'])->name('base.login');
 
+
 Route::resource('/category', CategoryController::class);
 Route::resource('/products',ProductController::class);
+Route::resource('blogs', BlogController::class);
+    

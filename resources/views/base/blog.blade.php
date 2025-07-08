@@ -177,145 +177,29 @@
             </div>
         </div>
         
-        <div class="row">
-            <!-- Blog Post 1 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog-card h-100">
-                    <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top blog-card-img" alt="Skincare Routine">
-                        <span class="trending-badge">TRENDING</span>
-                    </div>
-                    <div class="card-body">
-                        <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">SKINCARE</span>
-                        <h5 class="card-title">5-Step Korean Skincare Routine for Glowing Skin</h5>
-                        <p class="card-text text-muted">Learn the secrets behind the famous Korean skincare routine that will give you that coveted glass skin effect.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Author" class="author-img me-2">
-                            <div>
-                                <p class="mb-0 small">By Sarah Kim</p>
-                                <p class="mb-0 small text-muted">May 10, 2023 · 6 min read</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Post 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog-card h-100">
-                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top blog-card-img" alt="Haircare Tips">
-                    <div class="card-body">
-                        <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">HAIRCARE</span>
-                        <h5 class="card-title">How to Repair Damaged Hair: Expert Tips and Product Recommendations</h5>
-                        <p class="card-text text-muted">From heat damage to chemical treatments, here's how to bring your hair back to life.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Author" class="author-img me-2">
-                            <div>
-                                <p class="mb-0 small">By Maria Rodriguez</p>
-                                <p class="mb-0 small text-muted">May 8, 2023 · 10 min read</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Post 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog-card h-100">
-                    <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top blog-card-img" alt="Makeup Products">
-                    <div class="card-body">
-                        <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">MAKEUP</span>
-                        <h5 class="card-title">The Best Drugstore Makeup Products That Perform Like High-End</h5>
-                        <p class="card-text text-muted">You don't need to break the bank for quality makeup. These affordable options rival luxury brands.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Author" class="author-img me-2">
-                            <div>
-                                <p class="mb-0 small">By Emily Chen</p>
-                                <p class="mb-0 small text-muted">May 5, 2023 · 7 min read</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Post 4 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog-card h-100">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top blog-card-img" alt="Wellness">
-                    <div class="card-body">
-                        <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">WELLNESS</span>
-                        <h5 class="card-title">Morning Rituals: 10 Habits to Start Your Day Right</h5>
-                        <p class="card-text text-muted">Transform your mornings with these simple yet powerful rituals for better productivity and wellbeing.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Author" class="author-img me-2">
-                            <div>
-                                <p class="mb-0 small">By Priya Patel</p>
-                                <p class="mb-0 small text-muted">May 3, 2023 · 5 min read</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Post 5 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog-card h-100">
-                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top blog-card-img" alt="Perfume">
-                    <div class="card-body">
-                        <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">FRAGRANCE</span>
-                        <h5 class="card-title">How to Choose a Perfume That Matches Your Personality</h5>
-                        <p class="card-text text-muted">Your scent says a lot about you. Find the perfect fragrance that complements your unique style.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/66.jpg" alt="Author" class="author-img me-2">
-                            <div>
-                                <p class="mb-0 small">By Sophia Laurent</p>
-                                <p class="mb-0 small text-muted">April 28, 2023 · 8 min read</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Post 6 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog-card h-100">
-                    <img src="https://images.unsplash.com/photo-1596704017256-9a8a8b0b0b5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top blog-card-img" alt="Nail Art">
-                    <div class="card-body">
-                        <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">NAILS</span>
-                        <h5 class="card-title">Summer Nail Art Ideas That Are Easy to DIY</h5>
-                        <p class="card-text text-muted">Bright colors, fun patterns, and beachy vibes - get inspired with these summer nail designs.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Author" class="author-img me-2">
-                            <div>
-                                <p class="mb-0 small">By Lisa Wong</p>
-                                <p class="mb-0 small text-muted">April 25, 2023 · 4 min read</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row mt-4">
-            <div class="col text-center">
-                <button class="btn btn-nykaa px-4 py-2">Load More Articles</button>
-            </div>
-        </div>
-    </div>
+<div class="row g-4">
+  @foreach($blogs as $blog)
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+        <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="card-img-top object-fit-cover" style="height: 280px;" alt="{{ $blog->title }}">
 
-    <!-- Newsletter Section -->
+        <div class="card-body">
+           <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">{{ $blog->title }}</span>
+           <p class="text-muted mb-3">{{ Str::limit(strip_tags($blog->content), 100) }}</p>
+        </div>
+
+        <div class="card-footer bg-transparent border-0 d-flex align-items-center gap-2 px-3 pb-3 pt-0">
+          <img src="https://randomuser.me/api/portraits/women/33.jpg" class="rounded-circle" width="36" height="36" alt="Author">
+          <div class="small">
+            <div class="fw-semibold">By Admin</div>
+            <div class="text-muted small">{{ $blog->created_at->format('M d, Y') }} • 3 min read</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
+</div>
+
     <section class="newsletter-section py-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -340,7 +224,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="text-nykaa mb-4">BEAUTYBLOG</h5>
+                  <a class="navbar-brand" href="{{route("base.home") }}">
+                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Your Brand Logo" class="brand-logo">
+            </a>
                     <p>Your ultimate destination for beauty tips, product reviews, and the latest trends in makeup, skincare, haircare, and wellness.</p>
                     <div class="mt-4">
                         <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>

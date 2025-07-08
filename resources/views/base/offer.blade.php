@@ -285,7 +285,7 @@
       <input class="form-control me-2" type="search" placeholder="Search on Nykaa" />
     </form>
     <div class="d-flex align-items-center">
-      <span class="me-3">👤 Jagriti</span>
+      <span class="me-3">👤 {{auth()->user()->name}}</span>
       <span>🛒</span>
     </div>
   </div>

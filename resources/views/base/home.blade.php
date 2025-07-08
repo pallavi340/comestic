@@ -49,8 +49,9 @@
                         <div class="card-body">
                             <h5 class="card-title mb-2">{{ Str::limit($item->title, 45) }}</h5>
                             <p class="text-muted mb-1"><i class="bi bi-clipboard-fill"></i> 40ml</p>
-                             <span class="text-danger fw-bold me-2">{{ $item->brand}}</span>
-
+                             <div>
+                                <span class="text-info fw-bold me-2">{{ $item->category->cat_title}}</span>
+                             </div>
                             <div class="d-flex align-items-center">
                                 <span class="text-primary fw-bold me-2">₹{{ $item->discount_price }}</span>
                                 <del class="text-muted small">₹{{ $item->price }}</del>
@@ -70,19 +71,16 @@
 </div>
   
   </section>
-<footer class="bg-light text-dark pt-5 pb-4">
-  <div class="container text-md-left">
+<footer class="bg-light text-dark pt-5 pb-4 w-100">
+  <div class="container-fluid text-md-left px-5">
     <div class="row text-md-left">
-      
-  
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-       <a class="navbar-brand" href="{{route('base.home')}}">
-                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
-            </a>
+        <a class="navbar-brand" href="{{ route('base.home') }}">
+          <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Nykaa">
+        </a>
         <p>Shop beauty products online from top brands in makeup, skincare, haircare, and more. 100% authentic. COD available.</p>
       </div>
 
-  
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Products</h5>
         <p><a href="#" class="text-dark text-decoration-none">Makeup</a></p>
@@ -90,7 +88,6 @@
         <p><a href="#" class="text-dark text-decoration-none">Haircare</a></p>
         <p><a href="#" class="text-dark text-decoration-none">Fragrances</a></p>
       </div>
-
 
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Useful Links</h5>
@@ -100,21 +97,18 @@
         <p><a href="#" class="text-dark text-decoration-none">Help</a></p>
       </div>
 
-      <!-- Contact -->
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
         <p><i class="bi bi-house-door-fill me-2"></i> Mumbai, India</p>
         <p><i class="bi bi-envelope-fill me-2"></i> support@nykaa.com</p>
         <p><i class="bi bi-phone-fill me-2"></i> +91 9876543210</p>
       </div>
-
     </div>
 
-    <!-- Social Media & Copyright -->
     <hr class="mb-4">
     <div class="row align-items-center">
       <div class="col-md-7 col-lg-8">
-        <p class="text-md-start">© 2025 Nykaa . All Rights Reserved.</p>
+        <p class="text-md-start mb-0">© 2025 Nykaa. All Rights Reserved.</p>
       </div>
       <div class="col-md-5 col-lg-4">
         <div class="text-md-end">

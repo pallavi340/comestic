@@ -127,7 +127,7 @@
     <a href="{{route('admin.managePayment')}}"><i class="bi bi-credit-card me-2"></i> Manage Payment</a>
     <a href="{{route('admin.manageUsers')}}"><i class="bi bi-people me-2"></i> Manage Users</a>
     <a href="{{route('admin.manageSales')}}"><i class="bi bi-graph-up me-2"></i> Manage Sales</a>
-    <a href=""><i class="bi bi-circle-half"></i> Manage Blogs</a>
+    <a href="{{route('blogs.index')}}"><i class="bi bi-circle-half"></i> Manage Blogs</a>
   </div>
 
  

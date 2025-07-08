@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Blog;
 use App\Models\Category;  
 use Auth;  
 
@@ -12,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->take(12)->get();
+        $products = Product::latest()->take(20)->get();
         return view('base.home', compact('products'));
     } 
    
@@ -22,12 +23,22 @@ class HomeController extends Controller
       return view('base.productView', compact('pro'));
     }
 
- public function search(Request $req){
-     $search = $req->search;
-     $products = Product::where('title', 'like', "%$search%")->paginate(50);
-     // $categories = Category::whereNull('category_id')->get();
-     return view("base.home", compact('products'));
-    }
+
+    public function search(Request $req)
+{
+    $search = $req->search;
+
+    $products = Product::where('title', 'like', "%$search%")
+        ->orWhereHas('category', function ($q) use ($search) {
+            $q->where('cat_title', 'like', "%$search%");
+        })
+        ->paginate(50);
+
+    $categories = Category::whereNull('parent_id')->get();
+
+    return view("base.home", compact('products', 'categories'));
+}
+
     
     public function categories(){
         $categories = Category::whereNull('parent_id')->get();
@@ -37,8 +48,6 @@ class HomeController extends Controller
     public function filter(Request $request)
 {
     $query = Product::query();
-
-    // ✅ Category Filter
     if ($request->has('category')) {
         $query->whereIn('category', $request->category);
     }
@@ -89,8 +98,10 @@ class HomeController extends Controller
     $orders = Order::with('orderItems.product')->where('user_id', Auth::id())->latest()->get();
     return view("base.order", compact('orders'));
    }
-   public function blog(){
-    return view("base.blog");
+
+    public function blog(){
+    $blogs = Blog::latest()->get();
+     return view("base.blog", compact('blogs'));
    }
 
 

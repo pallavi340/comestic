@@ -181,10 +181,6 @@
                         <a class="nav-link" href="#">New</a>
                     </li>
                 </ul>
-                <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="far fa-user">{{auth()->user()->name}}</i></a>

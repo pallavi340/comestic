@@ -168,4 +168,10 @@ public function remove($id)
     return redirect()->back()->with('success', 'Product cancelled successfully.');
 }
 
+   public function filter($slug){
+        $data['category'] = Category::where("cat_slug",$slug)->first();
+        return view("filter", $data);
+    }
+
+
 }
