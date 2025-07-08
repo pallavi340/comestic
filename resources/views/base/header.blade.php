@@ -136,12 +136,91 @@
     }   
   </style>
   
+  <style>
+.slide-glow {
+    position: relative;
+    display: inline-block;
+    animation: slideGlow 1s ease-out forwards;
+    opacity: 0;
+    left: -30px;
+}
+
+@keyframes slideGlow {
+    to {
+        opacity: 1;
+        left: 0;
+        text-shadow: 0 0 10px #e60073, 0 0 20px #e60073;
+    }
+}
+</style>
+<style>
+  .navbar-nav .nav-link {
+    font-weight: 500;
+    color: #444;
+    transition: all 0.3s ease;
+  }
+  .navbar-nav .nav-link:hover {
+    color: #e60073;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .search-box {
+    width: 250px;
+    transition: all 0.3s ease;
+  }
+  .search-box:focus {
+    width: 300px;
+    border-color: #e60073;
+    box-shadow: 0 0 0 0.2rem rgba(230, 0, 115, 0.25);
+  }
+  .search-btn {
+    background-color: #e60073;
+    border-color: #e60073;
+  }
+  .search-btn:hover {
+    background-color: #cc005f;
+  }
+
+  /* ❤️ Cart/Wishlist Icon Hover */
+  .fa-heart,
+  .fa-shopping-cart {
+    color: #333;
+    transition: 0.3s;
+  }
+  .fa-heart:hover,
+  .fa-shopping-cart:hover {
+    color: #e60073;
+  }
+
+  /* 🔥 Category Bar Styles */
+  .category-bar {
+    background: #fff0f5;
+    padding: 10px 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  .category-bar a {
+    display: inline-block;
+    color: #555;
+    font-weight: 500;
+    margin: 0 12px;
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+  }
+  .category-bar a:hover {
+    color: #e60073;
+    border-bottom: 2px solid #e60073;
+  }
+</style>
 </head>
 <body>
 
 <div class="top-banner text-white py-2">
   <div class="container d-flex justify-content-between align-items-center">
-    <span class="fw-bold">BEAUTY BONANZA Get Your Amazing Deals!</span>
+   <span class="fw-bold text-black slide-glow">BEAUTY BONANZA Get Your Amazing Deals!</span>
     <div class="d-flex gap-4">
       <a href="#" class="text-white text-decoration-none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <title>mobile icon</title>
@@ -181,57 +260,99 @@
   </div>
 </div>
 
-  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand" href="#">
-                <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145"width="100"alt="Nykaa">
-            </a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{route('base.brand') }}">Brands</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Luxe</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{route('base.blog') }}">Beauty Advice</a></li>
-        </ul>
-     <form action="{{ route('search') }}" method="GET" class="d-flex me-3">
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="#">
+      <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Nykaa">
+    </a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="{{route('base.categories')}}">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{route('base.brand')}}">Brands</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{route('base.blog') }}">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Nykaa Fashion</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{route('base.advice')}}">Beauty Advice</a></li>
+      </ul>
+
+      <!-- Search -->
+      <form action="{{ route('search') }}" method="GET" class="d-flex me-3">
         <input class="search-box form-control" type="search" name="search" placeholder="Search for products..." value="{{ request('search') }}">
         <button class="search-btn btn btn-primary ms-2" type="submit">
           <i class="bi bi-search"></i>
-       </button>
-     </form>
+        </button>
+      </form>
 
-        @guest
-        <a href="{{ route('base.register') }}" class="btn btn-secondary me-2">Sign up</a>
+      @guest
+        <a href="{{ route('base.register') }}" class="btn btn-outline-secondary me-2">Sign up</a>
         <a href="{{ route('base.login') }}" class="btn btn-primary me-2">Sign in</a>
-        @endguest
-        @auth
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person"></i>{{auth()->user()->name}}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">{{auth()->user()->email}}</a></li>
-              <li><a class="dropdown-item" href="{{route('base.profile')}}">My Profile</a></li>
-              <li><a class="dropdown-item" href="{{route('base.order')}}">My Orders</a></li>
-              <li><a class="dropdown-item" href="{{route('base.wishlist')}}">My Wishlist</a></li>
-             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      
-       
-        <a href="{{route('base.cart')}}" class="btn"><i class="bi bi-bag"></i></a>
-        <a href="{{route('base.wishlist')}}" class="btn"><i class="bi bi-heart"></i></a>
+      @endguest
 
-        @endauth
-      </div>
+      @auth
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-fill me-1"></i>{{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">{{ auth()->user()->email }}</a></li>
+            <li><a class="dropdown-item" href="{{route('base.profile')}}">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">Orders</a></li>
+
+            <!-- Cart Icon -->
+            <li>
+              <a href="{{ route('base.cart') }}" class="dropdown-item position-relative">
+                <i class="fas fa-shopping-cart fa-lg me-1"></i> Cart
+                @if(session('cart_count') > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ session('cart_count') }}
+                </span>
+                @endif
+              </a>
+            </li>
+
+            <!-- Wishlist Icon -->
+            <li>
+              <a href="{{ route('base.cart') }}" class="dropdown-item position-relative">
+                <i class="fas fa-heart fa-lg me-1"></i> Wishlist
+                @if(session('wishlist_count') > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ session('wishlist_count') }}
+                </span>
+                @endif
+              </a>
+            </li>
+
+            <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Cart Button -->
+      <a href="{{route('base.cart')}}" class="btn">
+        <i class="bi bi-bag"></i>
+      </a>
+      @endauth
     </div>
-  </nav>
+  </div>
+</nav>
 
-    <x-category-bar/>
-  
+<!-- 🌈 Scrollable Category Bar -->
+<div class="category-bar text-center">
+  <a href="#">Makeup</a>
+  <a href="#">Skin</a>
+  <a href="#">Hair</a>
+  <a href="#">Appliances</a>
+  <a href="#">Bath & Body</a>
+  <a href="#">Natural</a>
+  <a href="#">Mom & Baby</a>
+  <a href="#">Health & Wellness</a>
+  <a href="#">Men</a>
+  <a href="#">Fragrance</a>
+  <a href="#">Lingerie & Accessories</a>
+  <a href="{{ route('base.offer') }}" class="text-danger fw-bold">SALE</a>
+</div>
 
   @if(Route::currentRouteName() == "base.home")
    <x-banner/>

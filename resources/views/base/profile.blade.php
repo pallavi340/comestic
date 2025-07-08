@@ -269,6 +269,10 @@
       <div class="profile-card mb-4 d-flex align-items-center">
         <img src="https://img.freepik.com/premium-photo/cute-little-girls-picture-ai-generated_1003721-472.jpg" alt="Profile" class="profile-image me-4">
         <div>
+          <h5 class="fw-bold mb-2">{{auth()->user()->name }}<a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
+          <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> {{auth()->user()->email}}</p>
+          <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i>{{auth()->user()->contact}}</p>
+          <p class="mb-0"><i class="far fa-calendar-alt me-2" style="color: var(--nykaa-pink);"></i> Date of Birth: 17/05/1995</p>
           <h5 class="fw-bold mb-2">{{auth()->user()->name}} <a href="#" class="edit-btn ms-2"><i class="fas fa-pencil-alt"></i> Edit</a></h5>
           <p class="mb-1"><i class="far fa-envelope me-2" style="color: var(--nykaa-pink);"></i> {{auth()->user()->email}}</p>
           <p class="mb-1"><i class="fas fa-mobile-alt me-2" style="color: var(--nykaa-pink);"></i>{{auth()->user()->contact}}</p>
@@ -285,6 +289,12 @@
         <div class="col-md-6">
           <div class="address-box">
             <span class="badge badge-city mb-2">Purnea</span>
+            <span class="badge badge-city mb-2">{{auth()->user()->city }}</span>
+            <h6 class="fw-bold mb-2">{{auth()->user()->name }}</h6>
+            <p class="mb-1">{{auth()->user()->area }}</p>
+            <p class="mb-1">{{ auth()->user()->state}}</p>
+            <p class="mb-1">{{ auth()->user()->pincode}}</p>
+            <span class="badge badge-city mb-2">{{auth()->user()->city}}</span>
             <h6 class="fw-bold mb-2">{{auth()->user()->name}}</h6>
             <p class="mb-1">Court Station Purnea</p>
             <p class="mb-3">India</p>
@@ -298,6 +308,10 @@
         <div class="col-md-6">
           <div class="address-box">
             <span class="badge badge-city mb-2">Work</span>
+            <h6 class="fw-bold mb-2">{{auth()->user()->name }}</h6>
+            <p class="mb-1"></p>
+            <p class="mb-1"></p>
+            <p class="mb-1">{{auth()->user()->area}}</p>
            <p class="mb-1">{{ auth()->user()->name }}</p>
             <p class="mb-1">Hawai Add Road Purnea</p>
            <p class="mb-1">Bihar,854301</p>

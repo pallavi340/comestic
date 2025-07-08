@@ -5,8 +5,8 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Coupon;
-use App\Models\User;
 use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -134,6 +134,19 @@ public function myorder()
     $orders = Order::where('user_id', Auth::id()) ->with('orderItems.product')->get();
     return view('order.myorder', compact('orders'));
 }
+
+
+public function countCart(Request $request)
+{
+    // Add product to cart logic...
+
+    // Example: count from cart table or session
+    $cartCount = Cart::where('user_id', auth()->id())->count();
+    session(['cart_count' => $cartCount]);
+
+    return redirect()->back();
+}
+
 
  public function removeCoupon()
 {

@@ -193,8 +193,8 @@
     </div>
 
     <div class="col-md-4">
-      <form action="{{ route('order.place') }}" method="POST">
-        @csrf
+     <form action="{{ route('order.place') }}" method="POST">
+      @csrf
         <div class="mb-3">
           <input class="form-check-input d-none" type="radio" name="mode" id="cod" value="cod" checked>
           <label class="payment-option d-block border rounded p-3 shadow-sm" for="cod">
@@ -240,7 +240,7 @@ document.getElementById('payBtn').onclick = function (e) {
         "description": "Product Purchase",
         "image": "https://yourdomain.com/logo.png",
         "handler": function (response){
-            // Send response.razorpay_payment_id to server
+            // Send response.razorpay_payment_id to server  
             var form = document.createElement('form');
             form.setAttribute('method', 'post');
             form.setAttribute('action', '{{ route('razorpay.payment') }}');

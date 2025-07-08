@@ -230,6 +230,10 @@
                         <a class="nav-link" href="#">New</a>
                     </li>
                 </ul>
+                <form class="d-flex me-3">
+                    <input class="search-box" type="search" placeholder="Search for products...">
+                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href=""><i class="far fa-user">{{auth()->user()->name}}</i></a>
@@ -256,11 +260,8 @@
        
 <div class="container my-5">
   <div class="row align-items-start">
- <div class="col-12 mb-3">
-    <h4 class="fw-bold">My Cart</h4>
- </div>
-<div class="container py-4">
-  <div class="row g-4">
+   <h2 class="mb-4">My Cart (1)</h2>
+   
     <div class="col-lg-8">
       <div class="card shadow-sm">
             @php

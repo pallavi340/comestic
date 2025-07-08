@@ -16,16 +16,6 @@ use App\Http\Controllers\RazorpayController;
 use App\Http\Controllers\BlogController;
 
 
-Route::controller(HomeController::class)->group(function () {
-  Route::get('/', 'index')->name('base.home');
-  Route::get('/filter/{cat_id}', 'filter')->name('base.filter');
-  Route::get('/search', 'search')->name('search');
-  Route::get('/categories', 'categories')->name('base.categories');
-  Route::get('/product/{slug}', 'productView')->name('base.productView');
-  Route::get('/offer', 'offer')->name('base.offer');
-  Route::get('/profile', 'profile')->name('base.profile');
-  Route::get('/wishlist', 'wishlist')->name('base.wishlist');
-});
     
     //Order Routes
     Route::controller(OrderController::class)->group(function() {
@@ -33,7 +23,9 @@ Route::controller(HomeController::class)->group(function () {
       Route::get('/order/myorder','myorder')->name('order.myorder')->middleware('auth');
       Route::post('/add-to-cart/{slug}', 'addToCart')->name('base.addtocart');
       Route::post('cart', 'cart')->name('base.cart')->middleware('auth');
-      Route::post('/cart/remove/{id}', 'remove')->name('cart.remove')->middleware('auth');
+      Route::delete('/cart/remove/{id}', 'remove')->name('cart.remove');
+      Route::delete('/remove-coupon', 'removeCoupon')->name('coupon.remove')->middleware('auth');
+      Route::delete('/cart/remove/{id}',  'remove')->name('cart.remove')->middleware('auth');
       Route::post('/add-coupon', 'addcoupon')->name('coupon.add')->middleware('auth');
      Route::delete('/remove-coupon', 'removeCoupon')->name('coupon.remove')->middleware('auth');
       Route::put('/cart/update/{id}','updateCart')->name('cart.update');
@@ -47,7 +39,7 @@ Route::controller(HomeController::class)->group(function () {
      //Payment routes
   Route::controller(PaymentController::class)->group(function() {
     Route::post('/place-order', 'placeOrder')->name('order.place')->middleware('auth');
-    Route::get('/payment',  'payment')->name('base.payment');
+    //Route::post('/payment',  'payment')->name('base.payment');
     Route::post('/razorpay/order','createRazorpayOrder')->name('razorpay.order')->middleware('auth');
   });
 
@@ -65,6 +57,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/order', 'order')->name('base.order');
     Route::get('/blog', 'blog')->name('base.blog');
    Route::get('/filter', 'filter')->name('base.categories');
+    Route::get('/advice', 'advice')->name('base.advice');
+    Route::get('/filter',  'filter')->name('base.categories');
 
 });
     Route::get('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
@@ -124,7 +118,7 @@ Route::middleware('auth')->group(function () {
  //address routes
   Route::controller(AddressController::class)->middleware('auth')->group(function(){
     Route::post('/address/create', 'store')->name('address.store');
-    Route::post('/add-address', 'addAddress')->name('order.addAddress');
+    Route::get('/add-address', 'addAddress')->name('order.addAddress');
     Route::get('/profile/update-address',  'updateAddress')->name('profile.updateAddress');
 });
 

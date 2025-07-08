@@ -13,12 +13,11 @@ class AdminController extends Controller
    {
      return view('admin.dashboard');
    }
-  
-public function manageOrder()
-{
-  $orders = Order::with('user')->latest()->get();
-  return view('admin.manageOrders', compact('orders'));
-}
+
+   public function manageOrder(){
+    $orders = Order::with('user' )->latest()->get();
+    return view('admin.manageOrders', compact('orders'));
+   }
 
 public function viewOrder($id)
 {
@@ -106,4 +105,5 @@ public function showLoginForm()
 }
 
 }
+
    

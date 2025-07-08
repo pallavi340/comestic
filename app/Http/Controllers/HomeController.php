@@ -22,6 +22,7 @@ class HomeController extends Controller
       $pro = Product::where('slug', $slug)->first();
       return view('base.productView', compact('pro'));
     }
+  
 
 
     public function search(Request $req)
@@ -102,18 +103,25 @@ class HomeController extends Controller
     public function blog(){
     $blogs = Blog::latest()->get();
      return view("base.blog", compact('blogs'));
-   }
-
-
-    public function offer(){
-      return view("base.offer");
     }
-
+   public function offer(){
+    return view('base.offer');
+   }
    public function profile(){
-     return view("base.profile");  
-   }
-   public function wishlist(){
-      return view("base.wishlist");  
+    return view('base.profile');
    }
 
+    public function blog(){
+    $blogs = Blog::latest()->get();
+     return view("base.blog", compact('blogs'));
+   }
+   public function advice(){
+    return view("base.advice");
+   }
+   public function offer(){
+    return view('base.offer');
+   }
+   public function profile(){
+    return view('base.profile');
+   }
 }

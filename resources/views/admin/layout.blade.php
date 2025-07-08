@@ -134,10 +134,10 @@
   <div class="main">
     <div class="header d-flex justify-content-between align-items-center">
       <input class="form-control w-50" type="text" placeholder="Search Dashboard">
-      <div class="d-flex align-items-center gap-3">
+    <div class="d-flex align-items-center gap-3">
         
         @if(Auth::check() && Auth::user()->is_admin)
-            <span><i class="bi bi-person-fill"></i>{{ Auth::user()->name }}</span>
+            <span><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</span>
             <form method="POST" action="{{ route('admin.logout') }}" class="d-inline">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-outline-danger">Logout</button>

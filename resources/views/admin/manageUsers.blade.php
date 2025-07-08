@@ -1,8 +1,6 @@
 @extends('admin.layout')
 
-@section('title')
-  Manage Users
-@endsection
+@section('title', 'Manage Users')
 
 @section('content') 
 <div class="container py-4">
