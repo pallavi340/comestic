@@ -12,11 +12,10 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\BlogController;
-
+use App\Http\Controllers\RazorpayController;
 
 Route::get('/blogs', [BlogController::class, 'blog'])->name('base.blog');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('base.blogshow');
-use App\Http\Controllers\RazorpayController;
 
 
 Route::get('/pay', [RazorpayController::class, 'showForm'])->name('razorpay.form');
@@ -45,7 +44,7 @@ Route::post('/payment', [RazorpayController::class, 'payment'])->name('razorpay.
      //Payment routes
   Route::controller(PaymentController::class)->group(function() {
     Route::post('/place-order', 'placeOrder')->name('order.place')->middleware('auth');
-    Route::post('/payment',  'payment')->name('base.payment');
+    //Route::post('/payment',  'payment')->name('base.payment');
     Route::post('/razorpay/order','createRazorpayOrder')->name('razorpay.order')->middleware('auth');
   });
 
@@ -60,12 +59,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/profile', 'profile')->name('base.profile');
     Route::get('/wishlist', 'wishlist')->name('base.wishlist');
     Route::get('/brand', 'brand')->name('base.brand');
-    route::get('/order', 'order')->name('base.order');
-    route::get('/advice', 'advice')->name('base.advice');
-   
-
-    Route::get('/blog', 'blog')->name('base.blog');
-   Route::get('/filter',  'filter')->name('base.categories');
+    Route::get('/order', 'order')->name('base.order');
+    Route::get('/advice', 'advice')->name('base.advice');
+    Route::get('/filter',  'filter')->name('base.categories');
 
 });
     Route::get('/add-to-cart/{slug}', [OrderController::class, 'addToCart'])->name('base.addtocart');
@@ -105,6 +101,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/user/{id}', 'destroy')->name('admin.user.delete');
     Route::get('/admin/view-order/{id}','viewOrder')->name('admin.viewOrder');
     Route::get('/admin/manage-sales', 'manageSales')->name('admin.manageSales');
+    Route::get('/admin/blogs', 'manageblogs')->name('admin.manageblogs');
+
     Route::get('admin/login', 'showLoginForm')->name('admin.login');
    Route::post('admin/login',  'login')->name('admin.login.submit');
    Route::post('admin/logout', 'logout')->name('admin.logout');
@@ -123,7 +121,7 @@ Route::middleware('auth')->group(function () {
  //address routes
   Route::controller(AddressController::class)->middleware('auth')->group(function(){
     Route::post('/address/create', 'store')->name('address.store');
-    Route::post('/add-address', 'addAddress')->name('order.addAddress');
+    Route::get('/add-address', 'addAddress')->name('order.addAddress');
     Route::get('/profile/update-address',  'updateAddress')->name('profile.updateAddress');
 });
 
@@ -135,7 +133,7 @@ Route::resource('/category', CategoryController::class);
 Route::resource('/products',ProductController::class);
 
 
-
+Route::get('/categories', [ProductController::class, 'index'])->name('base.categories');
 
 
 Route::prefix('admin')->group(function () {
@@ -144,6 +142,6 @@ Route::prefix('admin')->group(function () {
     Route::get('blogs/create', [BlogController::class, 'create'])->name('admin.createblogs');
     Route::get('blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.editblogs');
     Route::put('blogs/{id}', [BlogController::class, 'update'])->name('admin.blogs.update');
-        Route::post('blogs', [BlogController::class, 'store'])->name('blog.store');
+    Route::post('blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
     Route::delete('blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 });

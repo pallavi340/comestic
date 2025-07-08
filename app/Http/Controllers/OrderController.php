@@ -7,7 +7,6 @@ use App\Models\OrderItems;
 use App\Models\Coupon;
 use App\Models\Cart;
 use App\Models\User;
-use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

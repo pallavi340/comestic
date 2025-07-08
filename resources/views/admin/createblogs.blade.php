@@ -2,7 +2,7 @@
 
 @section('content')
 <h3>Add New Blog</h3>
-<form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label>Title</label>
@@ -16,6 +16,6 @@
         <label>Image</label>
         <input type="file" name="image" class="form-control">
     </div>
-    <a href="{{ route('blog.store') }}" type="submit" class="btn btn-success">Create</a>
+    <a href="{{ route('admin.blogs.store') }}" type="submit" class="btn btn-success">Create</a>
 </form>
 @endsection

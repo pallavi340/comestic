@@ -96,5 +96,9 @@ class HomeController extends Controller
    public function offer(){
     return view('base.offer');
    }
+   public function profile(){
+    return view('base.profile');
+   }
+
 
 }

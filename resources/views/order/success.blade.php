@@ -150,14 +150,6 @@
       <img src="https://companieslogo.com/img/orig/NYKAA.NS-d90b04ce.png?t=1637461145" width="100" alt="Brand Logo">
     </a>
 
-    <!-- Search Bar -->
-    <div class="col-md-6">
-        <form class="d-flex me-3">
-                    <input class="search-box" type="search" placeholder="Search for products...">
-                    <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-      </div>
-
     <!-- Nav Links -->
     <div class="nav-links d-flex align-items-center gap-4">
       <a href="#" class="nav-item">

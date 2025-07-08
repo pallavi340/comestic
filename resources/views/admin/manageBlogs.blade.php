@@ -1,5 +1,7 @@
 @extends('admin.layout')
 
+@section('title', 'Manage Blogs')
+
 @section('content')
 <a href="{{ route('admin.createblogs') }}" class="btn btn-success mb-3">Add New Blog</a>
 

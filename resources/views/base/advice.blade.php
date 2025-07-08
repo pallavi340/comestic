@@ -158,7 +158,7 @@
             <img src="https://images-static.nykaa.com/uploads/f168df61-f92b-42f0-94fc-ed3a652d6eb9.jpg?tr=cm-pad_resize,w-1800" alt="Featured Post">
             <div class="featured-post-content">
                 <span class="category-badge rounded-pill px-3 py-1 mb-2 d-inline-block">MAKEUP</span>
-                <h2 class="mb-3">10 Summer Makeup Trends You Need to Try in 2023</h2>
+                <h2 class="mb-3">10 Summer Makeup Trends You Need to Try in 2025</h2>
                 
                         <p class="mb-0 small">By Jessica Parker</p>
                         <p class="mb-0 small text-muted">May 15, 2023 · 8 min read</p>

@@ -18,15 +18,6 @@ class AdminController extends Controller
     $orders = Order::with('user' )->latest()->get();
     return view('admin.manageOrders', compact('orders'));
    }
-  
-public function viewOrder($id)
-{
-  
-public function manageOrder()
-{
-  $orders = Order::with('user')->latest()->get();
-  return view('admin.manageOrders', compact('orders'));
-}
 
 public function viewOrder($id)
 {
@@ -114,5 +105,5 @@ public function showLoginForm()
 }
 
 }
-  }
+
    

@@ -52,7 +52,9 @@ public function show($slug)
             'content' => $request->content,
             'image' => $imagePath,
         ]);
-return redirect()->route('admin.manageBlogs');
+
+        
+  return redirect()->route('admin.manageBlogs')->with('success', 'Blog created successfully!');
 
     }
 
